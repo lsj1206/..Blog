@@ -1,5 +1,5 @@
 import React from "react";
-import { styled } from "../styles/Theme"; // styled-components를 Theme.jsx에서 가져옴
+import { styled } from "../styles/Theme";
 
 const IconButton = ({ onClick, size, svgIcon: SvgIcon }) => {
   return (
@@ -21,6 +21,11 @@ const ButtonWrapper = styled.button`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+
+  &:active {
+    transform: scale(0.95);
+  }
 `;
 
 const SvgIconContainer = styled.div`

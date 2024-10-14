@@ -4,7 +4,8 @@ import { styled } from "../styles/Theme";
 import { ThemeContext } from "../context/ThemeProvider";
 //Components
 import SearchButton from "./SearchButton";
-import IconButton from "../components/IconButton";
+import TextButton from "./TextButton";
+import IconButton from "./IconButton";
 //Icon
 import { ReactComponent as DarkIcon } from "../assets/icons/moon-regular.svg";
 import { ReactComponent as LightIcon } from "../assets/icons/sun-regular.svg";
@@ -27,7 +28,7 @@ const Header = () => {
           size={30}
           svgIcon={theme === "light" ? LightIcon : DarkIcon}
         />
-        <button>LogIn/LogOut</button>
+        <TextButton onClick={() => {}} width={30} height={50} text={"Login"} />
       </ButtonContainer>
     </HeaderContainer>
   );
