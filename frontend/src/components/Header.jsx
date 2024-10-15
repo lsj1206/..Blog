@@ -5,10 +5,13 @@ import { ThemeContext } from "../context/ThemeProvider";
 //Components
 import SearchButton from "./SearchButton";
 import TextButton from "./TextButton";
+import ImgButton from "./ImgButton";
 import IconButton from "./IconButton";
-//Icon
+//Icons
 import { ReactComponent as DarkIcon } from "../assets/icons/moon-regular.svg";
 import { ReactComponent as LightIcon } from "../assets/icons/sun-regular.svg";
+// Imgs
+import ProfileImg from "../assets/profile.png";
 
 const Header = () => {
   const { theme, onChangeTheme } = useContext(ThemeContext);
@@ -28,7 +31,9 @@ const Header = () => {
           size={30}
           svgIcon={theme === "light" ? LightIcon : DarkIcon}
         />
-        <TextButton onClick={() => {}} width={30} height={50} text={"Login"} />
+        {/* 로그인 정보가 없으면 이미지 블락 , Login Button */}
+        <ImgButton onClick={() => {}} size={30} img={ProfileImg} />
+        <TextButton onClick={() => {}} width={80} height={0} text={"Login"} />
       </ButtonContainer>
     </HeaderContainer>
   );

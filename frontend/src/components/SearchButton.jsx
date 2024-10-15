@@ -13,31 +13,31 @@ const SearchButton = () => {
   };
 
   return (
-    <SearchWrapper>
+    <SearchContainer>
       <SearchBar
         isOpen={isSearchBarOpen}
         placeholder="Search..."
         autoFocus={isSearchBarOpen}
       />
-      <ButtonWrapper>
+      <ButtonContainer>
         <IconButton
           onClick={handleSearchBar}
-          size={30}
+          size={26}
           svgIcon={isSearchBarOpen ? XIcon : SearchIcon}
         />
-      </ButtonWrapper>
-    </SearchWrapper>
+      </ButtonContainer>
+    </SearchContainer>
   );
 };
 
-const SearchWrapper = styled.div`
+const SearchContainer = styled.div`
   width: 300px;
   display: flex;
   position: relative;
   align-items: center;
 `;
 
-const ButtonWrapper = styled.div`
+const ButtonContainer = styled.div`
   z-index: 10;
   right: 0px;
   position: absolute;
