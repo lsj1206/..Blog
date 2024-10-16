@@ -3,10 +3,10 @@ import React, { useContext } from "react";
 import { styled } from "../styles/Theme";
 import { ThemeContext } from "../context/ThemeProvider";
 //Components
-import SearchButton from "./SearchButton";
-import TextButton from "./TextButton";
-import ImgButton from "./ImgButton";
-import IconButton from "./IconButton";
+import SearchButton from "./SearchBar";
+import TextButton from "./buttons/TextButton";
+import ImgButton from "./buttons/ImgButton";
+import IconButton from "./buttons/IconButton";
 //Icons
 import { ReactComponent as DarkIcon } from "../assets/icons/moon-regular.svg";
 import { ReactComponent as LightIcon } from "../assets/icons/sun-regular.svg";
@@ -41,10 +41,10 @@ const Header = () => {
 
 const HeaderContainer = styled.header`
   z-index: 1;
+  padding: 10px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
   background-color: ${({ theme }) => theme.background2};
 `;
 
