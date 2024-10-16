@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { styled } from "../styles/Theme";
 //Components
-import IconButton from "./IconButton";
+import IconButton from "./buttons/IconButton";
 //Icons
 import { ReactComponent as BarIcon } from "../assets/icons/bars-solid.svg";
 import { ReactComponent as LightArrowIcon } from "../assets/icons/arrow-right-solid.svg";
@@ -62,13 +62,8 @@ const Sidebar = () => {
   );
 };
 
-const IconBox = styled.div`
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
-`;
-
 const SidebarContainer = styled.div`
+  z-index: 100;
   top: 90px;
   right: 0;
   width: ${(props) => (props.isOpen ? "250px" : "50px")};
@@ -76,21 +71,14 @@ const SidebarContainer = styled.div`
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
   background-color: ${({ theme }) => theme.background2};
-  color: white;
+  color: ${({ theme }) => theme.text};
   position: fixed;
   overflow: hidden;
   transition: width 0.3s ease;
 `;
 
-const Line = styled.div`
-  margin: 10px 10px 10px 15px;
-  height: 1px;
-  background-color: #777;
-  visibility: ${(props) => (props.isOpen ? "visible" : "hidden")};
-`;
-
 const ContentBox = styled.div`
-  height: ${({ height }) => (height ? height + "px" : "auto")};
+  height: ${({ height }) => `${height}px`};
   padding: 5px 5px 5px 15px;
   display: flex;
   flex-direction: column;
@@ -101,6 +89,19 @@ const ContentBox = styled.div`
     width: 0; /* 스크롤바의 너비를 0으로 설정 */
     background: transparent; /* 배경 투명하게 설정 */
   }
+`;
+
+const IconBox = styled.div`
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+`;
+
+const Line = styled.div`
+  margin: 10px 10px 10px 15px;
+  height: 1px;
+  background-color: #777;
+  visibility: ${(props) => (props.isOpen ? "visible" : "hidden")};
 `;
 
 export default Sidebar;

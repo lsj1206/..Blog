@@ -1,5 +1,5 @@
 import React from "react";
-import { styled } from "../styles/Theme";
+import { styled } from "../../styles/Theme";
 
 const IconButton = ({ onClick, link, size, svgIcon: SvgIcon }) => {
   // 링크가 존재할 경우 해당 URL로 리디렉션

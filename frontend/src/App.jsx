@@ -4,12 +4,14 @@ import { styled } from "./styles/Theme";
 import Header from "./components/Header";
 import Sidebar from "./components/SideBar";
 import Footer from "./components/Footer";
+import MainPage from "./pages/MainPage";
 
 function App() {
   return (
     <Background>
       <Header />
       <Sidebar />
+      <MainPage />
       <Footer />
     </Background>
   );
