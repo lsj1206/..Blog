@@ -8,9 +8,9 @@ const MainPage = () => {
   return (
     <MainPageContainer>
       <Title>게시글 목록</Title>
-      <Line marginTop={5} marginBottom={15} />
+      <Line $marginTop={5} $marginBottom={15} />
       <PostList />
-      <Line marginTop={15} marginBottom={5} />
+      <Line $marginTop={15} $marginBottom={5} />
       <Pagination />
     </MainPageContainer>
   );
@@ -30,8 +30,8 @@ const Title = styled.h2`
 `;
 
 const Line = styled.div`
-  margin-top: ${({ marginTop }) => `${marginTop}px`};
-  margin-bottom: ${({ marginBottom }) => `${marginBottom}px`};
+  margin-top: ${({ $marginTop }) => `${$marginTop}px`};
+  margin-bottom: ${({ $marginBottom }) => `${$marginBottom}px`};
   height: 1px;
   background-color: #777;
 `;

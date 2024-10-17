@@ -9,18 +9,18 @@ import { ReactComponent as GithubIcon } from "../assets/icons/github-brands-soli
 import { ReactComponent as CodeIcon } from "../assets/icons/code-solid.svg";
 
 const Sidebar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [$isOpen, set$IsOpen] = useState(false);
   const sbRef = useRef(null);
 
   const toggleSidebar = () => {
-    setIsOpen(!isOpen);
+    set$IsOpen(!$isOpen);
   };
 
   // 외부 클릭 감지
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (sbRef.current && !sbRef.current.contains(event.target)) {
-        setIsOpen(false);
+        set$IsOpen(false);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
@@ -32,13 +32,13 @@ const Sidebar = () => {
   }, []);
 
   return (
-    <SidebarContainer isOpen={isOpen} ref={sbRef}>
+    <SidebarContainer $isOpen={$isOpen} ref={sbRef}>
       <IconButton
         onClick={toggleSidebar}
         size={30}
-        svgIcon={isOpen === false ? BarIcon : LightArrowIcon}
+        svgIcon={$isOpen === false ? BarIcon : LightArrowIcon}
       />
-      <ContentBox isOpen={isOpen} height={80} justify={"space-between"}>
+      <ContentBox $isOpen={$isOpen} height={80} $justify={"space-between"}>
         <h2>Box 1</h2>
         <IconBox>
           <IconButton
@@ -53,8 +53,8 @@ const Sidebar = () => {
           />
         </IconBox>
       </ContentBox>
-      <Line isOpen={isOpen} />
-      <ContentBox isOpen={isOpen} height={400}>
+      <Line $isOpen={$isOpen} />
+      <ContentBox $isOpen={$isOpen} height={400}>
         <h2>Box 2</h2>
         <p>Some content in Box 2...</p>
       </ContentBox>
@@ -66,7 +66,7 @@ const SidebarContainer = styled.div`
   z-index: 100;
   top: 90px;
   right: 0;
-  width: ${(props) => (props.isOpen ? "250px" : "50px")};
+  width: ${(props) => (props.$isOpen ? "250px" : "50px")};
   height: 80vh;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
@@ -82,8 +82,8 @@ const ContentBox = styled.div`
   padding: 5px 5px 5px 15px;
   display: flex;
   flex-direction: column;
-  justify-content: ${({ justify = "flex-start" }) => justify};
-  visibility: ${(props) => (props.isOpen ? "visible" : "hidden")};
+  justify-content: ${({ $justify = "flex-start" }) => $justify};
+  visibility: ${(props) => (props.$isOpen ? "visible" : "hidden")};
   overflow-y: scroll;
   &::-webkit-scrollbar {
     width: 0; /* 스크롤바의 너비를 0으로 설정 */
@@ -101,7 +101,7 @@ const Line = styled.div`
   margin: 10px 10px 10px 15px;
   height: 1px;
   background-color: #777;
-  visibility: ${(props) => (props.isOpen ? "visible" : "hidden")};
+  visibility: ${(props) => (props.$isOpen ? "visible" : "hidden")};
 `;
 
 export default Sidebar;
