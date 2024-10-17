@@ -23,10 +23,11 @@ const Pagination = () => {
 
 const PaginationContainer = styled.div`
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
   text-align: center;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  color: ${({ theme }) => theme.text};
 `;
 
 export default Pagination;

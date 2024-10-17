@@ -21,14 +21,14 @@ const Footer = () => {
 };
 
 const FooterContainer = styled.footer`
-  bottom: 0;
-  width: 100vw;
-  padding: 0;
-  margin-bottom: -5px;
-  margin-right: -5px;
   display: flex;
   justify-content: flex-end;
+  margin-bottom: -5px;
+  margin-right: -5px;
+  padding: 0;
   position: fixed;
+  bottom: 0;
+  width: 100vw;
   background-color: transparent;
 `;
 

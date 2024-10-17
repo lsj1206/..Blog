@@ -64,27 +64,28 @@ const Sidebar = () => {
 
 const SidebarContainer = styled.div`
   z-index: 100;
+  position: fixed;
   top: 90px;
   right: 0;
   width: ${(props) => (props.$isOpen ? "250px" : "50px")};
   height: 80vh;
+  color: ${({ theme }) => theme.text};
+  background-color: ${({ theme }) => theme.bgLayout};
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
-  background-color: ${({ theme }) => theme.background2};
-  color: ${({ theme }) => theme.text};
-  position: fixed;
   overflow: hidden;
   transition: width 0.3s ease;
 `;
 
 const ContentBox = styled.div`
-  height: ${({ height }) => `${height}px`};
-  padding: 5px 5px 5px 15px;
   display: flex;
   flex-direction: column;
   justify-content: ${({ $justify = "flex-start" }) => $justify};
+  padding: 5px 5px 5px 15px;
+  height: ${({ height }) => `${height}px`};
   visibility: ${(props) => (props.$isOpen ? "visible" : "hidden")};
   overflow-y: scroll;
+
   &::-webkit-scrollbar {
     width: 0; /* 스크롤바의 너비를 0으로 설정 */
     background: transparent; /* 배경 투명하게 설정 */
@@ -100,7 +101,7 @@ const IconBox = styled.div`
 const Line = styled.div`
   margin: 10px 10px 10px 15px;
   height: 1px;
-  background-color: #777;
+  background-color: ${({ theme }) => theme.brLine};
   visibility: ${(props) => (props.$isOpen ? "visible" : "hidden")};
 `;
 

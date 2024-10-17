@@ -7,36 +7,30 @@ const color = {
 };
 
 export const light = {
-  background1: "#fefefe",
-  background2: "#dfdfdf", // dialog
-  background3: "#a8a9ae",
-  keyBg1: "#e3e1e3",
-  keyBg2: "#cfcbcf",
-  boardBg: "white",
-  boardBorder1: "#070507",
-  boardBorder2: "#555",
-  button1: "#a098a0",
-  button2: "#706570", // hover
-  text: "#202124",
-  bgText: "#ccc",
-  btnText: "#555",
+  text: "black",
+  bgMain: "white",
+  bgLayout: "#E8E8E8",
+  bgSub: "#C3C3C3",
+  bgText: "#AAAAAA",
+  btn: "#A9A9A9",
+  btnText: "#696969",
+  btnActive: "#585858",
+  btnActiveText: "#C0C0C0",
+  brLine: "#585858",
   color: { ...color },
 };
 
 export const dark = {
-  background1: "#202124",
-  background2: "#38393e", // dialog
-  background3: "#88898e",
-  keyBg1: "#403c40",
-  keyBg2: "#766c76",
-  boardBg: "#131213",
-  boardBorder1: "#766c76",
-  boardBorder2: "#202124",
-  button1: "#5c565c",
-  button2: "#908790", // hover
-  text: "#fefefe",
-  bgtext: "#aaa",
-  btnText: "#aaa",
+  text: "white",
+  bgMain: "#282828",
+  bgLayout: "#383838",
+  bgSub: "#606060",
+  bgText: "#808080",
+  btn: "#505050",
+  btnText: "#808080",
+  btnActive: "#909090",
+  btnActiveText: "#505050",
+  brLine: "#585858",
   color: { ...color },
 };
 

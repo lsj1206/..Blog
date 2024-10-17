@@ -31,17 +31,18 @@ const SearchButton = () => {
 };
 
 const SearchContainer = styled.div`
-  width: 300px;
   display: flex;
-  position: relative;
   align-items: center;
+  position: relative;
+  width: 300px;
+  color: ${({ theme }) => theme.text};
 `;
 
 const ButtonContainer = styled.div`
   z-index: 10;
-  right: 0px;
-  position: absolute;
   align-items: center;
+  position: absolute;
+  right: 0;
 `;
 
 const SearchBar = styled.input.attrs({
@@ -50,22 +51,22 @@ const SearchBar = styled.input.attrs({
 })`
   z-index: 9;
   flex: 1;
+  padding-left: 15px;
   width: ${({ $isOpen }) => ($isOpen ? "100%" : "0")};
   height: 40px;
-  padding-left: 15px;
-  background: ${({ theme }) => theme.background3 || "currentColor"};
-  color: ${({ theme }) => theme.text || "currentColor"};
+  color: ${({ theme }) => theme.text};
+  background: ${({ theme }) => theme.bgSub};
+  opacity: ${({ $isOpen }) => ($isOpen ? 1 : 0)};
   font-weight: bolder;
   outline: none;
   border: none;
   border-radius: 20px;
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.5);
-  opacity: ${({ $isOpen }) => ($isOpen ? 1 : 0)};
   transition: width 0.4s ease, opacity 0.4s ease;
   transition-timing-function: ease-in-out;
 
   &::placeholder {
-    color: ${({ theme }) => theme.bgText || "#aaa"};
+    color: ${({ theme }) => theme.bgText};
   }
 
   &:hover {

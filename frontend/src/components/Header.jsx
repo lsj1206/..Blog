@@ -33,7 +33,7 @@ const Header = () => {
         />
         {/* 로그인 정보가 없으면 이미지 블락 , Login Button */}
         <ImgButton onClick={() => {}} size={30} img={ProfileImg} />
-        <TextButton onClick={() => {}} width={80} height={0} text={"Login"} />
+        <TextButton onClick={() => {}} width={80} height={30} text={"Login"} />
       </ButtonContainer>
     </HeaderContainer>
   );
@@ -41,11 +41,11 @@ const Header = () => {
 
 const HeaderContainer = styled.header`
   z-index: 1;
-  padding: 10px 20px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  background-color: ${({ theme }) => theme.background2};
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: ${({ theme }) => theme.bgLayout};
 `;
 
 const HeaderTitle = styled.h2`

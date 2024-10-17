@@ -1,0 +1,10 @@
+↑
+|	z-index/display 속성 같이 부모/동등한 요소들과 상호작용이 큰 속성
+|	position 속성 같이 요소의 위치와 연관된 속성
+|	width/height 같이 요소의 크기와 연관된 속성
+|	color/background/opacity 같이 요소의 색/가시성 과 연관된 속성
+|	font-family 같이 요소의 폰트와 연관된 속성
+|	border/boder-radious 같이 요소의 디자인과 연관된 속성
+|	overflow/white-space 같이 요소의 설정과 연관된 속성
+|	transition 같이 요소의 움직임과 연관된 속성
+↓
