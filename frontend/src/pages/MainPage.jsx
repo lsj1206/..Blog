@@ -17,11 +17,11 @@ const MainPage = () => {
 };
 
 const MainPageContainer = styled.div`
+  position: relative;
+  margin-left: 10px;
   top: 0;
   width: 80%;
   height: 580px;
-  margin-left: 10px;
-  position: relative;
   background-color: transparent;
 `;
 
@@ -33,7 +33,7 @@ const Line = styled.div`
   margin-top: ${({ $marginTop }) => `${$marginTop}px`};
   margin-bottom: ${({ $marginBottom }) => `${$marginBottom}px`};
   height: 1px;
-  background-color: #777;
+  background-color: ${({ theme }) => theme.brLine};
 `;
 
 export default MainPage;

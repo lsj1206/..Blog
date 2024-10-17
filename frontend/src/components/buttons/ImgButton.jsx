@@ -19,9 +19,9 @@ const ButtonContainer = styled.button`
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  transition: transform 0.1s;
-  width: ${({ size }) => size || "40px"};
-  height: ${({ size }) => size || "40px"};
+  transition: transform 0.2s;
+  width: ${({ size }) => size};
+  height: ${({ size }) => size};
 
   &:hover {
     opacity: 0.8;

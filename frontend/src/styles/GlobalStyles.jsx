@@ -9,9 +9,9 @@ const GlobalStyle = createGlobalStyle`
 
   html, body {
     height: 100%;
-    font-family: 'Arial', sans-serif;
-    background: ${({ theme }) => theme.background};
     color: ${({ theme }) => theme.text};
+    background: ${({ theme }) => theme.background};
+    font-family: 'Arial', sans-serif;
     transition: background 0.2s ease-in, color 0.2s ease-in;
   }
 

@@ -24,8 +24,8 @@ const Background = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background: ${({ theme }) => theme.background1};
   color: ${({ theme }) => theme.text};
+  background: ${({ theme }) => theme.bgMain};
   transition: background 0.3s ease-in, color 0.3s ease-in;
 `;
 

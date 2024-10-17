@@ -32,26 +32,27 @@ const PostListItem = ({ onClick, thumbnail, text }) => {
 };
 
 const PostContainer = styled.div`
-  width: 100%;
   display: flex;
-  flex-direction: row;
   flex-grow: 1;
+  flex-direction: row;
+  width: 100%;
+  color: ${({ theme }) => theme.text};
   background-color: transparent;
 `;
 
 const ThumbnailBox = styled.div`
+  position: relative;
   width: 150px;
   margin-left: 15px;
   margin-right: 15px;
-  position: relative;
 `;
 
 const TextBox = styled.div`
-  flex: 1; /* 남은 공간을 TextBox가 차지함 */
-  padding: 10px;
-  margin-right: 30px;
   display: flex;
+  flex: 1; /* 남은 공간을 TextBox가 차지함 */
   flex-direction: column;
+  margin-right: 30px;
+  padding: 10px;
 `;
 
 const Title = styled.h2`
@@ -59,9 +60,9 @@ const Title = styled.h2`
 `;
 
 const PostInfoBox = styled.div`
-  height: 25%;
   display: flex;
   flex-direction: row;
+  height: 25%;
 `;
 
 const Category = styled.p`
@@ -73,13 +74,13 @@ const Date = styled.p`
 `;
 
 const Description = styled.p`
-  height: 40%;
   display: -webkit-box; /* Flexbox처럼 동작 */
   -webkit-line-clamp: 2; /* 두 줄까지만 표시 */
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis; /* 넘친 텍스트를 "..."으로 표시 */
   white-space: normal;
+  height: 40%;
 `;
 
 export default PostListItem;

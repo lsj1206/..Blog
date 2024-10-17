@@ -17,28 +17,28 @@ const ButtonWrapper = styled.div`
 
 const ButtonContainer = styled.button`
   z-index: 10;
-  background-color: ${({ theme }) => theme.button1 || "currentColor"};
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 8px 16px;
-  width: ${({ width }) => (width ? width + "px" : "auto")};
-  height: ${({ height }) => (height ? height + "px" : "auto")};
-  border: none;
-  border-radius: 4px;
+  width: ${({ width }) => `${width}px`};
+  height: ${({ height }) => `${height}px`};
+  color: ${({ theme }) => theme.btnText};
+  background-color: ${({ theme }) => theme.btn};
   font-size: 14px;
   font-weight: bold;
-  color: ${({ theme }) => theme.btnText || "currentColor"};
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  border: none;
+  border-radius: 4px;
+  transition: background-color 0.2s, transform 0.2s;
   cursor: pointer;
-  transition: background-color 0.2s, transform 0.1s;
 
   &:hover {
-    opacity: 0.8;
+    color: ${({ theme }) => theme.btnActiveText};
+    background-color: ${({ theme }) => theme.btnActive};
   }
 
   &:active {
     transform: scale(0.9);
-    background-color: ${({ theme }) => theme.button2 || "currentColor"};
   }
 `;
 
