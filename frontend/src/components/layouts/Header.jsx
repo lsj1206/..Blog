@@ -1,17 +1,17 @@
 import React, { useContext } from "react";
 //Style, Theme
-import { styled } from "../styles/Theme";
-import { ThemeContext } from "../context/ThemeProvider";
+import { styled } from "../../styles/Theme";
+import { ThemeContext } from "../../context/ThemeProvider";
 //Components
-import SearchButton from "./SearchBar";
-import TextButton from "./buttons/TextButton";
-import ImgButton from "./buttons/ImgButton";
-import IconButton from "./buttons/IconButton";
+import SearchButton from "../SearchBar";
+import TextButton from "../buttons/TextButton";
+import ImgButton from "../buttons/ImgButton";
+import IconButton from "../buttons/IconButton";
 //Icons
-import { ReactComponent as DarkIcon } from "../assets/icons/moon-regular.svg";
-import { ReactComponent as LightIcon } from "../assets/icons/sun-regular.svg";
+import { ReactComponent as DarkIcon } from "../../assets/icons/moon-regular.svg";
+import { ReactComponent as LightIcon } from "../../assets/icons/sun-regular.svg";
 // Imgs
-import ProfileImg from "../assets/profile.png";
+import ProfileImg from "../../assets/profile.png";
 
 const Header = () => {
   const { theme, onChangeTheme } = useContext(ThemeContext);
