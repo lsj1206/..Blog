@@ -15,9 +15,9 @@ const SearchButton = () => {
   return (
     <SearchContainer>
       <SearchBar
-        isOpen={isSearchBarOpen}
         placeholder="Search..."
         autoFocus={isSearchBarOpen}
+        $isOpen={isSearchBarOpen}
       />
       <ButtonContainer>
         <IconButton
@@ -44,10 +44,13 @@ const ButtonContainer = styled.div`
   align-items: center;
 `;
 
-const SearchBar = styled.input`
+const SearchBar = styled.input.attrs({
+  id: "search-bar", // 고유한 id 추가
+  name: "searchQuery", // 고유한 name 추가
+})`
   z-index: 9;
   flex: 1;
-  width: ${({ isOpen }) => (isOpen ? "100%" : "0")};
+  width: ${({ $isOpen }) => ($isOpen ? "100%" : "0")};
   height: 40px;
   padding-left: 15px;
   background: ${({ theme }) => theme.background3 || "currentColor"};
@@ -57,7 +60,7 @@ const SearchBar = styled.input`
   border: none;
   border-radius: 20px;
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.5);
-  opacity: ${({ isOpen }) => (isOpen ? 1 : 0)};
+  opacity: ${({ $isOpen }) => ($isOpen ? 1 : 0)};
   transition: width 0.4s ease, opacity 0.4s ease;
   transition-timing-function: ease-in-out;
 

@@ -76,10 +76,10 @@ const Description = styled.p`
   height: 40%;
   display: -webkit-box; /* Flexbox처럼 동작 */
   -webkit-line-clamp: 2; /* 두 줄까지만 표시 */
-  -webkit-box-orient: vertical; /* 블록 요소처럼 수직 정렬 */
-  overflow: hidden; /* 넘치는 텍스트를 숨김 */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
   text-overflow: ellipsis; /* 넘친 텍스트를 "..."으로 표시 */
-  white-space: normal; /* 줄바꿈을 허용 */
+  white-space: normal;
 `;
 
 export default PostListItem;
