@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
-import { styled } from "../styles/Theme";
+import { styled } from "../../styles/Theme";
 //Components
-import IconButton from "./buttons/IconButton";
+import IconButton from "../buttons/IconButton";
 //Icons
-import { ReactComponent as BarIcon } from "../assets/icons/bars-solid.svg";
-import { ReactComponent as LightArrowIcon } from "../assets/icons/arrow-right-solid.svg";
-import { ReactComponent as GithubIcon } from "../assets/icons/github-brands-solid.svg";
-import { ReactComponent as CodeIcon } from "../assets/icons/code-solid.svg";
+import { ReactComponent as BarIcon } from "../../assets/icons/bars-solid.svg";
+import { ReactComponent as LightArrowIcon } from "../../assets/icons/arrow-right-solid.svg";
+import { ReactComponent as GithubIcon } from "../../assets/icons/github-brands-solid.svg";
+import { ReactComponent as CodeIcon } from "../../assets/icons/code-solid.svg";
 
 const Sidebar = () => {
   const [$isOpen, set$IsOpen] = useState(false);

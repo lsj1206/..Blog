@@ -4,10 +4,11 @@ import { styled } from "../styles/Theme";
 import PostList from "../components/PostList";
 import Pagination from "../components/Pagination";
 
-const MainPage = () => {
+const ListPage = () => {
   return (
     <MainPageContainer>
       <Title>게시글 목록</Title>
+      {/* 게시글 목록 정렬 기능 추가 ex) 최신순,오래된순,조회순 */}
       <Line $marginTop={5} $marginBottom={15} />
       <PostList />
       <Line $marginTop={15} $marginBottom={5} />
@@ -18,10 +19,8 @@ const MainPage = () => {
 
 const MainPageContainer = styled.div`
   position: relative;
-  margin-left: 10px;
-  top: 0;
-  width: 80%;
-  height: 580px;
+  margin-left: 20px;
+  width: 90%;
   background-color: transparent;
 `;
 
@@ -36,4 +35,4 @@ const Line = styled.div`
   background-color: ${({ theme }) => theme.brLine};
 `;
 
-export default MainPage;
+export default ListPage;

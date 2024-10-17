@@ -1,32 +1,26 @@
 import React from "react";
-import { styled } from "./styles/Theme";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Header from "./components/Header";
-import Sidebar from "./components/SideBar";
-import Footer from "./components/Footer";
-import MainPage from "./pages/MainPage";
+import Layout from "./components/layouts/Layout";
+//Pages
+import ListPage from "./pages/ListPage";
+import ReadPage from "./pages/ReadPage";
+import WritePage from "./pages/WritePage";
+import LoginPage from "./pages/LoginPage";
+import AboutPage from "./pages/AboutPage";
 
-function App() {
-  return (
-    <Background>
-      <Header />
-      <Sidebar />
-      <MainPage />
-      <Footer />
-    </Background>
-  );
-}
-
-const Background = styled.div`
-  z-index: 0;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  color: ${({ theme }) => theme.text};
-  background: ${({ theme }) => theme.bgMain};
-  transition: background 0.3s ease-in, color 0.3s ease-in;
-`;
+const App = () => (
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route path="/" element={<ListPage />} />
+        <Route path="/write" element={<WritePage />} />
+        <Route path="/post/:id" element={<ReadPage />} />
+      </Route>
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/about" element={<AboutPage />} />
+    </Routes>
+  </BrowserRouter>
+);
 
 export default App;
