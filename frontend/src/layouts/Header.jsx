@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 //Style, Theme
 import { styled } from "../styles/Theme";
 import { ThemeContext } from "../context/ThemeProvider";
@@ -15,10 +16,11 @@ import ProfileImg from "../assets/profile.png";
 
 const Header = () => {
   const { theme, onChangeTheme } = useContext(ThemeContext);
+  const navigate = useNavigate();
 
   // Home으로 이동
   const handleLogoClick = () => {
-    window.scrollTo(0, 0);
+    navigate("/");
   };
 
   return (

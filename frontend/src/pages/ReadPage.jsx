@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { styled } from "../styles/Theme";
+import "@toast-ui/editor/dist/toastui-editor-viewer.css"; // TOAST UI Editor 뷰어 CSS (필요 시)
 
 const ReadPage = () => {
   return (
