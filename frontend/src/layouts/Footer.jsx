@@ -1,9 +1,9 @@
 import React from "react";
-import { styled } from "../../styles/Theme";
+import { styled } from "../styles/Theme";
 //Components
-import IconButton from "../buttons/IconButton";
+import IconButton from "../components/buttons/IconButton";
 // Icons
-import { ReactComponent as PageUpIcon } from "../../assets/icons/caret-up-solid.svg";
+import { ReactComponent as PageUpIcon } from "../assets/icons/caret-up-solid.svg";
 
 const Footer = () => {
   const scrollToTop = () => {

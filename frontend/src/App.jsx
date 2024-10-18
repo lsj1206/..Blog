@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Layout from "./components/layouts/Layout";
+import Layout from "./layouts/Layout";
 //Pages
 import ListPage from "./pages/ListPage";
 import ReadPage from "./pages/ReadPage";

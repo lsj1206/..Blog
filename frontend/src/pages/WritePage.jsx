@@ -2,11 +2,13 @@
 
 import React, { useState } from "react";
 import { styled } from "../styles/Theme";
+// Toast UI Editor
+import MyEditor from "../components/MyEditor";
 
 const WritePage = () => {
   return (
     <WritePageContainer>
-      <p>Post Read Page</p>
+      {/* <MyEditor /> */}
     </WritePageContainer>
   );
 };
