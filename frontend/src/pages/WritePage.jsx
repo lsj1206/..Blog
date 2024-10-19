@@ -1,24 +1,50 @@
 import React, { useState } from "react";
 import { styled } from "../styles/Theme";
-
+// Components
 import PageHeader from "../layouts/PageHeader";
 import TextButton from "../components/buttons/TextButton";
 // Toast UI Editor
 import MyEditor from "../components/MyEditor";
+// Axios - Promise API를 활용하는 HTTP 비동기 통신 라이브러리
+// https://velog.io/@sunkim/React-axios-%EC%99%80-fetch-%EC%B0%A8%EC%9D%B4%EC%A0%90
+import axios from "axios";
 
 const categories = ["카테고리 선택", "Category-1", "Category-2"];
 
 const WritePage = () => {
   const [content, setContent] = useState("");
   const [title, setTitle] = useState("");
-  const [user, setUser] = useState("현재 사용자"); // 사용자 이름을 직접 입력하는 대신 고정 값 사용
-  const [date, setDate] = useState("");
   const [category, setCategory] = useState(categories[0]);
 
-  const handleSave = () => {
-    // Save logic here
-    console.log("Saved Content: ", content);
-    // 서버에 POST 요청을 보내거나 필요한 로직을 구현하세요.
+  // Submit 버튼 클릭 시 호출되는 함수
+  const handleSubmit = async () => {
+    if (!title || category === categories[0]) {
+      alert("제목과 분류는 필수입니다.");
+      return;
+    }
+
+    const currentDate = new Date().toISOString(); // 현재 날짜를 ISO 형식으로 가져오기
+    const postData = {
+      title, // 제목
+      content, // 에디터 내용
+      category, // 선택된 카테고리
+      date: currentDate, // 현재 날짜
+    };
+
+    try {
+      // axios를 사용하여 백엔드에 POST 요청 보내기
+      const response = await axios.post("/api/posts", postData, {
+        headers: {
+          "Content-Type": "application/json", // 요청의 Content-Type 설정
+        },
+      });
+
+      console.log("Post saved successfully:", response.data);
+      alert("게시물이 성공적으로 저장되었습니다.");
+    } catch (error) {
+      console.error("Error saving post:", error);
+      alert("게시물 저장 중 오류가 발생했습니다.");
+    }
   };
 
   return (
@@ -49,11 +75,13 @@ const WritePage = () => {
               width={80}
               height={30}
               text={"Submit"}
-              onClick={() => {}}
+              onClick={handleSubmit}
             />
           </UtilityBox>
         </TopContainer>
-        <MyEditor height={460} content={content} setContent={setContent} />
+        <EditorBox>
+          <MyEditor content={content} setContent={setContent} />
+        </EditorBox>
       </EditorContainer>
     </WritePageContainer>
   );
@@ -104,6 +132,12 @@ const CategorySelect = styled.select`
   width: 180px;
   font-size: 14px;
   border: 1px solid ${({ theme }) => theme.brLine};
+  border-radius: 4px;
+`;
+
+const EditorBox = styled.div`
+  height: 460px;
+  background-color: white;
   border-radius: 4px;
 `;
 
