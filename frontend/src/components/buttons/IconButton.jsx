@@ -8,7 +8,7 @@ const IconButton = ({ size = [30, 30], onClick, link, svgIcon: SvgIcon }) => {
     if (link) {
       window.open(link, "_blank"); // 리디렉션할때 New Tab
     } else if (onClick) {
-      onClick(e); // if onClick true
+      onClick(e);
     }
   };
 
@@ -37,13 +37,10 @@ const ButtonContainer = styled.button`
   svg {
     width: 100%;
     height: 100%;
-    object-fit: cover;
     fill: ${({ theme }) => theme.btn};
-  }
 
-  &:hover {
-    svg {
-      fill: ${({ theme }) => theme.btnActive}; // hover
+    &:hover {
+      fill: ${({ theme }) => theme.btnActive};
     }
   }
 

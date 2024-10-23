@@ -30,10 +30,10 @@ const ButtonContainer = styled.button`
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
 
-  &:hover {
-    opacity: 0.75;
+    &:hover {
+      opacity: 0.75;
+    }
   }
 
   &:active {
