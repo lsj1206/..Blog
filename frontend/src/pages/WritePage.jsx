@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { styled } from "../styles/Theme";
+import axios from "axios";
 // Components
 import PageHeader from "../layouts/PageHeader";
 import TextButton from "../components/buttons/TextButton";
@@ -7,9 +8,8 @@ import TextButton from "../components/buttons/TextButton";
 import MyEditor from "../components/MyEditor";
 // Axios - Promise API를 활용하는 HTTP 비동기 통신 라이브러리
 // https://velog.io/@sunkim/React-axios-%EC%99%80-fetch-%EC%B0%A8%EC%9D%B4%EC%A0%90
-import axios from "axios";
 
-const categories = ["카테고리 선택", "Category-1", "Category-2"];
+const categories = ["카테고리 선택"];
 
 const WritePage = () => {
   const [content, setContent] = useState("");
@@ -17,8 +17,8 @@ const WritePage = () => {
   const [category, setCategory] = useState(categories[0]);
 
   // Submit 버튼 클릭 시 호출되는 함수
-  const handleSubmit = async () => {
-    if (!title || category === categories[0]) {
+  const submitPost = async () => {
+    if (!title) {
       alert("제목과 분류는 필수입니다.");
       return;
     }
@@ -28,16 +28,20 @@ const WritePage = () => {
       title, // 제목
       content, // 에디터 내용
       category, // 선택된 카테고리
-      date: currentDate, // 현재 날짜
+      created_at: currentDate, // 현재 날짜
     };
 
     try {
       // axios를 사용하여 백엔드에 POST 요청 보내기
-      const response = await axios.post("/api/posts", postData, {
-        headers: {
-          "Content-Type": "application/json", // 요청의 Content-Type 설정
-        },
-      });
+      const response = await axios.post(
+        "http://localhost:8000/api/posts/create",
+        postData,
+        {
+          headers: {
+            "Content-Type": "application/json", // 요청의 Content-Type 설정
+          },
+        }
+      );
 
       console.log("Post saved successfully:", response.data);
       alert("게시물이 성공적으로 저장되었습니다.");
@@ -71,12 +75,7 @@ const WritePage = () => {
                 </option>
               ))}
             </CategorySelect>
-            <TextButton
-              width={80}
-              height={30}
-              text={"Submit"}
-              onClick={handleSubmit}
-            />
+            <TextButton size={[80, 30]} text={"Submit"} onClick={submitPost} />
           </UtilityBox>
         </TopContainer>
         <EditorBox>

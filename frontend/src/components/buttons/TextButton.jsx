@@ -1,26 +1,22 @@
 import React from "react";
 import { styled } from "../../styles/Theme";
 
-const TextButton = ({ onClick, width, height, text }) => {
+const TextButton = ({ size = [], text, onClick }) => {
+  const [width = 80, height = 30] = size;
+
   return (
-    <ButtonWrapper>
       <ButtonContainer onClick={onClick} width={width} height={height}>
         {text}
       </ButtonContainer>
-    </ButtonWrapper>
   );
 };
-
-const ButtonWrapper = styled.div`
-  padding: 10px;
-`;
 
 const ButtonContainer = styled.button`
   z-index: 10;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 8px 16px;
+  margin: 10px;
   width: ${({ width }) => `${width}px`};
   height: ${({ height }) => `${height}px`};
   color: ${({ theme }) => theme.btnText};

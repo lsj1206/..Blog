@@ -24,18 +24,20 @@ const MyEditor = () => {
   };
 
   return (
-    <Editor
-      language="ko-KR"
-      height="100%"
-      previewStyle="vertical"
-      initialEditType="markdown"
-      initialValue="Default Type Markdown"
-      placeholder="내용을 입력해 주세요."
-      ref={editorRef}
-      onChange={onChange}
-      plugins={[codeHighlight, color]}
-      hooks={{ addImageBlobHook: handleImg }}
-    />
+    <React.Fragment>
+      <Editor
+        language="ko-KR"
+        height="100%"
+        previewStyle="vertical"
+        initialEditType="markdown"
+        initialValue="Default Type Markdown"
+        placeholder="내용을 입력해 주세요."
+        ref={editorRef}
+        onChange={onChange}
+        plugins={[codeHighlight, color]}
+        hooks={{ addImageBlobHook: handleImg }}
+      />
+    </React.Fragment>
   );
 };
 
