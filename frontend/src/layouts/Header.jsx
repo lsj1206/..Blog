@@ -34,7 +34,7 @@ const Header = () => {
           svgIcon={theme === "light" ? LightIcon : DarkIcon}
         />
         {/* 로그인 정보가 없으면 이미지 블락 , Login Button */}
-        <ImgButton onClick={() => {}} size={30} img={ProfileImg} />
+        <ImgButton size={[30, 30]} img={ProfileImg} onClick={() => {}} />
         <TextButton size={[80, 30]} text={"Login"} onClick={() => {}} />
       </ButtonContainer>
     </HeaderContainer>

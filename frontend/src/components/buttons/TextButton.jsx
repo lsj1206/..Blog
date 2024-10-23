@@ -1,13 +1,13 @@
 import React from "react";
 import { styled } from "../../styles/Theme";
 
-const TextButton = ({ size = [], text, onClick }) => {
-  const [width = 80, height = 30] = size;
+const TextButton = ({ size = [80, 30], text, onClick }) => {
+  const [width, height] = size;
 
   return (
-      <ButtonContainer onClick={onClick} width={width} height={height}>
-        {text}
-      </ButtonContainer>
+    <ButtonContainer width={width} height={height} onClick={onClick}>
+      {text}
+    </ButtonContainer>
   );
 };
 
