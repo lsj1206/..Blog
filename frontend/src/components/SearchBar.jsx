@@ -22,7 +22,7 @@ const SearchButton = () => {
       <ButtonContainer>
         <IconButton
           onClick={handleSearchBar}
-          size={26}
+          size={[26, 26]}
           svgIcon={isSearchBarOpen ? XIcon : SearchIcon}
         />
       </ButtonContainer>

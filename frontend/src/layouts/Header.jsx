@@ -30,7 +30,7 @@ const Header = () => {
         <SearchButton />
         <IconButton
           onClick={onChangeTheme}
-          size={30}
+          size={[30, 30]}
           svgIcon={theme === "light" ? LightIcon : DarkIcon}
         />
         {/* 로그인 정보가 없으면 이미지 블락 , Login Button */}

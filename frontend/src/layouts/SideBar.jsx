@@ -35,7 +35,7 @@ const Sidebar = () => {
     <SidebarContainer $isOpen={$isOpen} ref={sbRef}>
       <IconButton
         onClick={toggleSidebar}
-        size={30}
+        size={[30, 30]}
         svgIcon={$isOpen === false ? BarIcon : LightArrowIcon}
       />
       <ContentBox $isOpen={$isOpen} height={80} $justify={"space-between"}>
@@ -43,12 +43,12 @@ const Sidebar = () => {
         <IconBox>
           <IconButton
             link="https://github.com/lsj1206/..Blog"
-            size={20}
+            size={[20, 20]}
             svgIcon={CodeIcon}
           />
           <IconButton
             link="https://github.com/lsj1206"
-            size={20}
+            size={[20, 20]}
             svgIcon={GithubIcon}
           />
         </IconBox>

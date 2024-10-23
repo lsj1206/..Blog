@@ -6,7 +6,7 @@ const ImgButton = ({ size = [30, 30], img, onClick }) => {
 
   return (
     <ButtonContainer width={width} height={height} onClick={onClick}>
-      <img src={img} alt={"Profile"} />
+      <img src={img} alt={"_image"} />
     </ButtonContainer>
   );
 };

@@ -12,11 +12,15 @@ import { ReactComponent as DoubleRightIcon } from "../assets/icons/angles-right-
 const Pagination = () => {
   return (
     <PaginationContainer>
-      <IconButton onClick={() => {}} size={20} svgIcon={DoubleLeftIcon} />
-      <IconButton onClick={() => {}} size={20} svgIcon={LeftIcon} />
+      <IconButton onClick={() => {}} size={[20, 20]} svgIcon={DoubleLeftIcon} />
+      <IconButton onClick={() => {}} size={[20, 20]} svgIcon={LeftIcon} />
       <p>1_2_3_4_5_6_7_8_9</p>
-      <IconButton onClick={() => {}} size={20} svgIcon={RightIcon} />
-      <IconButton onClick={() => {}} size={20} svgIcon={DoubleRightIcon} />
+      <IconButton onClick={() => {}} size={[20, 20]} svgIcon={RightIcon} />
+      <IconButton
+        onClick={() => {}}
+        size={[20, 20]}
+        svgIcon={DoubleRightIcon}
+      />
     </PaginationContainer>
   );
 };
