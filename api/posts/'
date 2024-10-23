@@ -1,0 +1,16 @@
+from fastapi import APIRouter
+
+from database import SessionLocal
+from models import Question
+
+router = APIRouter(
+        prefix="/posts",
+)
+
+@router.get("/list")
+
+async def post_list():
+    db = SessionLocal()
+    posts = db.query(Question).all()
+    db.close()
+    return posts
