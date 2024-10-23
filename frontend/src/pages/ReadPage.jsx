@@ -2,11 +2,14 @@
 
 import React from "react";
 import { styled } from "../styles/Theme";
+// Toast UI Editor Viewer
+import { Viewer } from "@toast-ui/react-editor";
+import "@toast-ui/editor/dist/toastui-editor-viewer.css"; // default CSS
 
-const ReadPage = () => {
+const ReadPage = ({ contents }) => {
   return (
     <ReadPageContainer>
-      <p>text</p>
+      <Viewer initialValue={contents || ""} />
     </ReadPageContainer>
   );
 };

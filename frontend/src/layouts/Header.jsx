@@ -1,24 +1,26 @@
 import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 //Style, Theme
-import { styled } from "../../styles/Theme";
-import { ThemeContext } from "../../context/ThemeProvider";
+import { styled } from "../styles/Theme";
+import { ThemeContext } from "../context/ThemeProvider";
 //Components
-import SearchButton from "../SearchBar";
-import TextButton from "../buttons/TextButton";
-import ImgButton from "../buttons/ImgButton";
-import IconButton from "../buttons/IconButton";
+import SearchButton from "../components/SearchBar";
+import TextButton from "../components/buttons/TextButton";
+import ImgButton from "../components/buttons/ImgButton";
+import IconButton from "../components/buttons/IconButton";
 //Icons
-import { ReactComponent as DarkIcon } from "../../assets/icons/moon-regular.svg";
-import { ReactComponent as LightIcon } from "../../assets/icons/sun-regular.svg";
+import { ReactComponent as DarkIcon } from "../assets/icons/moon-regular.svg";
+import { ReactComponent as LightIcon } from "../assets/icons/sun-regular.svg";
 // Imgs
-import ProfileImg from "../../assets/profile.png";
+import ProfileImg from "../assets/profile.png";
 
 const Header = () => {
   const { theme, onChangeTheme } = useContext(ThemeContext);
+  const navigate = useNavigate();
 
   // Home으로 이동
   const handleLogoClick = () => {
-    window.scrollTo(0, 0);
+    navigate("/");
   };
 
   return (
