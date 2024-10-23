@@ -9,8 +9,12 @@ async def get_post_list(db: Session):
     return data.scalars().all()
 
 async def get_post(db: Session, post_id: int):
-    data = await db.execute(select(Post).filter(Post.id == post_id))
-    return data
+    result = await db.execute(select(Post).where(Post.id == post_id))
+    post = result.scalar_one_or_none()
+
+    if post is None:
+        raise HTTPException(status_code=404, detail="Post not found")
+    return post
 
 async def create_post(db: Session, post_create_schema: post_create_schema):
     post = Post(
