@@ -6,11 +6,7 @@ import { ReactComponent as SearchIcon } from "../assets/icons/magnifying-glass-s
 import { ReactComponent as XIcon } from "../assets/icons/xmark-solid.svg";
 
 const SearchButton = () => {
-  const [isSearchBarOpen, toggleSearchBarState] = useState(false);
-
-  const handleSearchBar = () => {
-    toggleSearchBarState((prevState) => !prevState);
-  };
+  const [isSearchBarOpen, setSearchBarOpen] = useState(false);
 
   return (
     <SearchContainer>
@@ -21,7 +17,7 @@ const SearchButton = () => {
       />
       <ButtonContainer>
         <IconButton
-          onClick={handleSearchBar}
+          onClick={() => setSearchBarOpen((prev) => !prev)}
           size={[26, 26]}
           svgIcon={isSearchBarOpen ? XIcon : SearchIcon}
         />

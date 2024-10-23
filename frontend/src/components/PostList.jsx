@@ -17,7 +17,6 @@ const PostList = () => {
 const PostListContainer = styled.div`
   display: flex;
   flex-direction: column;
-  height: 460px;
   color: ${({ theme }) => theme.text};
 `;
 
