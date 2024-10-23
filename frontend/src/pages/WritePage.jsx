@@ -23,18 +23,16 @@ const WritePage = () => {
       return;
     }
 
-    const currentDate = new Date().toISOString(); // 현재 날짜를 ISO 형식으로 가져오기
     const postData = {
       title, // 제목
       content, // 에디터 내용
-      category, // 선택된 카테고리
-      created_at: currentDate, // 현재 날짜
+      // category, // 선택된 카테고리
     };
 
     try {
       // axios를 사용하여 백엔드에 POST 요청 보내기
       const response = await axios.post(
-        "http://localhost:8000/api/posts/create",
+        "http://127.0.0.1:8000/api/posts/create",
         postData,
         {
           headers: {
