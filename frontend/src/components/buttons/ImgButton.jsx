@@ -1,34 +1,43 @@
 import React from "react";
 import { styled } from "../../styles/Theme";
 
-const ImgButton = ({ onClick, size, img }) => {
+const ImgButton = ({ size = [30, 30], img, onClick }) => {
+  const [width, height] = size;
+
   return (
-    <ButtonContainer onClick={onClick} size={size}>
-      <img src={img} alt={"_image"} width={size} height={size} />
+    <ButtonContainer width={width} height={height} onClick={onClick}>
+      <img src={img} alt={"_image"} />
     </ButtonContainer>
   );
 };
 
 const ButtonContainer = styled.button`
   z-index: 10;
-  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  padding: 0;
+  width: ${({ width }) => `${width}px`};
+  height: ${({ height }) => `${height}px`};
   background: none;
   border: none;
   border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  transition: transform 0.2s, opacity 0.2s;
   cursor: pointer;
-  transition: transform 0.2s;
-  width: ${({ size }) => size};
-  height: ${({ size }) => size};
 
-  &:hover {
-    opacity: 0.8;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    &:hover {
+      opacity: 0.75;
+    }
   }
 
   &:active {
-    transform: scale(0.95);
+    transform: scale(0.9);
   }
 `;
 

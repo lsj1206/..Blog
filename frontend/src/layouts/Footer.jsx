@@ -15,7 +15,7 @@ const Footer = () => {
 
   return (
     <FooterContainer>
-      <IconButton onClick={scrollToTop} size={32} svgIcon={PageUpIcon} />
+      <IconButton onClick={scrollToTop} size={[32, 32]} svgIcon={PageUpIcon} />
     </FooterContainer>
   );
 };

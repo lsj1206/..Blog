@@ -30,12 +30,12 @@ const Header = () => {
         <SearchButton />
         <IconButton
           onClick={onChangeTheme}
-          size={30}
+          size={[30, 30]}
           svgIcon={theme === "light" ? LightIcon : DarkIcon}
         />
         {/* 로그인 정보가 없으면 이미지 블락 , Login Button */}
-        <ImgButton onClick={() => {}} size={30} img={ProfileImg} />
-        <TextButton onClick={() => {}} width={80} height={30} text={"Login"} />
+        <ImgButton size={[30, 30]} img={ProfileImg} onClick={() => {}} />
+        <TextButton size={[80, 30]} text={"Login"} onClick={() => {}} />
       </ButtonContainer>
     </HeaderContainer>
   );

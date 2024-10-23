@@ -1,60 +1,51 @@
 import React from "react";
 import { styled } from "../../styles/Theme";
 
-const IconButton = ({ onClick, link, size, svgIcon: SvgIcon }) => {
+const IconButton = ({ size = [30, 30], onClick, link, svgIcon: SvgIcon }) => {
+  const [width, height] = size;
   // 링크가 존재할 경우 해당 URL로 리디렉션
   const handleClick = (e) => {
     if (link) {
       window.open(link, "_blank"); // 리디렉션할때 New Tab
     } else if (onClick) {
-      onClick(e); // if onClick true
+      onClick(e);
     }
   };
 
   return (
-    <ButtonWrapper>
-      <ButtonContainer onClick={handleClick}>
-        <IconContainer $size={size}>
-          <SvgIcon />
-        </IconContainer>
-      </ButtonContainer>
-    </ButtonWrapper>
+    <ButtonContainer width={width} height={height} onClick={handleClick}>
+      <SvgIcon />
+    </ButtonContainer>
   );
 };
-
-const ButtonWrapper = styled.div`
-  padding: 10px;
-`;
 
 const ButtonContainer = styled.button`
   z-index: 10;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 10px;
+  padding: 0;
+  width: ${({ width }) => `${width}px`};
+  height: ${({ height }) => `${height}px`};
   background-color: transparent;
   border: none;
   border-radius: 50%;
   transition: background-color 0.2s, transform 0.2s;
   cursor: pointer;
 
-  &:active {
-    transform: scale(0.95);
-  }
-`;
-
-const IconContainer = styled.div`
-  width: ${({ $size }) => `${$size}px`};
-  height: ${({ $size }) => `${$size}px`};
   svg {
     width: 100%;
     height: 100%;
     fill: ${({ theme }) => theme.btn};
+
+    &:hover {
+      fill: ${({ theme }) => theme.btnActive};
+    }
   }
 
-  ${ButtonContainer}:hover & {
-    svg {
-      fill: ${({ theme }) => theme.btnActive}; // hover
-    }
+  &:active {
+    transform: scale(0.9);
   }
 `;
 
