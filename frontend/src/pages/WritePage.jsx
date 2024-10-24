@@ -10,7 +10,7 @@ import MyEditor from "../components/MyEditor";
 // Axios - Promise API를 활용하는 HTTP 비동기 통신 라이브러리
 // https://velog.io/@sunkim/React-axios-%EC%99%80-fetch-%EC%B0%A8%EC%9D%B4%EC%A0%90
 
-const postURL = "http://127.0.0.1:8000/api/posts/create";
+const writeURL = "http://127.0.0.1:8000/api/posts/create";
 
 const categories = ["카테고리 선택"];
 
@@ -34,7 +34,7 @@ const WritePage = () => {
 
     try {
       // axios로 Back-End에 POST
-      await axios.post(postURL, postData, {
+      await axios.post(writeURL, postData, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -51,51 +51,43 @@ const WritePage = () => {
   return (
     <WritePageContainer>
       <PageHeader title={"글 쓰기"} />
-      <EditorContainer>
-        <TopContainer>
-          <TitleBox>
-            <TitleInput
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              type="text"
-              placeholder="제목을 입력하세요"
-            />
-          </TitleBox>
-          <UtilityBox>
-            <CategorySelect
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-            >
-              {categories.map((cat) => (
-                <option key={cat} value={cat}>
-                  {cat}
-                </option>
-              ))}
-            </CategorySelect>
-            <TextButton size={[80, 30]} text={"Submit"} onClick={submitPost} />
-          </UtilityBox>
-        </TopContainer>
-        <EditorBox>
-          <MyEditor setContent={setContent} />
-        </EditorBox>
-      </EditorContainer>
+      <UtilContainer>
+        <TitleInput
+          type="text"
+          value={title}
+          placeholder="제목을 입력하세요"
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <UtilityBox>
+          <CategorySelect
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+          >
+            {categories.map((cat) => (
+              <option key={cat} value={cat}>
+                {cat}
+              </option>
+            ))}
+          </CategorySelect>
+          <TextButton size={[80, 30]} text={"Submit"} onClick={submitPost} />
+        </UtilityBox>
+      </UtilContainer>
+      <EditorBox>
+        <MyEditor setContent={setContent} />
+      </EditorBox>
     </WritePageContainer>
   );
 };
 
 const WritePageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
   margin-left: 20px;
   width: 90%;
   background-color: transparent;
 `;
 
-const EditorContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-`;
-
-const TopContainer = styled.div`
+const UtilContainer = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -104,14 +96,9 @@ const TopContainer = styled.div`
   height: 50px;
 `;
 
-const TitleBox = styled.div`
-  margin-right: 20px;
-  width: 50%;
-`;
-
 const TitleInput = styled.input`
   padding: 10px;
-  width: 100%;
+  width: 50%;
   font-size: 18px;
   border: 1px solid ${({ theme }) => theme.brLine};
   border-radius: 4px;

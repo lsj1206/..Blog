@@ -1,30 +1,25 @@
-// 게시글 내용을 읽는 페이지
-
-// 다시 작성해야함
-// post_id를 받아와야함.
-
 import React, { useEffect, useState } from "react";
 import { styled } from "../styles/Theme";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-// Toast UI Editor Viewer
-import { Viewer } from "@toast-ui/react-editor";
-import "@toast-ui/editor/dist/toastui-editor-viewer.css"; // default CSS
-
+// Components
 import PageHeader from "../layouts/PageHeader";
+// Toast UI Viewer
+import MyViewer from "../components/MyViewer";
+
+const postURL = "http://127.0.0.1:8000/api/posts/detail/";
 
 const ReadPage = () => {
+  const { postId } = useParams(); // URL에서 postID 가져오기
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     // API 호출하여 포스트 데이터 가져오기
-    const fetchPost = async () => {
+    const getPost = async () => {
       try {
-        const response = await axios.get(
-          `http://127.0.0.1:8000/api/posts/detail/8`
-        );
+        const response = await axios.get(`${postURL}${postId}`);
         setPost(response.data);
         setLoading(false);
       } catch (error) {
@@ -33,24 +28,24 @@ const ReadPage = () => {
       }
     };
 
-    fetchPost();
-  }, []);
+    getPost();
+  }, [postId]);
 
-  if (loading) return <LoadingMessage>Loading...</LoadingMessage>;
-  if (error) return <ErrorMessage>{error}</ErrorMessage>;
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>{error}</p>;
 
   return (
     <ReadPageContainer>
-      <PageHeader title={post?.title || "Post Detail"} />
+      <PageHeader title={post?.title || "Post Title"} />
       {post && (
         <>
-          <PostInfo>
+          <InfoContainer>
             <PostDate>
               {new Date(post.created_at).toLocaleDateString()}
             </PostDate>
-          </PostInfo>
+          </InfoContainer>
           <ViewerContainer>
-            <Viewer initialValue={post.content || ""} />
+            <MyViewer Content={post.content} />
           </ViewerContainer>
         </>
       )}
@@ -59,12 +54,14 @@ const ReadPage = () => {
 };
 
 const ReadPageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
   margin-left: 20px;
   width: 90%;
   background-color: transparent;
 `;
 
-const PostInfo = styled.div`
+const InfoContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
@@ -72,22 +69,14 @@ const PostInfo = styled.div`
 
 const PostDate = styled.div`
   font-size: 14px;
-  color: ${({ theme }) => theme.textSecondary};
+  color: ${({ theme }) => theme.bgText};
 `;
 
 const ViewerContainer = styled.div`
-  background-color: white;
   padding: 20px;
+  background-color: ${({ theme }) => theme.bgMain};
+  color: blue;
   border-radius: 4px;
-`;
-
-const LoadingMessage = styled.p`
-  text-align: center;
-`;
-
-const ErrorMessage = styled.p`
-  color: red;
-  text-align: center;
 `;
 
 export default ReadPage;
