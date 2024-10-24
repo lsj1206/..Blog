@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { styled } from "../styles/Theme";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 // Components
 import PageHeader from "../layouts/PageHeader";
@@ -9,14 +10,16 @@ import MyEditor from "../components/MyEditor";
 // Axios - Promise API를 활용하는 HTTP 비동기 통신 라이브러리
 // https://velog.io/@sunkim/React-axios-%EC%99%80-fetch-%EC%B0%A8%EC%9D%B4%EC%A0%90
 
+const postURL = "http://127.0.0.1:8000/api/posts/create";
+
 const categories = ["카테고리 선택"];
 
 const WritePage = () => {
-  const [content, setContent] = useState("");
+  const navigate = useNavigate();
   const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
   const [category, setCategory] = useState(categories[0]);
 
-  // Submit 버튼 클릭 시 호출되는 함수
   const submitPost = async () => {
     if (!title) {
       alert("제목과 분류는 필수입니다.");
@@ -24,28 +27,24 @@ const WritePage = () => {
     }
 
     const postData = {
-      title, // 제목
-      content, // 에디터 내용
-      // category, // 선택된 카테고리
+      title,
+      content,
+      //category,
     };
 
     try {
-      // axios를 사용하여 백엔드에 POST 요청 보내기
-      const response = await axios.post(
-        "http://127.0.0.1:8000/api/posts/create",
-        postData,
-        {
-          headers: {
-            "Content-Type": "application/json", // 요청의 Content-Type 설정
-          },
-        }
-      );
+      // axios로 Back-End에 POST
+      await axios.post(postURL, postData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
-      console.log("Post saved successfully:", response.data);
       alert("게시물이 성공적으로 저장되었습니다.");
+      navigate(-1);
     } catch (error) {
-      console.error("Error saving post:", error);
-      alert("게시물 저장 중 오류가 발생했습니다.");
+      console.error("Error:", error);
+      alert("Error status: " + error.response.status);
     }
   };
 
@@ -77,7 +76,7 @@ const WritePage = () => {
           </UtilityBox>
         </TopContainer>
         <EditorBox>
-          <MyEditor content={content} setContent={setContent} />
+          <MyEditor setContent={setContent} />
         </EditorBox>
       </EditorContainer>
     </WritePageContainer>
