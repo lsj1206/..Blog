@@ -36,8 +36,8 @@ const ListPageContainer = styled.div`
 `;
 
 const UnderLine = styled.div`
-  margin-top: ${({ $marginTop }) => `${$marginTop}px`};
-  margin-bottom: ${({ $marginBottom }) => `${$marginBottom}px`};
+  margin-top: ${({ $marginTop }) => $marginTop}px;
+  margin-bottom: ${({ $marginBottom }) => $marginBottom}px;
   height: 1px;
   background-color: ${({ theme }) => theme.brLine};
 `;

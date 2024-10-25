@@ -82,7 +82,7 @@ const ContentBox = styled.div`
   flex-direction: column;
   justify-content: ${({ $justify = "flex-start" }) => $justify};
   padding: 5px 5px 5px 15px;
-  height: ${({ height }) => `${height}px`};
+  height: ${({ height }) => height}px;
   visibility: ${(props) => (props.$isOpen ? "visible" : "hidden")};
   overflow-y: scroll;
 

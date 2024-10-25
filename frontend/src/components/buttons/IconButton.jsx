@@ -26,8 +26,8 @@ const ButtonContainer = styled.button`
   justify-content: center;
   margin: 10px;
   padding: 0;
-  width: ${({ width }) => `${width}px`};
-  height: ${({ height }) => `${height}px`};
+  width: ${({ width }) => width}px;
+  height: ${({ height }) => height}px;
   background-color: transparent;
   border: none;
   border-radius: 50%;

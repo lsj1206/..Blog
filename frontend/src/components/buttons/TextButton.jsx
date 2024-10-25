@@ -18,8 +18,8 @@ const ButtonContainer = styled.button`
   justify-content: center;
   margin: 10px;
   padding: 0;
-  width: ${({ width }) => `${width}px`};
-  height: ${({ height }) => `${height}px`};
+  width: ${({ width }) => width}px;
+  height: ${({ height }) => height}px;
   color: ${({ theme }) => theme.btnText};
   background-color: ${({ theme }) => theme.btn};
   font-size: 14px;
