@@ -1,5 +1,7 @@
 // Custom Toast UI Editor
-import React, { useRef, useEffect } from "react";
+import React, { useContext, useRef, useEffect } from "react";
+import { styled } from "../styles/Theme";
+import { ThemeContext } from "../context/ThemeProvider";
 // TOAST UI Editor
 import { Editor } from "@toast-ui/react-editor";
 import color from "@toast-ui/editor-plugin-color-syntax"; // 'color syntax' plugin
@@ -9,7 +11,10 @@ import "@toast-ui/editor/dist/toastui-editor.css"; // default css
 import "tui-color-picker/dist/tui-color-picker.css"; // 'color syntax' css
 import "@toast-ui/editor-plugin-color-syntax/dist/toastui-editor-plugin-color-syntax.css"; // 'code syntax highlight' css
 
-const MyEditor = ({ setContent }) => {
+import "@toast-ui/editor/dist/theme/toastui-editor-dark.css"; // 다크 모드 테마
+
+const MyEditor = ({ size = [0, 400], setContent }) => {
+  const { theme } = useContext(ThemeContext);
   const editorRef = useRef();
 
   const handleImg = (blob, callback) => {
@@ -31,7 +36,13 @@ const MyEditor = ({ setContent }) => {
   }, []);
 
   return (
-    <React.Fragment>
+    <EditorContainer
+      className={`editor-panel-editor${
+        theme === "dark" ? " toastui-editor-dark" : ""
+      }`}
+      // width={size[0]}
+      height={size[1]}
+    >
       <Editor
         height="100%"
         language="ko-KR"
@@ -44,8 +55,14 @@ const MyEditor = ({ setContent }) => {
         onChange={onChange}
         ref={editorRef}
       />
-    </React.Fragment>
+    </EditorContainer>
   );
 };
+
+const EditorContainer = styled.div`
+  height: 460px;
+  /* width: ${({ width }) => width}px; */
+  height: ${({ height }) => height}px;
+`;
 
 export default MyEditor;

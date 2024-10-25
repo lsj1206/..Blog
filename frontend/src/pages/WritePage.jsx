@@ -72,9 +72,7 @@ const WritePage = () => {
           <TextButton size={[80, 30]} text={"Submit"} onClick={submitPost} />
         </UtilityBox>
       </UtilContainer>
-      <EditorBox>
-        <MyEditor setContent={setContent} />
-      </EditorBox>
+      <MyEditor size={[0, 460]} setContent={setContent} />
     </WritePageContainer>
   );
 };
@@ -115,12 +113,6 @@ const CategorySelect = styled.select`
   width: 180px;
   font-size: 14px;
   border: 1px solid ${({ theme }) => theme.brLine};
-  border-radius: 4px;
-`;
-
-const EditorBox = styled.div`
-  height: 460px;
-  background-color: white;
   border-radius: 4px;
 `;
 
