@@ -1,7 +1,7 @@
 import React from "react";
 import { styled } from "../../styles/Theme";
 
-const TextButton = ({ size = [80, 30], text, onClick }) => {
+const TextButton = ({ onClick, size = [80, 30], text }) => {
   const [width, height] = size;
 
   return (

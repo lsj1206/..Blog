@@ -1,7 +1,7 @@
 import React from "react";
 import { styled } from "../../styles/Theme";
 
-const IconButton = ({ size = [30, 30], onClick, link, svgIcon: SvgIcon }) => {
+const IconButton = ({ onClick, size = [30, 30], link, svgIcon: SvgIcon }) => {
   const [width, height] = size;
   // 링크가 존재할 경우 해당 URL로 리디렉션
   const handleClick = (e) => {

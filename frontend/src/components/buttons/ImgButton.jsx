@@ -1,7 +1,7 @@
 import React from "react";
 import { styled } from "../../styles/Theme";
 
-const ImgButton = ({ size = [30, 30], img, onClick }) => {
+const ImgButton = ({ onClick, size = [30, 30], img }) => {
   const [width, height] = size;
 
   return (
