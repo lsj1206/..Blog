@@ -4,14 +4,15 @@ import { styled } from "../styles/Theme";
 import { ThemeContext } from "../context/ThemeProvider";
 // TOAST UI Editor
 import { Editor } from "@toast-ui/react-editor";
-import color from "@toast-ui/editor-plugin-color-syntax"; // 'color syntax' plugin
-import codeHighlight from "@toast-ui/editor-plugin-code-syntax-highlight"; // 'code syntax highlight' plugin
 import "@toast-ui/editor/dist/i18n/ko-kr"; // language
 import "@toast-ui/editor/dist/toastui-editor.css"; // default css
+import "@toast-ui/editor/dist/theme/toastui-editor-dark.css"; // dark mode css
+import CodeSyntaxHighlight from "@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin-code-syntax-highlight-all"; // 'code syntax highlight' plugin
+import Prism from "prismjs"; // prismjs , dependency'code syntax highlight'
+import "@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin-code-syntax-highlight.css"; // 'code syntax highlight' css
+import "prismjs/themes/prism.css"; // prism CSS, dependency'code syntax highlight'
+import ColorSyntax from "@toast-ui/editor-plugin-color-syntax"; // 'color syntax' plugin
 import "tui-color-picker/dist/tui-color-picker.css"; // 'color syntax' css
-import "@toast-ui/editor-plugin-color-syntax/dist/toastui-editor-plugin-color-syntax.css"; // 'code syntax highlight' css
-
-import "@toast-ui/editor/dist/theme/toastui-editor-dark.css"; // 다크 모드 테마
 
 const MyEditor = ({ size = [0, 400], setContent }) => {
   const { theme } = useContext(ThemeContext);
@@ -50,7 +51,7 @@ const MyEditor = ({ size = [0, 400], setContent }) => {
         placeholder="내용을 입력해 주세요."
         previewStyle="vertical"
         hideModeSwitch={true}
-        plugins={[codeHighlight, color]}
+        plugins={[[CodeSyntaxHighlight, { highlighter: Prism }], ColorSyntax]}
         hooks={{ addImageBlobHook: handleImg }}
         onChange={onChange}
         ref={editorRef}
@@ -60,7 +61,6 @@ const MyEditor = ({ size = [0, 400], setContent }) => {
 };
 
 const EditorContainer = styled.div`
-  height: 460px;
   /* width: ${({ width }) => width}px; */
   height: ${({ height }) => height}px;
 `;
