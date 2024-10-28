@@ -4,28 +4,19 @@ import { styled } from "../styles/Theme";
 //Img
 import ThumbnailImg from "../assets/thumbnail.jpg";
 
-const PostListItem = ({ onClick, thumbnail, text }) => {
+const PostListItem = ({ title, content, createdAt, thumbnail, onClick }) => {
   return (
     <PostContainer onClick={onClick}>
       <ThumbnailBox>
-        <img src={thumbnail || ThumbnailImg} alt={"thumbnail"}></img>
+        <img src={thumbnail || ThumbnailImg} alt={"_thumbnail"}></img>
       </ThumbnailBox>
       <TextBox>
-        <Title>Title</Title>
+        <Title>{title}</Title>
         <PostInfoBox>
           <Category>Category</Category>
-          <p> ---- </p>
-          <Date>Date</Date>
+          <Date>{createdAt}</Date>
         </PostInfoBox>
-        <Description>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum."
-        </Description>
+        <Description>{content}</Description>
       </TextBox>
     </PostContainer>
   );
@@ -67,6 +58,7 @@ const PostInfoBox = styled.div`
 
 const Category = styled.p`
   align-items: center;
+  margin-right: 20px;
 `;
 
 const Date = styled.p`

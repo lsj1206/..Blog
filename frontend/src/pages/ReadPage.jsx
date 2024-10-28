@@ -51,7 +51,7 @@ const ReadPage = () => {
         <PostCategory>{Category}</PostCategory>
         <PostDate>{`${createDate}(${updateDate})`}</PostDate>
       </InfoContainer>
-      <ViewerContainer >
+      <ViewerContainer>
         <MyViewer Content={post.content} />
       </ViewerContainer>
     </ReadPageContainer>
@@ -86,7 +86,6 @@ const PostDate = styled.h5`
 const ViewerContainer = styled.div`
   padding: 20px;
   background-color: ${({ theme }) => theme.bgMain};
-  color: blue;
   border-radius: 4px;
 `;
 
