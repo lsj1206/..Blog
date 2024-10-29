@@ -1,4 +1,4 @@
-// DropDownMenu IconButton
+// DropDown IconButton
 import React, { useState, useRef, useEffect } from "react";
 import { styled } from "../../styles/Theme";
 // Components
@@ -29,7 +29,7 @@ const DDIconButton = ({ onClick, size = [30, 30], DDList, svgIcon }) => {
     <DropDownContainer ref={menuRef}>
       <IconButton size={size} onClick={toggleMenu} svgIcon={svgIcon} />
       {isOpen && (
-        <DropdownMenu>
+        <DropdownList>
           {DDList.map((item, index) => (
             <DropdownItem
               key={index}
@@ -41,7 +41,7 @@ const DDIconButton = ({ onClick, size = [30, 30], DDList, svgIcon }) => {
               {item}
             </DropdownItem>
           ))}
-        </DropdownMenu>
+        </DropdownList>
       )}
     </DropDownContainer>
   );
@@ -51,7 +51,7 @@ const DropDownContainer = styled.div`
   position: relative;
 `;
 
-const DropdownMenu = styled.div`
+const DropdownList = styled.div`
   display: flex;
   flex-direction: column;
   padding: 8px 0;
