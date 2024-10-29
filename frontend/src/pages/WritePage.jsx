@@ -2,23 +2,28 @@ import React, { useState } from "react";
 import { styled } from "../styles/Theme";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+// Axios - Promise API를 활용하는 HTTP 비동기 통신 라이브러리
+// https://velog.io/@sunkim/React-axios-%EC%99%80-fetch-%EC%B0%A8%EC%9D%B4%EC%A0%90
 // Components
 import PageHeader from "../layouts/PageHeader";
 import TextButton from "../components/buttons/TextButton";
 // Toast UI Editor
 import MyEditor from "../components/MyEditor";
-// Axios - Promise API를 활용하는 HTTP 비동기 통신 라이브러리
-// https://velog.io/@sunkim/React-axios-%EC%99%80-fetch-%EC%B0%A8%EC%9D%B4%EC%A0%90
+
+import DropdownMenu from "../components/DDMenu";
+const categories = [
+  "List entry #1",
+  "List entry #2",
+  "List entry #3",
+  "List entry #4",
+];
 
 const writeURL = "http://127.0.0.1:8000/api/posts/create";
-
-const categories = ["카테고리 선택"];
 
 const WritePage = () => {
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [category, setCategory] = useState(categories[0]);
 
   const submitPost = async () => {
     if (!title) {
@@ -59,16 +64,7 @@ const WritePage = () => {
           onChange={(e) => setTitle(e.target.value)}
         />
         <UtilityBox>
-          <CategorySelect
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-          >
-            {categories.map((cat) => (
-              <option key={cat} value={cat}>
-                {cat}
-              </option>
-            ))}
-          </CategorySelect>
+          <DropdownMenu menulist={categories} placeholder="Select Category" />
           <TextButton size={[80, 30]} text={"Submit"} onClick={submitPost} />
         </UtilityBox>
       </UtilContainer>
@@ -97,23 +93,21 @@ const UtilContainer = styled.div`
 const TitleInput = styled.input`
   padding: 10px;
   width: 50%;
+  background-color: ${({ theme }) => theme.bgLayout};
+  color: ${({ theme }) => theme.text};
   font-size: 18px;
-  border: 1px solid ${({ theme }) => theme.brLine};
+  border: 0;
   border-radius: 4px;
+  &:focus {
+    outline: none;
+    border: 1px solid ${({ theme }) => theme.brLine};
+    box-shadow: 0 0 5px rgba(125, 125, 125, 0.5);
+  }
 `;
 
 const UtilityBox = styled.div`
   display: flex;
   align-items: center;
-`;
-
-const CategorySelect = styled.select`
-  margin-right: 10px;
-  padding: 5px;
-  width: 180px;
-  font-size: 14px;
-  border: 1px solid ${({ theme }) => theme.brLine};
-  border-radius: 4px;
 `;
 
 export default WritePage;
