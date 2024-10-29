@@ -1,7 +1,7 @@
 import React from "react";
 import { styled } from "../../styles/Theme";
 
-const ImgButton = ({ size = [30, 30], img, onClick }) => {
+const ImgButton = ({ onClick, size = [30, 30], img }) => {
   const [width, height] = size;
 
   return (
@@ -18,8 +18,8 @@ const ButtonContainer = styled.button`
   justify-content: center;
   margin: 10px;
   padding: 0;
-  width: ${({ width }) => `${width}px`};
-  height: ${({ height }) => `${height}px`};
+  width: ${({ width }) => width}px;
+  height: ${({ height }) => height}px;
   background: none;
   border: none;
   border-radius: 50%;

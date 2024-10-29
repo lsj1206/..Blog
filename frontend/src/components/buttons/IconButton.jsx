@@ -1,7 +1,7 @@
 import React from "react";
 import { styled } from "../../styles/Theme";
 
-const IconButton = ({ size = [30, 30], onClick, link, svgIcon: SvgIcon }) => {
+const IconButton = ({ onClick, size = [30, 30], link, svgIcon: SvgIcon }) => {
   const [width, height] = size;
   // 링크가 존재할 경우 해당 URL로 리디렉션
   const handleClick = (e) => {
@@ -26,8 +26,8 @@ const ButtonContainer = styled.button`
   justify-content: center;
   margin: 10px;
   padding: 0;
-  width: ${({ width }) => `${width}px`};
-  height: ${({ height }) => `${height}px`};
+  width: ${({ width }) => width}px;
+  height: ${({ height }) => height}px;
   background-color: transparent;
   border: none;
   border-radius: 50%;

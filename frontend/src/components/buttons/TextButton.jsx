@@ -1,7 +1,7 @@
 import React from "react";
 import { styled } from "../../styles/Theme";
 
-const TextButton = ({ size = [80, 30], text, onClick }) => {
+const TextButton = ({ onClick, size = [80, 30], text }) => {
   const [width, height] = size;
 
   return (
@@ -18,8 +18,8 @@ const ButtonContainer = styled.button`
   justify-content: center;
   margin: 10px;
   padding: 0;
-  width: ${({ width }) => `${width}px`};
-  height: ${({ height }) => `${height}px`};
+  width: ${({ width }) => width}px;
+  height: ${({ height }) => height}px;
   color: ${({ theme }) => theme.btnText};
   background-color: ${({ theme }) => theme.btn};
   font-size: 14px;

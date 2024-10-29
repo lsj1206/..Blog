@@ -1,15 +1,32 @@
 import React from "react";
 import { styled } from "../styles/Theme";
-
+// Components
 import PageHeader from "../layouts/PageHeader";
 import PostList from "../components/PostList";
 import Pagination from "../components/Pagination";
+import DDIconButton from "../components/buttons/DDIconButton";
+//Icons
+import { ReactComponent as SortIcon } from "../assets/icons/filter-solid.svg";
 
 const ListPage = () => {
+  const sortOptions = ["최신순", "인기순", "오래된 순"];
+
+  const handleSortSelect = (selectedOption) => {
+    console.log("Selected option:", selectedOption);
+    // 정렬 로직 추가
+  };
+
   return (
     <ListPageContainer>
       <PageHeader title={"게시글 목록"} />
-      {/* 게시글 목록 정렬 기능 추가 ex) 최신순,오래된순,조회순 */}
+      <IconBox>
+        <DDIconButton
+          onClick={handleSortSelect}
+          size={[20, 20]}
+          svgIcon={SortIcon}
+          DDList={sortOptions}
+        />
+      </IconBox>
       <PostList />
       <UnderLine $marginTop={15} $marginBottom={5} />
       <Pagination />
@@ -24,9 +41,19 @@ const ListPageContainer = styled.div`
   background-color: transparent;
 `;
 
+const IconBox = styled.div`
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 20px;
+  right: 0;
+`;
+
 const UnderLine = styled.div`
-  margin-top: ${({ $marginTop }) => `${$marginTop}px`};
-  margin-bottom: ${({ $marginBottom }) => `${$marginBottom}px`};
+  margin-top: ${({ $marginTop }) => $marginTop}px;
+  margin-bottom: ${({ $marginBottom }) => $marginBottom}px;
   height: 1px;
   background-color: ${({ theme }) => theme.brLine};
 `;
