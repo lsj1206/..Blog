@@ -5,7 +5,7 @@ from datetime import datetime
 from api.posts.schemas import post_create_schema
 
 async def get_post_list(db: Session):
-    data = await db.execute(select(Post).order_by(Post.created_at.desc()).limit(10))
+    data = await db.execute(select(Post).order_by(Post.created_at.desc()))
     return data.scalars().all()
 
 async def get_post(db: Session, post_id: int):

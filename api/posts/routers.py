@@ -9,7 +9,7 @@ router = APIRouter(
         prefix="/posts",
 )
 
-@router.get("/list")
+@router.get("/list" response_model=list[post_list_schema])
 async def post_list(db: Session = Depends(get_async_db)):
     _post_list = await get_post_list(db)
     return _post_list
