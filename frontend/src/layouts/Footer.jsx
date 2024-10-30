@@ -5,17 +5,10 @@ import IconButton from "../components/buttons/IconButton";
 // Icons
 import { ReactComponent as PageUpIcon } from "../assets/icons/caret-up-solid.svg";
 
-const Footer = () => {
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth", // 부드럽게 스크롤
-    });
-  };
-
+const Footer = ({ scrollUp }) => {
   return (
     <FooterContainer>
-      <IconButton onClick={scrollToTop} size={[32, 32]} svgIcon={PageUpIcon} />
+      <IconButton onClick={scrollUp} size={[32, 32]} svgIcon={PageUpIcon} />
     </FooterContainer>
   );
 };

@@ -14,34 +14,37 @@ import "prismjs/themes/prism.css"; // prism CSS, dependency'code syntax highligh
 import ColorSyntax from "@toast-ui/editor-plugin-color-syntax"; // 'color syntax' plugin
 import "tui-color-picker/dist/tui-color-picker.css"; // 'color syntax' css
 
-const MyEditor = ({ size = [0, 400], setContent }) => {
+const MyEditor = ({ size = [0, 400], setContent, addImage }) => {
   const { theme } = useContext(ThemeContext);
   const editorRef = useRef();
 
-  const handleImg = (blob, callback) => {
-    console.log(blob); // 업로드된 이미지의 Blob 데이터
-    console.log(callback);
-    // 이미지 업로드 로직을 여기에서 구현
-  };
-
-  // 에디터의 현재 내용(Markdown)을 상위 컴포넌트로 전달
-  const onChange = () => {
-    const data = editorRef.current.getInstance().getMarkdown();
-    setContent(data);
-  };
-
-  // initialValue 대체.
+  // initialValue 대체 기능
   useEffect(() => {
-    const instance = editorRef.current.getInstance();
-    instance.setMarkdown("");
+    editorRef.current.getInstance().setMarkdown("");
   }, []);
+
+  // Content(Markdown)를 수시로 상위 컴포넌트로 전달
+  const onChange = () => {
+    const contents = editorRef.current.getInstance().getMarkdown();
+    setContent(contents);
+    console.log(contents);
+  };
+
+
+  // 미리보기 이미지 표시 안되는 문제
+  // <img> 태그의 src에 주소가 담기지 않음. (위지윅 모드에선 정상적임)
+  const onUploadImage = (blob, callback) => {
+    console.log(blob);
+    const previewUrl = URL.createObjectURL(blob);
+    addImage(blob);
+    callback(previewUrl, "미리보기");
+  };
 
   return (
     <EditorContainer
       className={`editor-panel-editor${
         theme === "dark" ? " toastui-editor-dark" : ""
       }`}
-      // width={size[0]}
       height={size[1]}
     >
       <Editor
@@ -52,7 +55,7 @@ const MyEditor = ({ size = [0, 400], setContent }) => {
         previewStyle="vertical"
         hideModeSwitch={true}
         plugins={[[CodeSyntaxHighlight, { highlighter: Prism }], ColorSyntax]}
-        hooks={{ addImageBlobHook: handleImg }}
+        hooks={{ addImageBlobHook: onUploadImage }}
         onChange={onChange}
         ref={editorRef}
       />
@@ -61,7 +64,6 @@ const MyEditor = ({ size = [0, 400], setContent }) => {
 };
 
 const EditorContainer = styled.div`
-  /* width: ${({ width }) => width}px; */
   height: ${({ height }) => height}px;
 `;
 

@@ -1,27 +1,42 @@
 import React, { useEffect, useState } from "react";
 import { styled } from "../styles/Theme";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 // Components
 import PageHeader from "../layouts/PageHeader";
 // Toast UI Viewer
 import MyViewer from "../components/MyViewer";
 
-const postURL = "http://127.0.0.1:8000/api/posts/detail/";
+import TextButton from "../components/buttons/TextButton";
+
+const postURL = "http://127.0.0.1:8000/api/posts/";
 
 const Category = "Category";
 
 const ReadPage = () => {
+  const navigate = useNavigate();
   const { postId } = useParams(); // URL에서 postID 가져오기
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const deletePost = async () => {
+    try {
+      const response = await axios.delete(`${postURL}delete/${postId}`);
+      setPost(response.data);
+      setLoading(false);
+    } catch (error) {
+      setError("Failed to load the post.");
+      setLoading(false);
+    }
+    navigate(-1);
+  };
+
   useEffect(() => {
     // API 호출하여 포스트 데이터 가져오기
     const getPost = async () => {
       try {
-        const response = await axios.get(`${postURL}${postId}`);
+        const response = await axios.get(`${postURL}detail/${postId}`);
         setPost(response.data);
         setLoading(false);
       } catch (error) {
@@ -54,6 +69,8 @@ const ReadPage = () => {
       <ViewerContainer>
         <MyViewer Content={post.content} />
       </ViewerContainer>
+      <UnderLine $marginTop={5} $marginBottom={15} />
+      <TextButton size={[120, 30]} text={"Delete Post"} onClick={deletePost} />
     </ReadPageContainer>
   );
 };
@@ -84,9 +101,17 @@ const PostDate = styled.h5`
 `;
 
 const ViewerContainer = styled.div`
-  padding: 20px;
+  padding: 10px;
+  width: 90%;
   background-color: ${({ theme }) => theme.bgMain};
   border-radius: 4px;
+`;
+
+const UnderLine = styled.div`
+  margin-top: ${({ $marginTop }) => $marginTop}px;
+  margin-bottom: ${({ $marginBottom }) => $marginBottom}px;
+  height: 1px;
+  background-color: ${({ theme }) => theme.brLine};
 `;
 
 export default ReadPage;
