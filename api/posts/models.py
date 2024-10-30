@@ -4,6 +4,6 @@ from config.db import Base
 class Post(Base):
     __tablename__ = 'posts'
     id = Column(Integer, primary_key=True)
-    title = Column(String(100))
+    title = Column(String(128))
     content = Column(Text)
     created_at = Column(DateTime)
