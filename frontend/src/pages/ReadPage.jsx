@@ -54,6 +54,7 @@ const ReadPage = () => {
       <ViewerContainer>
         <MyViewer Content={post.content} />
       </ViewerContainer>
+      <UnderLine $marginTop={5} $marginBottom={15} />
     </ReadPageContainer>
   );
 };
@@ -84,9 +85,16 @@ const PostDate = styled.h5`
 `;
 
 const ViewerContainer = styled.div`
-  padding: 20px;
+  padding: 10px;
   background-color: ${({ theme }) => theme.bgMain};
   border-radius: 4px;
+`;
+
+const UnderLine = styled.div`
+  margin-top: ${({ $marginTop }) => $marginTop}px;
+  margin-bottom: ${({ $marginBottom }) => $marginBottom}px;
+  height: 1px;
+  background-color: ${({ theme }) => theme.brLine};
 `;
 
 export default ReadPage;
