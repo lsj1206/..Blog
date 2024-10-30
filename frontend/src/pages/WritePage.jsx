@@ -2,22 +2,14 @@ import React, { useState } from "react";
 import { styled } from "../styles/Theme";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-// Axios - Promise API를 활용하는 HTTP 비동기 통신 라이브러리
-// https://velog.io/@sunkim/React-axios-%EC%99%80-fetch-%EC%B0%A8%EC%9D%B4%EC%A0%90
 // Components
 import PageHeader from "../layouts/PageHeader";
 import TextButton from "../components/buttons/TextButton";
+import DropdownMenu from "../components/DDMenu";
 // Toast UI Editor
 import MyEditor from "../components/MyEditor";
 
-import DropdownMenu from "../components/DDMenu";
-const categories = [
-  "List entry #1",
-  "List entry #2",
-  "List entry #3",
-  "List entry #4",
-];
-
+const categories = ["List entry #1", "List entry #2", "List entry #3"];
 const writeURL = "http://127.0.0.1:8000/api/posts/create";
 
 const WritePage = () => {
@@ -31,18 +23,11 @@ const WritePage = () => {
       return;
     }
 
-    const postData = {
-      title,
-      content,
-      //category,
-    };
-
     try {
-      // axios로 Back-End에 POST
+      // 게시글 데이터 전송
+      const postData = { title, content };
       await axios.post(writeURL, postData, {
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
       });
 
       alert("게시물이 성공적으로 저장되었습니다.");

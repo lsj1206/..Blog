@@ -15,7 +15,7 @@ const DropdownMenu = ({ menulist, placeholder }) => {
   return (
     <DropdownContainer>
       <DropdownLabel onClick={toggleOpen}>{selected}</DropdownLabel>
-      <DropdownList isOpen={isOpen}>
+      <DropdownList $isOpen={isOpen}>
         {menulist.map((item, index) => (
           <DropdownItem key={index} onClick={() => handleSelect(item)}>
             {item}
@@ -45,7 +45,7 @@ const DropdownLabel = styled.span`
 `;
 
 const DropdownList = styled.ul`
-  display: ${({ isOpen }) => (isOpen ? "block" : "none")};
+  display: ${({ $isOpen }) => ($isOpen ? "block" : "none")};
   position: absolute;
   top: 42px;
   left: 0;
