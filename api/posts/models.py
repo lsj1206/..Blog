@@ -7,5 +7,3 @@ class Post(Base):
     title = Column(String(128))
     content = Column(Text)
     created_at = Column(DateTime)
-    updated_at = Column(DateTime)
-
