@@ -11,8 +11,8 @@ const GlobalStyle = createGlobalStyle`
     height: 100%;
     color: ${({ theme }) => theme.text};
     background: ${({ theme }) => theme.background};
-    font-family: 'Arial', sans-serif;
-    transition: background 0.2s ease-in, color 0.2s ease-in;
+    font-family: 'D2Coding-Ver1.3.2', sans-serif;
+    transition: all 0.3s ease-in-out;
   }
 
   ul, ol {
