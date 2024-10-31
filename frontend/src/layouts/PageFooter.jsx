@@ -4,8 +4,8 @@ import { styled } from "../styles/Theme";
 const PageHeader = ({ children }) => {
   return (
     <PageHeaderContainer>
-      {children}
       <BorderLine />
+      {children}
     </PageHeaderContainer>
   );
 };
@@ -15,8 +15,8 @@ const PageHeaderContainer = styled.div`
 `;
 
 const BorderLine = styled.div`
-  margin-top: 10px;
-  margin-bottom: 15px;
+  margin-top: 15px;
+  margin-bottom: 10px;
   height: 1px;
   background-color: ${({ theme }) => theme.brLine};
 `;

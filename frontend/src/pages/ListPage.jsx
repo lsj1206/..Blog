@@ -2,8 +2,9 @@ import React from "react";
 import { styled } from "../styles/Theme";
 // Components
 import PageHeader from "../layouts/PageHeader";
+import PageFooter from "../layouts/PageFooter";
 import PostList from "../components/PostList";
-import Pagination from "../components/Pagination";
+import ListNavigation from "../components/ListNavigation";
 import DDIconButton from "../components/buttons/DDIconButton";
 //Icons
 import { ReactComponent as SortIcon } from "../assets/icons/filter-solid.svg";
@@ -18,7 +19,7 @@ const ListPage = () => {
 
   return (
     <ListPageContainer>
-      <PageHeader title={"게시글 목록"} />
+      <PageHeader children={<Title>{"게시글 목록"}</Title>} />
       <IconBox>
         <DDIconButton
           onClick={handleSortSelect}
@@ -28,17 +29,22 @@ const ListPage = () => {
         />
       </IconBox>
       <PostList />
-      <UnderLine $marginTop={15} $marginBottom={5} />
-      <Pagination />
+      <PageFooter>
+        <ListNavigation />
+      </PageFooter>
     </ListPageContainer>
   );
 };
 
 const ListPageContainer = styled.div`
-  position: relative;
   margin-left: 20px;
+  position: relative;
   width: 90%;
   background-color: transparent;
+`;
+
+const Title = styled.h2`
+  padding-top: 25px;
 `;
 
 const IconBox = styled.div`
@@ -49,13 +55,6 @@ const IconBox = styled.div`
   position: absolute;
   top: 20px;
   right: 0;
-`;
-
-const UnderLine = styled.div`
-  margin-top: ${({ $marginTop }) => $marginTop}px;
-  margin-bottom: ${({ $marginBottom }) => $marginBottom}px;
-  height: 1px;
-  background-color: ${({ theme }) => theme.brLine};
 `;
 
 export default ListPage;

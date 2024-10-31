@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 // Components
 import PageHeader from "../layouts/PageHeader";
+import PageFooter from "../layouts/PageFooter";
 import TextButton from "../components/buttons/TextButton";
 import DropdownMenu from "../components/DDMenu";
 // Toast UI Editor
@@ -40,7 +41,7 @@ const WritePage = () => {
 
   return (
     <WritePageContainer>
-      <PageHeader title={"글 쓰기"} />
+      <PageHeader children={<Title>{"게시글 작성"}</Title>} />
       <UtilContainer>
         <TitleInput
           type="text"
@@ -54,6 +55,7 @@ const WritePage = () => {
         </UtilityBox>
       </UtilContainer>
       <MyEditor size={[0, 460]} setContent={setContent} />
+      <PageFooter />
     </WritePageContainer>
   );
 };
@@ -64,6 +66,10 @@ const WritePageContainer = styled.div`
   margin-left: 20px;
   width: 90%;
   background-color: transparent;
+`;
+
+const Title = styled.h2`
+  padding-top: 25px;
 `;
 
 const UtilContainer = styled.div`

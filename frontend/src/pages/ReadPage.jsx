@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 // Components
 import PageHeader from "../layouts/PageHeader";
+import PageFooter from "../layouts/PageFooter";
 // Toast UI Viewer
 import MyViewer from "../components/MyViewer";
 
@@ -26,7 +27,7 @@ const ReadPage = () => {
       setPost(response.data);
       setLoading(false);
     } catch (error) {
-      setError("Failed to load the post.");
+      setError("Failed Delete Post");
       setLoading(false);
     }
     navigate(-1);
@@ -40,7 +41,7 @@ const ReadPage = () => {
         setPost(response.data);
         setLoading(false);
       } catch (error) {
-        setError("Failed to load the post.");
+        setError("Failed to Load the Post");
         setLoading(false);
       }
     };
@@ -51,17 +52,12 @@ const ReadPage = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
 
-  const dateForm = (date) => {
-    const options = { year: "numeric", month: "long", day: "2-digit" };
-    return new Date(date).toLocaleDateString("ko-KR", options);
-  };
-
-  const createDate = dateForm(post.created_at);
-  const updateDate = dateForm(post.created_at);
+  const createDate = formatDate(post.created_at);
+  const updateDate = formatDate(post.created_at);
 
   return (
     <ReadPageContainer>
-      <PageHeader title={post?.title || "Post Title"} />
+      <PageHeader children={<Title>{post?.title || "게시글 제목"}</Title>} />
       <InfoContainer>
         <PostCategory>{Category}</PostCategory>
         <PostDate>{`${createDate}(${updateDate})`}</PostDate>
@@ -69,10 +65,21 @@ const ReadPage = () => {
       <ViewerContainer>
         <MyViewer Content={post.content} />
       </ViewerContainer>
-      <UnderLine $marginTop={5} $marginBottom={15} />
-      <TextButton size={[120, 30]} text={"Delete Post"} onClick={deletePost} />
+      <PageFooter>
+        {/* 댓글 영역 */}
+        <TextButton
+          size={[120, 30]}
+          text={"게시글 삭제"}
+          onClick={deletePost}
+        />
+      </PageFooter>
     </ReadPageContainer>
   );
+};
+
+const formatDate = (date) => {
+  const options = { year: "numeric", month: "long", day: "2-digit" };
+  return new Date(date).toLocaleDateString("ko-KR", options);
 };
 
 const ReadPageContainer = styled.div`
@@ -81,6 +88,10 @@ const ReadPageContainer = styled.div`
   margin-left: 20px;
   width: 90%;
   background-color: transparent;
+`;
+
+const Title = styled.h2`
+  padding-top: 25px;
 `;
 
 const InfoContainer = styled.div`
@@ -105,13 +116,6 @@ const ViewerContainer = styled.div`
   width: 90%;
   background-color: ${({ theme }) => theme.bgMain};
   border-radius: 4px;
-`;
-
-const UnderLine = styled.div`
-  margin-top: ${({ $marginTop }) => $marginTop}px;
-  margin-bottom: ${({ $marginBottom }) => $marginBottom}px;
-  height: 1px;
-  background-color: ${({ theme }) => theme.brLine};
 `;
 
 export default ReadPage;

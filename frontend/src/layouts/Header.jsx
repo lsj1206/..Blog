@@ -18,6 +18,10 @@ const Header = () => {
   const { theme, onChangeTheme } = useContext(ThemeContext);
   const navigate = useNavigate();
 
+  const goWritePage = () => {
+    navigate("/write");
+  };
+
   // Home으로 이동
   const handleLogoClick = () => {
     navigate("/");
@@ -33,9 +37,8 @@ const Header = () => {
           size={[30, 30]}
           svgIcon={theme === "light" ? LightIcon : DarkIcon}
         />
-        {/* 로그인 정보가 없으면 이미지 블락 , Login Button */}
         <ImgButton size={[30, 30]} img={ProfileImg} onClick={() => {}} />
-        <TextButton size={[80, 30]} text={"Login"} onClick={() => {}} />
+        <TextButton size={[80, 30]} text={"Write"} onClick={goWritePage} />
       </ButtonContainer>
     </HeaderContainer>
   );
