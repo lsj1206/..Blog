@@ -1,16 +1,34 @@
-import React from "react";
+// Page - Post List
+import React, { useState, useEffect } from "react";
 import { styled } from "../styles/Theme";
+import axios from "axios";
 // Components
 import PageHeader from "../layouts/PageHeader";
 import PageFooter from "../layouts/PageFooter";
 import PostList from "../components/PostList";
 import ListNavigation from "../components/ListNavigation";
 import DDIconButton from "../components/buttons/DDIconButton";
-//Icons
+// Icons
 import { ReactComponent as SortIcon } from "../assets/icons/filter-solid.svg";
+// API
+const listURL = "http://localhost:8000/api/posts/list";
+
+const sortOptions = ["최신순", "인기순", "오래된 순"];
 
 const ListPage = () => {
-  const sortOptions = ["최신순", "인기순", "오래된 순"];
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    const getPostList = async () => {
+      try {
+        const response = await axios.get(listURL);
+        setPosts(response.data);
+      } catch (error) {
+        console.error("게시글 목록을 가져오는데 문제가 발생했습니다.", error);
+      }
+    };
+    getPostList();
+  }, []);
 
   const handleSortSelect = (selectedOption) => {
     console.log("Selected option:", selectedOption);
@@ -28,7 +46,7 @@ const ListPage = () => {
           DDList={sortOptions}
         />
       </IconBox>
-      <PostList />
+      <PostList posts={posts} />
       <PageFooter>
         <ListNavigation />
       </PageFooter>

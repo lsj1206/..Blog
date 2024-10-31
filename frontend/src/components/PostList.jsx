@@ -1,35 +1,15 @@
-import React, { useState, useEffect } from "react";
+// Post List Component
+import React from "react";
 import { styled } from "../styles/Theme";
-import axios from "axios";
-
+// Components
 import PostListItem from "./PostListItem";
 
-const PostList = () => {
-  const [posts, setPosts] = useState([]);
-
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const response = await axios.get(
-          "http://localhost:8000/api/posts/list"
-        );
-        setPosts(response.data);
-      } catch (error) {
-        console.error("Error fetching posts:", error);
-      }
-    };
-    fetchPosts();
-  }, []);
-
+const PostList = ({ posts }) => {
+  // posts prop 추가
   return (
     <PostListContainer>
       {posts.map((post) => (
-        <PostListItem
-          key={post.id}
-          title={post.title}
-          content={post.content}
-          createdAt={post.created_at}
-        />
+        <PostListItem key={post.id} post={post} />
       ))}
     </PostListContainer>
   );
@@ -38,10 +18,10 @@ const PostList = () => {
 const PostListContainer = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
   color: ${({ theme }) => theme.text};
-
-  height: 450px;
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
 `;
 
 export default PostList;
