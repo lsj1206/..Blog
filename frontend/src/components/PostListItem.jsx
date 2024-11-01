@@ -68,7 +68,7 @@ const InfoBox = styled.div`
 `;
 
 const TitleText = styled.h2`
-  margin: 0.25rem 0;
+  margin: 0 1rem 0.2rem 0;
   vertical-align: baseline;
   font-size: 1.5rem;
   white-space: nowrap;
@@ -78,6 +78,7 @@ const TitleText = styled.h2`
 `;
 
 const DescriptionText = styled.p`
+  margin: 0 3rem 0 0;
   display: -webkit-box;
   vertical-align: baseline;
   height: 3rem;
