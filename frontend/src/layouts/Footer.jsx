@@ -5,9 +5,9 @@ import IconButton from "../components/buttons/IconButton";
 // Icons
 import { ReactComponent as PageUpIcon } from "../assets/icons/caret-up-solid.svg";
 
-const Footer = ({ scrollUp }) => {
+const Footer = ({ className, scrollUp }) => {
   return (
-    <FooterContainer>
+    <FooterContainer className={className}>
       <IconButton onClick={scrollUp} size={[32, 32]} svgIcon={PageUpIcon} />
     </FooterContainer>
   );

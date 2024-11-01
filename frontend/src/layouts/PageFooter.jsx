@@ -1,9 +1,9 @@
 import React from "react";
 import { styled } from "../styles/Theme";
 
-const PageHeader = ({ children }) => {
+const PageHeader = ({ className, children }) => {
   return (
-    <PageHeaderContainer>
+    <PageHeaderContainer className={className}>
       <BorderLine />
       {children}
     </PageHeaderContainer>

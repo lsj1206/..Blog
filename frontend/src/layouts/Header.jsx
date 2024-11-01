@@ -14,7 +14,7 @@ import { ReactComponent as LightIcon } from "../assets/icons/sun-regular.svg";
 // Imgs
 import ProfileImg from "../assets/profile.png";
 
-const Header = () => {
+const Header = ({ className }) => {
   const { theme, onChangeTheme } = useContext(ThemeContext);
   const navigate = useNavigate();
 
@@ -28,15 +28,11 @@ const Header = () => {
   };
 
   return (
-    <HeaderContainer>
+    <HeaderContainer className={className}>
       <HeaderTitle onClick={handleLogoClick}>..Blog</HeaderTitle>
       <ButtonContainer>
         <SearchButton />
-        <IconButton
-          onClick={onChangeTheme}
-          size={[30, 30]}
-          svgIcon={theme === "light" ? LightIcon : DarkIcon}
-        />
+        <IconButton onClick={onChangeTheme} size={[30, 30]} svgIcon={theme === "light" ? LightIcon : DarkIcon} />
         <ImgButton size={[30, 30]} img={ProfileImg} onClick={() => {}} />
         <TextButton size={[80, 30]} text={"Write"} onClick={goWritePage} />
       </ButtonContainer>

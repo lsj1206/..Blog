@@ -8,9 +8,9 @@ import { ReactComponent as LightArrowIcon } from "../assets/icons/arrow-right-so
 import { ReactComponent as GithubIcon } from "../assets/icons/github-brands-solid.svg";
 import { ReactComponent as CodeIcon } from "../assets/icons/code-solid.svg";
 
-const Sidebar = () => {
+const Sidebar = ({ className }) => {
   const [$isOpen, set$IsOpen] = useState(false);
-  const sbRef = useRef(null);
+  const sideBarRef = useRef(null);
 
   const toggleSidebar = () => {
     set$IsOpen(!$isOpen);
@@ -19,7 +19,7 @@ const Sidebar = () => {
   // 외부 클릭 감지
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (sbRef.current && !sbRef.current.contains(event.target)) {
+      if (sideBarRef.current && !sideBarRef.current.contains(event.target)) {
         set$IsOpen(false);
       }
     };
@@ -32,25 +32,13 @@ const Sidebar = () => {
   }, []);
 
   return (
-    <SidebarContainer $isOpen={$isOpen} ref={sbRef}>
-      <IconButton
-        onClick={toggleSidebar}
-        size={[30, 30]}
-        svgIcon={$isOpen === false ? BarIcon : LightArrowIcon}
-      />
+    <SidebarContainer className={className} ref={sideBarRef} $isOpen={$isOpen}>
+      <IconButton onClick={toggleSidebar} size={[30, 30]} svgIcon={$isOpen === false ? BarIcon : LightArrowIcon} />
       <ContentBox $isOpen={$isOpen} height={80} $justify={"space-between"}>
         <h2>Box 1</h2>
         <IconBox>
-          <IconButton
-            link="https://github.com/lsj1206/..Blog"
-            size={[20, 20]}
-            svgIcon={CodeIcon}
-          />
-          <IconButton
-            link="https://github.com/lsj1206"
-            size={[20, 20]}
-            svgIcon={GithubIcon}
-          />
+          <IconButton link="https://github.com/lsj1206/..Blog" size={[20, 20]} svgIcon={CodeIcon} />
+          <IconButton link="https://github.com/lsj1206" size={[20, 20]} svgIcon={GithubIcon} />
         </IconBox>
       </ContentBox>
       <Line $isOpen={$isOpen} />
