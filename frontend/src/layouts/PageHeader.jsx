@@ -4,7 +4,7 @@ import { styled } from "../styles/Theme";
 const PageHeader = ({ className, children }) => {
   return (
     <PageHeaderContainer className={className}>
-      {children}
+      <ChildrenContainer>{children}</ChildrenContainer>
       <BorderLine />
     </PageHeaderContainer>
   );
@@ -12,6 +12,13 @@ const PageHeader = ({ className, children }) => {
 
 const PageHeaderContainer = styled.div`
   background-color: transparent;
+`;
+
+const ChildrenContainer = styled.div`
+  display: flex;
+  align-items: end;
+  flex-direction: row;
+  justify-content: space-between;
 `;
 
 const BorderLine = styled.div`
