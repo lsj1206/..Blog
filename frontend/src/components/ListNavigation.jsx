@@ -11,19 +11,34 @@ import { ReactComponent as DbRightIcon } from "../assets/icons/angles-right-soli
 
 const ListNavigation = ({ totalPageSize, onClick }) => {
   const [nowPage, setNowPage] = useState(1);
-  const pagenumbers = [...Array(totalPageSize).keys()].map((i) => i + 1);
+  const maxLange = 9; // 한번에 표현할 PageNavigation 개수
 
   const setPage = (newPage) => {
     setNowPage(newPage);
     onClick(newPage);
   };
 
+  // 최대 9개의 버튼 표시
+  const getPageNumbers = () => {
+    const numberArray = [];
+
+    const start = Math.max(1, nowPage - Math.floor(maxLange / 2));
+    const end = Math.min(totalPageSize, start + maxLange - 1);
+    const newStart = Math.max(1, end - maxLange + 1);
+
+    for (let i = newStart; i <= end; i++) {
+      numberArray.push(i);
+    }
+    return numberArray;
+  };
+  const pageNumbers = getPageNumbers();
+
   return (
     <ListNavigationContainer>
       <IconButton onClick={() => setPage(1)} size={[20, 20]} svgIcon={DbLeftIcon} />
       <IconButton onClick={() => setPage(Math.max(1, nowPage - 1))} size={[20, 20]} svgIcon={LeftIcon} />
       <PageNumbers>
-        {pagenumbers.map((page) => (
+        {pageNumbers.map((page) => (
           <NumberButton
             onClick={() => setPage(page)}
             size={[30, 30]}
