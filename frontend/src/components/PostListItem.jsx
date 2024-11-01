@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 //Img
 import ThumbnailImg from "../assets/thumbnail.jpg";
 
-const PostListItem = ({ post, thumbnail }) => {
+const PostListItem = ({ className, post, thumbnail }) => {
   const navigate = useNavigate();
 
   const goReadPage = () => {
@@ -18,7 +18,7 @@ const PostListItem = ({ post, thumbnail }) => {
   const Category = "Category";
 
   return (
-    <PostListItemContainer onClick={goReadPage}>
+    <PostListItemContainer className={className} onClick={goReadPage}>
       <ThumbnailBox>
         <img src={thumbnail || ThumbnailImg} alt={"_thumbnail"} />
       </ThumbnailBox>

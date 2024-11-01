@@ -5,16 +5,12 @@ import IconButton from "../components/buttons/IconButton";
 import { ReactComponent as SearchIcon } from "../assets/icons/magnifying-glass-solid.svg";
 import { ReactComponent as XIcon } from "../assets/icons/xmark-solid.svg";
 
-const SearchButton = () => {
+const SearchButton = ({ className }) => {
   const [isSearchBarOpen, setSearchBarOpen] = useState(false);
 
   return (
-    <SearchContainer>
-      <SearchBar
-        placeholder="Search..."
-        autoFocus={isSearchBarOpen}
-        $isOpen={isSearchBarOpen}
-      />
+    <SearchContainer className={className}>
+      <SearchBar placeholder="Search..." autoFocus={isSearchBarOpen} $isOpen={isSearchBarOpen} />
       <ButtonContainer>
         <IconButton
           onClick={() => setSearchBarOpen((prev) => !prev)}

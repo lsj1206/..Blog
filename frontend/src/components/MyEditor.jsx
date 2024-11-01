@@ -30,7 +30,6 @@ const MyEditor = ({ size = [0, 400], setContent, addImage }) => {
     console.log(contents);
   };
 
-
   // 미리보기 이미지 표시 안되는 문제
   // <img> 태그의 src에 주소가 담기지 않음. (위지윅 모드에선 정상적임)
   const onUploadImage = (blob, callback) => {
@@ -42,9 +41,7 @@ const MyEditor = ({ size = [0, 400], setContent, addImage }) => {
 
   return (
     <EditorContainer
-      className={`editor-panel-editor${
-        theme === "dark" ? " toastui-editor-dark" : ""
-      }`}
+      className={`editor-panel-editor${theme === "dark" ? " toastui-editor-dark" : ""}`}
       height={size[1]}
     >
       <Editor

@@ -15,15 +15,8 @@ const MyViewer = ({ Content }) => {
   const { theme } = useContext(ThemeContext);
 
   return (
-    <ViewerContainer
-      className={`editor-panel-editor${
-        theme === "dark" ? " toastui-editor-dark" : ""
-      }`}
-    >
-      <Viewer
-        initialValue={Content || ""}
-        plugins={[[CodeSyntaxHighlight, { highlighter: Prism }]]}
-      />
+    <ViewerContainer className={`editor-panel-editor${theme === "dark" ? " toastui-editor-dark" : ""}`}>
+      <Viewer initialValue={Content || ""} plugins={[[CodeSyntaxHighlight, { highlighter: Prism }]]} />
     </ViewerContainer>
   );
 };

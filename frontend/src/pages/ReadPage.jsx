@@ -67,11 +67,7 @@ const ReadPage = () => {
       </ViewerContainer>
       <PageFooter>
         {/* 댓글 영역 */}
-        <TextButton
-          size={[120, 30]}
-          text={"게시글 삭제"}
-          onClick={deletePost}
-        />
+        <TextButton size={[120, 30]} text={"게시글 삭제"} onClick={deletePost} />
       </PageFooter>
     </ReadPageContainer>
   );

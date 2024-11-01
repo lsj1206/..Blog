@@ -13,10 +13,15 @@ import { ReactComponent as SortIcon } from "../assets/icons/filter-solid.svg";
 // API
 const listURL = "http://localhost:8000/api/posts/list";
 
-const sortOptions = ["최신순", "인기순", "오래된 순"];
+const sortOptions = ["최신순", "오래된 순"];
 
 const ListPage = () => {
   const [posts, setPosts] = useState([]);
+  const [nowPage, setNowPage] = useState(1);
+  // PageNavigation 계산
+  const pageSize = 5; // 페이지 당 표현할 Post 수
+  const totalPageSize = Math.ceil(posts.length / pageSize);
+  const nowPosts = posts.slice((nowPage - 1) * pageSize, nowPage * pageSize);
 
   useEffect(() => {
     const getPostList = async () => {
@@ -30,25 +35,18 @@ const ListPage = () => {
     getPostList();
   }, []);
 
-  const handleSortSelect = (selectedOption) => {
-    console.log("Selected option:", selectedOption);
-    // 정렬 로직 추가
-  };
+  // 정렬 기능
+  const sortPage = () => {};
 
   return (
     <ListPageContainer>
       <PageHeader children={<Title>{"게시글 목록"}</Title>} />
       <IconBox>
-        <DDIconButton
-          onClick={handleSortSelect}
-          size={[20, 20]}
-          svgIcon={SortIcon}
-          DDList={sortOptions}
-        />
+        <DDIconButton size={[20, 20]} svgIcon={SortIcon} DDList={sortOptions} onClick={sortPage} />
       </IconBox>
-      <PostList posts={posts} />
+      <PostList posts={nowPosts} />
       <PageFooter>
-        <ListNavigation />
+        <ListNavigation totalPageSize={totalPageSize} onClick={setNowPage} />
       </PageFooter>
     </ListPageContainer>
   );

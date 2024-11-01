@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { styled } from "../styles/Theme";
 
-const DropdownMenu = ({ menulist, placeholder }) => {
+const DropdownMenu = ({ className, menulist, placeholder }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState(placeholder);
 
@@ -13,7 +13,7 @@ const DropdownMenu = ({ menulist, placeholder }) => {
   };
 
   return (
-    <DropdownContainer>
+    <DropdownContainer className={className}>
       <DropdownLabel onClick={toggleOpen}>{selected}</DropdownLabel>
       <DropdownList $isOpen={isOpen}>
         {menulist.map((item, index) => (

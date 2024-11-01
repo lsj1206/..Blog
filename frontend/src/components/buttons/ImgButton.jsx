@@ -1,11 +1,18 @@
 import React from "react";
 import { styled } from "../../styles/Theme";
 
-const ImgButton = ({ onClick, size = [30, 30], img }) => {
-  const [width, height] = size;
+const ImgButton = ({ className, onClick, size = [30, 30], img, link }) => {
+  // 링크가 존재할 경우 해당 URL로 리디렉션
+  const handleClick = (e) => {
+    if (link) {
+      window.open(link, "_blank"); // 리디렉션할때 New Tab
+    } else if (onClick) {
+      onClick(e);
+    }
+  };
 
   return (
-    <ButtonContainer width={width} height={height} onClick={onClick}>
+    <ButtonContainer className={className} onClick={handleClick} width={size[0]} height={size[1]}>
       <img src={img} alt={"_image"} />
     </ButtonContainer>
   );

@@ -4,10 +4,10 @@ import { styled } from "../styles/Theme";
 // Components
 import PostListItem from "./PostListItem";
 
-const PostList = ({ posts }) => {
+const PostList = ({ className, posts }) => {
   // posts prop 추가
   return (
-    <PostListContainer>
+    <PostListContainer className={className}>
       {posts.map((post) => (
         <PostListItem key={post.id} post={post} />
       ))}

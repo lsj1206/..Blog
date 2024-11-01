@@ -4,7 +4,7 @@ import { styled } from "../../styles/Theme";
 // Components
 import IconButton from "./IconButton";
 
-const DDIconButton = ({ onClick, size = [30, 30], DDList, svgIcon }) => {
+const DDIconButton = ({ className, onClick, size = [30, 30], DDList, svgIcon }) => {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef(null);
 
@@ -26,7 +26,7 @@ const DDIconButton = ({ onClick, size = [30, 30], DDList, svgIcon }) => {
     };
   }, []);
   return (
-    <DropDownContainer ref={menuRef}>
+    <DropDownContainer className={className} ref={menuRef}>
       <IconButton size={size} onClick={toggleMenu} svgIcon={svgIcon} />
       {isOpen && (
         <DropdownList>
