@@ -5,7 +5,6 @@ import { styled } from "../styles/Theme";
 import PostListItem from "./PostListItem";
 
 const PostList = ({ className, posts }) => {
-  // posts prop 추가
   return (
     <PostListContainer className={className}>
       {posts.map((post) => (
@@ -18,10 +17,10 @@ const PostList = ({ className, posts }) => {
 const PostListContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 90vw;
+  height: 70vh;
   color: ${({ theme }) => theme.text};
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: hidden;
 `;
 
 export default PostList;

@@ -40,7 +40,7 @@ const PostListItemContainer = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
-  height: 130px;
+  height: 14vh;
   color: ${({ theme }) => theme.text};
   background-color: transparent;
   cursor: pointer;
