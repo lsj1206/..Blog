@@ -35,8 +35,8 @@ const ListNavigation = ({ totalPageSize, onClick }) => {
 
   return (
     <ListNavigationContainer>
-      <IconButton onClick={() => setPage(1)} size={[20, 20]} svgIcon={DbLeftIcon} />
-      <IconButton onClick={() => setPage(Math.max(1, nowPage - 1))} size={[20, 20]} svgIcon={LeftIcon} />
+      <MoveButton onClick={() => setPage(1)} size={[20, 20]} svgIcon={DbLeftIcon} />
+      <MoveButton onClick={() => setPage(Math.max(1, nowPage - 1))} size={[20, 20]} svgIcon={LeftIcon} />
       <PageNumbers>
         {pageNumbers.map((page) => (
           <NumberButton
@@ -48,8 +48,8 @@ const ListNavigation = ({ totalPageSize, onClick }) => {
           />
         ))}
       </PageNumbers>
-      <IconButton onClick={() => setPage(Math.min(totalPageSize, nowPage + 1))} size={[20, 20]} svgIcon={RightIcon} />
-      <IconButton onClick={() => setPage(totalPageSize)} size={[20, 20]} svgIcon={DbRightIcon} />
+      <MoveButton onClick={() => setPage(Math.min(totalPageSize, nowPage + 1))} size={[20, 20]} svgIcon={RightIcon} />
+      <MoveButton onClick={() => setPage(totalPageSize)} size={[20, 20]} svgIcon={DbRightIcon} />
     </ListNavigationContainer>
   );
 };
@@ -65,6 +65,16 @@ const ListNavigationContainer = styled.div`
 
 const PageNumbers = styled.div`
   display: flex;
+`;
+
+const MoveButton = styled(IconButton)`
+  border-radius: 25%;
+  &:hover {
+    background-color: ${({ theme }) => theme.bgSub};
+  }
+  &:active {
+    background-color: ${({ theme }) => theme.btnActive};
+  }
 `;
 
 const NumberButton = styled(TextButton)`
