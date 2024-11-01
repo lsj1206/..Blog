@@ -17,6 +17,7 @@ export const light = {
   btnActive: "#585858",
   btnActiveText: "#C0C0C0",
   brLine: "#585858",
+  warningText: "#8B0000",
   color: { ...color },
 };
 
@@ -31,6 +32,7 @@ export const dark = {
   btnActive: "#909090",
   btnActiveText: "#505050",
   brLine: "#585858",
+  warningText: "	#F08080",
   color: { ...color },
 };
 

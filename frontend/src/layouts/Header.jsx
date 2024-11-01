@@ -34,7 +34,7 @@ const Header = ({ className }) => {
         <SearchButton />
         <IconButton onClick={onChangeTheme} size={[30, 30]} svgIcon={theme === "light" ? LightIcon : DarkIcon} />
         <ImgButton size={[30, 30]} img={ProfileImg} onClick={() => {}} />
-        <TextButton size={[80, 30]} text={"Write"} onClick={goWritePage} />
+        <TextButton size={[110, 30]} text={"글 작성하기"} onClick={goWritePage} />
       </ButtonContainer>
     </HeaderContainer>
   );

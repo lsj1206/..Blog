@@ -29,7 +29,7 @@ const DDIconButton = ({ className, onClick, size = [30, 30], DDList, svgIcon }) 
     <DropDownContainer className={className} ref={menuRef}>
       <IconButton size={size} onClick={toggleMenu} svgIcon={svgIcon} />
       {isOpen && (
-        <DropdownList>
+        <DropdownList size={size}>
           {DDList.map((item, index) => (
             <DropdownItem
               key={index}
@@ -56,7 +56,7 @@ const DropdownList = styled.div`
   flex-direction: column;
   padding: 8px 0;
   position: absolute;
-  top: 30px;
+  top: ${({ size }) => size[1] + 10}px;
   right: 10px;
   background-color: ${({ theme }) => theme.btn};
   color: ${({ theme }) => theme.btnText};

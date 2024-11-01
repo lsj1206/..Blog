@@ -51,7 +51,7 @@ const WritePage = () => {
         />
         <UtilityBox>
           <DropdownMenu menulist={categories} placeholder="Select Category" />
-          <TextButton size={[80, 30]} text={"Submit"} onClick={submitPost} />
+          <TextButton size={[100, 30]} text={"작성 완료"} onClick={submitPost} />
         </UtilityBox>
       </UtilContainer>
       <MyEditor size={[0, 460]} setContent={setContent} />

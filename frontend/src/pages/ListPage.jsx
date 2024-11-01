@@ -40,19 +40,21 @@ const ListPage = () => {
 
   return (
     <ListPageContainer>
-      <PageHeader children={<Title>{"게시글 목록"}</Title>} />
-      <IconBox>
-        <DDIconButton size={[20, 20]} svgIcon={SortIcon} DDList={sortOptions} onClick={sortPage} />
-      </IconBox>
+      <PageHeader>
+        <Title>{"게시글 목록"}</Title>
+        <SortButton size={[25, 25]} svgIcon={SortIcon} DDList={sortOptions} onClick={sortPage} />
+      </PageHeader>
       <PostList posts={nowPosts} />
-      <PageFooter>
+      <ListPageFooter>
         <ListNavigation totalPageSize={totalPageSize} onClick={setNowPage} />
-      </PageFooter>
+      </ListPageFooter>
     </ListPageContainer>
   );
 };
 
 const ListPageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
   margin-left: 20px;
   position: relative;
   width: 90%;
@@ -63,14 +65,18 @@ const Title = styled.h2`
   padding-top: 25px;
 `;
 
-const IconBox = styled.div`
+const SortButton = styled(DDIconButton)`
   z-index: 10;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  top: 20px;
-  right: 0;
+  margin-bottom: -10px;
+`;
+
+const ListPageFooter = styled(PageFooter)`
+  margin-left: 20px;
+  margin-bottom: 25px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 90%;
 `;
 
 export default ListPage;

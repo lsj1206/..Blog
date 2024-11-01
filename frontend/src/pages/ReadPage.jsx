@@ -67,7 +67,7 @@ const ReadPage = () => {
       </ViewerContainer>
       <PageFooter>
         {/* 댓글 영역 */}
-        <TextButton size={[120, 30]} text={"게시글 삭제"} onClick={deletePost} />
+        <DeleteButton size={[120, 30]} text={"게시글 삭제"} onClick={deletePost} />
       </PageFooter>
     </ReadPageContainer>
   );
@@ -112,6 +112,10 @@ const ViewerContainer = styled.div`
   width: 90%;
   background-color: ${({ theme }) => theme.bgMain};
   border-radius: 4px;
+`;
+
+const DeleteButton = styled(TextButton)`
+  color: ${({ theme }) => theme.warningText};
 `;
 
 export default ReadPage;
