@@ -62,24 +62,29 @@ const ThumbnailBox = styled.div`
 const InfoBox = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 10px;
+  margin: 0.625rem;
   position: relative;
   overflow: hidden;
 `;
 
 const TitleText = styled.h2`
-  display: flex;
-  flex: none;
   margin: 0.25rem 0;
+  vertical-align: baseline;
+  font-size: 1.5rem;
+  white-space: nowrap;
   overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
 `;
 
 const DescriptionText = styled.p`
-  display: flex;
-  display: -webkit-box; /* 구형 브라우저 호환성 */
-  flex: 1 1 0;
+  display: -webkit-box;
+  vertical-align: baseline;
+  height: 3rem;
+  font-size: 0.9rem;
   overflow: hidden;
   text-overflow: ellipsis;
+  word-break: break-all;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 `;

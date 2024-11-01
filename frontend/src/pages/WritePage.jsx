@@ -41,19 +41,20 @@ const WritePage = () => {
 
   return (
     <WritePageContainer>
-      <PageHeader children={<Title>{"게시글 작성"}</Title>} />
-      <UtilContainer>
+      <PageHeader children={<PageName>{"게시글 작성"}</PageName>} />
+      <PostInfoContainer>
         <TitleInput
           type="text"
           value={title}
-          placeholder="제목을 입력하세요"
+          placeholder="제목을 입력하세요 (80자 제한)"
+          maxLength={80}
           onChange={(e) => setTitle(e.target.value)}
         />
-        <UtilityBox>
+        <InfoBox>
           <DropdownMenu menulist={categories} placeholder="Select Category" />
           <TextButton size={[100, 30]} text={"작성 완료"} onClick={submitPost} />
-        </UtilityBox>
-      </UtilContainer>
+        </InfoBox>
+      </PostInfoContainer>
       <MyEditor size={[0, 460]} setContent={setContent} />
       <PageFooter />
     </WritePageContainer>
@@ -68,11 +69,11 @@ const WritePageContainer = styled.div`
   background-color: transparent;
 `;
 
-const Title = styled.h2`
+const PageName = styled.h2`
   padding-top: 25px;
 `;
 
-const UtilContainer = styled.div`
+const PostInfoContainer = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -96,7 +97,7 @@ const TitleInput = styled.input`
   }
 `;
 
-const UtilityBox = styled.div`
+const InfoBox = styled.div`
   display: flex;
   align-items: center;
 `;
