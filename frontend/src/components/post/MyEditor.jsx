@@ -1,7 +1,7 @@
 // Custom Toast UI Editor
 import React, { useContext, useRef, useEffect } from "react";
-import { styled } from "../styles/Theme";
-import { ThemeContext } from "../context/ThemeProvider";
+import { styled } from "../../styles/Theme";
+import { ThemeContext } from "../../context/ThemeProvider";
 // TOAST UI Editor
 import { Editor } from "@toast-ui/react-editor";
 import "@toast-ui/editor/dist/i18n/ko-kr"; // language

@@ -5,10 +5,10 @@ import axios from "axios";
 // Components
 import PageHeader from "../layouts/PageHeader";
 import PageFooter from "../layouts/PageFooter";
-import TextButton from "../components/buttons/TextButton";
-import DropdownMenu from "../components/DDMenu";
+import TextButton from "../components/button/TextButton";
+import DropdownMenu from "../components/button/DropDownMenu";
 // Toast UI Editor
-import MyEditor from "../components/MyEditor";
+import MyEditor from "../components/post/MyEditor";
 
 const categories = ["List entry #1", "List entry #2", "List entry #3"];
 const writeURL = "http://127.0.0.1:8000/api/posts/create";

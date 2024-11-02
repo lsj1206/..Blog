@@ -1,7 +1,7 @@
 // Custom Toast UI Viewer
 import React, { useContext } from "react";
-import { styled } from "../styles/Theme";
-import { ThemeContext } from "../context/ThemeProvider";
+import { styled } from "../../styles/Theme";
+import { ThemeContext } from "../../context/ThemeProvider";
 // TOAST UI Editor
 import { Viewer } from "@toast-ui/react-editor";
 import "@toast-ui/editor/dist/toastui-editor-viewer.css"; // default CSS

@@ -5,9 +5,9 @@ import axios from "axios";
 // Components
 import PageHeader from "../layouts/PageHeader";
 import PageFooter from "../layouts/PageFooter";
-import PostList from "../components/PostList";
+import PostList from "../components/post/PostList";
 import ListNavigation from "../components/ListNavigation";
-import DDIconButton from "../components/buttons/DDIconButton";
+import DDIconButton from "../components/button/DropDownIcon";
 // Icons
 import { ReactComponent as SortIcon } from "../assets/icons/filter-solid.svg";
 // API
@@ -35,14 +35,11 @@ const ListPage = () => {
     getPostList();
   }, []);
 
-  // 정렬 기능
-  const sortPage = () => {};
-
   return (
     <ListPageContainer>
       <PageHeader>
         <Title>{"게시글 목록"}</Title>
-        <SortButton size={[25, 25]} svgIcon={SortIcon} DDList={sortOptions} onClick={sortPage} />
+        <SortButton size={[25, 25]} svgIcon={SortIcon} list={sortOptions} onClick={() => {}} />
       </PageHeader>
       <PostList posts={nowPosts} />
       <ListPageFooter>

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { styled } from "../styles/Theme";
 // Components
-import IconButton from "./buttons/IconButton";
-import TextButton from "./buttons/TextButton";
+import IconButton from "./button/IconButton";
+import TextButton from "./button/TextButton";
 // Icons
 import { ReactComponent as LeftIcon } from "../assets/icons/angle-left-solid.svg";
 import { ReactComponent as DbLeftIcon } from "../assets/icons/angles-left-solid.svg";

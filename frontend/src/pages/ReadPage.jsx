@@ -6,9 +6,9 @@ import axios from "axios";
 import PageHeader from "../layouts/PageHeader";
 import PageFooter from "../layouts/PageFooter";
 // Toast UI Viewer
-import MyViewer from "../components/MyViewer";
+import MyViewer from "../components/post/MyViewer";
 
-import TextButton from "../components/buttons/TextButton";
+import TextButton from "../components/button/TextButton";
 
 const postURL = "http://127.0.0.1:8000/api/posts/";
 
