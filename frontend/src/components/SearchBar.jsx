@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { styled } from "../styles/Theme";
 
-import IconButton from "../components/buttons/IconButton";
+import IconButton from "../components/button/IconButton";
 import { ReactComponent as SearchIcon } from "../assets/icons/magnifying-glass-solid.svg";
 import { ReactComponent as XIcon } from "../assets/icons/xmark-solid.svg";
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { styled } from "../styles/Theme";
 //Components
-import IconButton from "../components/buttons/IconButton";
+import IconButton from "../components/button/IconButton";
 //Icons
 import { ReactComponent as BarIcon } from "../assets/icons/bars-solid.svg";
 import { ReactComponent as LightArrowIcon } from "../assets/icons/arrow-right-solid.svg";

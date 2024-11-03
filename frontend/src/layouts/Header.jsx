@@ -5,9 +5,9 @@ import { styled } from "../styles/Theme";
 import { ThemeContext } from "../context/ThemeProvider";
 //Components
 import SearchButton from "../components/SearchBar";
-import TextButton from "../components/buttons/TextButton";
-import ImgButton from "../components/buttons/ImgButton";
-import IconButton from "../components/buttons/IconButton";
+import TextButton from "../components/button/TextButton";
+import ImgButton from "../components/button/ImgButton";
+import IconButton from "../components/button/IconButton";
 //Icons
 import { ReactComponent as DarkIcon } from "../assets/icons/moon-regular.svg";
 import { ReactComponent as LightIcon } from "../assets/icons/sun-regular.svg";
@@ -17,6 +17,10 @@ import ProfileImg from "../assets/profile.png";
 const Header = ({ className }) => {
   const { theme, onChangeTheme } = useContext(ThemeContext);
   const navigate = useNavigate();
+
+  const goInfomationPage = () => {
+    navigate("/info");
+  };
 
   const goWritePage = () => {
     navigate("/write");
@@ -33,7 +37,7 @@ const Header = ({ className }) => {
       <ButtonContainer>
         <SearchButton />
         <IconButton onClick={onChangeTheme} size={[30, 30]} svgIcon={theme === "light" ? LightIcon : DarkIcon} />
-        <ImgButton size={[30, 30]} img={ProfileImg} onClick={() => {}} />
+        <ImgButton size={[30, 30]} img={ProfileImg} onClick={goInfomationPage} />
         <TextButton size={[110, 30]} text={"글 작성하기"} onClick={goWritePage} />
       </ButtonContainer>
     </HeaderContainer>

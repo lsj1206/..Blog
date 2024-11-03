@@ -22,7 +22,9 @@ const Layout = () => {
     <Background ref={backgroundRef}>
       <Header />
       <Sidebar />
-      <Outlet />
+      <OutletBox>
+        <Outlet />
+      </OutletBox>
       <Footer scrollUp={scrollUp} />
     </Background>
   );
@@ -48,5 +50,7 @@ const Background = styled.div`
     display: none; // Chrome, Safari, Opera에서 스크롤바 숨김
   }
 `;
+
+const OutletBox = styled.div``;
 
 export default Layout;

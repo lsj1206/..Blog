@@ -1,7 +1,7 @@
 import React from "react";
 import { styled } from "../styles/Theme";
 //Components
-import IconButton from "../components/buttons/IconButton";
+import IconButton from "../components/button/IconButton";
 // Icons
 import { ReactComponent as PageUpIcon } from "../assets/icons/caret-up-solid.svg";
 
