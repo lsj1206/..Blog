@@ -7,7 +7,7 @@ import ListPage from "./pages/ListPage";
 import ReadPage from "./pages/ReadPage";
 import WritePage from "./pages/WritePage";
 import LoginPage from "./pages/LoginPage";
-import AboutPage from "./pages/AboutPage";
+import InfomationPage from "./pages/InfomationPage";
 
 const App = () => (
   <BrowserRouter>
@@ -18,7 +18,7 @@ const App = () => (
         <Route path="/posts/detail/:postId" element={<ReadPage />} />
       </Route>
       <Route path="/login" element={<LoginPage />} />
-      <Route path="/about" element={<AboutPage />} />
+      <Route path="/info" element={<InfomationPage />} />
     </Routes>
   </BrowserRouter>
 );

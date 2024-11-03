@@ -5,6 +5,7 @@ import axios from "axios";
 // Components
 import PageHeader from "../layouts/PageHeader";
 import PageFooter from "../layouts/PageFooter";
+import Comment from "../components/Comment";
 // Toast UI Viewer
 import MyViewer from "../components/post/MyViewer";
 
@@ -65,6 +66,7 @@ const ReadPage = () => {
       <ViewerContainer>
         <MyViewer Content={post.content} />
       </ViewerContainer>
+      <Comment></Comment>
       <PageFooter>
         {/* 댓글 영역 */}
         <DeleteButton size={[120, 30]} text={"게시글 삭제"} onClick={deletePost} />
