@@ -33,7 +33,7 @@ const Header = ({ className }) => {
 
   return (
     <HeaderContainer className={className}>
-      <HeaderTitle onClick={handleLogoClick}>..Blog</HeaderTitle>
+      <HeaderTitle onClick={handleLogoClick}>{"...Logs"}</HeaderTitle>
       <ButtonContainer>
         <SearchButton />
         <IconButton onClick={onChangeTheme} size={[30, 30]} svgIcon={theme === "light" ? LightIcon : DarkIcon} />
