@@ -2,45 +2,57 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { styled } from "../../styles/Theme";
-// Assets
-import { ThumbnailImg } from "../../assets/assets";
 
-const PostListItem = ({ className, post, thumbnail }) => {
+const PostListItem = ({ className, post }) => {
   const navigate = useNavigate();
 
   const goReadPage = () => {
     navigate(`/posts/detail/${post.id}`);
   };
 
-  const createDate = formatDate(post.created_at);
-  const updateDate = formatDate(post.created_at);
-
   const Category = "Category";
+  const Views = "1234";
+  const Author = "작성자";
+  const Date = formatDate(post.created_at);
 
   return (
     <PostListItemContainer className={className} onClick={goReadPage}>
-      <ThumbnailBox>
-        <img src={thumbnail || ThumbnailImg} alt={"_thumbnail"} />
-      </ThumbnailBox>
-      <InfoBox>
+      <VerticalBorderLine />
+      <TextBox>
         <TitleText>{post.title}</TitleText>
-        <DescriptionText>{post.content}</DescriptionText>
-        <InfoText>{`${Category} | ${createDate}(${updateDate})`}</InfoText>
+        <InfoText>{`${Author}`}</InfoText>
+        <InfoText>{`${Views}`}</InfoText>
+        <DateText>{`${Date}`}</DateText>
+      </TextBox>
+      <InfoBox>
+        <CategoryBox>
+          <p>{`${Category}`}</p>
+        </CategoryBox>
+        <TagBox>
+          <p>{`${"Tag"}`}</p>
+        </TagBox>
       </InfoBox>
     </PostListItemContainer>
   );
 };
 
 const formatDate = (date) => {
-  const options = { year: "numeric", month: "long", day: "2-digit" };
+  const options = {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  };
   return new Date(date).toLocaleDateString("ko-KR", options);
 };
 
 const PostListItemContainer = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: 100%;
-  height: 14vh;
+  height: 100px;
   color: ${({ theme }) => theme.text};
   background-color: transparent;
   cursor: pointer;
@@ -50,26 +62,27 @@ const PostListItemContainer = styled.div`
   }
 `;
 
-const ThumbnailBox = styled.div`
+const VerticalBorderLine = styled.div`
   display: flex;
-  margin: 5px 10px;
-  min-width: 160px;
-  min-height: 120px;
-  max-width: 160px;
-  max-height: 120px;
+  margin: 10px 5px;
+  position: absolute;
+  width: 5px;
+  height: 80px;
+  background-color: ${({ theme }) => theme.brLine};
 `;
 
-const InfoBox = styled.div`
+const TextBox = styled.div`
   display: flex;
-  flex-direction: column;
-  margin: 0.625rem;
-  position: relative;
-  overflow: hidden;
+  flex-direction: row;
+  padding: 0.5rem 2rem;
+  width: 100%;
+  height: 50px;
+  box-sizing: border-box;
 `;
 
 const TitleText = styled.h2`
-  margin: 0 1rem 0.2rem 0;
-  vertical-align: baseline;
+  flex: 6;
+  align-items: center;
   font-size: 1.5rem;
   white-space: nowrap;
   overflow: hidden;
@@ -77,25 +90,42 @@ const TitleText = styled.h2`
   word-break: break-all;
 `;
 
-const DescriptionText = styled.p`
-  margin: 0 3rem 0 0;
-  display: -webkit-box;
-  vertical-align: baseline;
-  height: 3rem;
-  font-size: 0.9rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  word-break: break-all;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-`;
-
 const InfoText = styled.p`
+  flex: 1;
   display: flex;
-  flex: none;
+  align-items: center;
+  justify-content: flex-end;
   margin: 0.25rem 0;
   color: ${({ theme }) => theme.bgText};
-  font-size: 0.8rem;
+  font-size: 1rem;
 `;
+
+const DateText = styled(InfoText)`
+  flex: 2;
+`;
+
+const InfoBox = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0.5rem 2rem;
+  width: 100%;
+  height: 50px;
+  box-sizing: border-box;
+`;
+
+const ColorBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 0 10px;
+  height: 30px;
+  color: ${({ theme }) => theme.btnActive};
+  background-color: ${({ theme }) => theme.btnActiveText};
+  border-radius: 5px;
+`;
+
+const CategoryBox = styled(ColorBox)``;
+
+const TagBox = styled(ColorBox)``;
 
 export default PostListItem;

@@ -5,6 +5,7 @@ import { styled } from "../styles/Theme";
 // Components
 import Header from "./Header";
 import Sidebar from "./SideBar";
+import FloatingBox from "./FloatingBox";
 import Footer from "./Footer";
 
 const Layout = () => {
@@ -19,14 +20,24 @@ const Layout = () => {
     }
   };
 
+  const scrollDown = () => {
+    if (backgroundRef.current) {
+      backgroundRef.current.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <Background ref={backgroundRef}>
       <Header />
       <Sidebar />
-      <OutletBox>
+      <PageContainer>
         <Outlet />
-      </OutletBox>
-      <Footer scrollUp={scrollUp} />
+      </PageContainer>
+      <FloatingBox scrollUp={scrollUp} scrollDown={scrollDown} />
+      <Footer />
     </Background>
   );
 };
@@ -40,18 +51,18 @@ const Background = styled.div`
   bottom: 0;
   max-width: 100%;
   max-height: 100%;
-  color: ${({ theme }) => theme.text};
   background: ${({ theme }) => theme.bgMain};
-  transition: background 0.3s ease-in, color 0.3s ease-in;
   overflow-y: scroll; // 스크롤 활성화
   scrollbar-width: none; // Firefox에서 스크롤바 숨김
   -ms-overflow-style: none; // IE 및 Edge에서 스크롤바 숨김
-
   &::-webkit-scrollbar {
     display: none; // Chrome, Safari, Opera에서 스크롤바 숨김
   }
 `;
 
-const OutletBox = styled.div``;
+const PageContainer = styled.div`
+  margin-left: 100px;
+  width: 1600px;
+`;
 
 export default Layout;

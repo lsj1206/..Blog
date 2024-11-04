@@ -19,7 +19,7 @@ const ListPage = () => {
   const [posts, setPosts] = useState([]);
   const [nowPage, setNowPage] = useState(1);
   // PageNavigation 계산
-  const pageSize = 5; // 페이지 당 표현할 Post 수
+  const pageSize = 30; // 페이지 당 표현할 Post 수
   const totalPageSize = Math.ceil(posts.length / pageSize);
   const nowPosts = posts.slice((nowPage - 1) * pageSize, nowPage * pageSize);
 
@@ -54,7 +54,7 @@ const ListPageContainer = styled.div`
   flex-direction: column;
   margin-left: 20px;
   position: relative;
-  width: 90%;
+  width: 1600px;
   background-color: transparent;
 `;
 
@@ -70,9 +70,6 @@ const SortButton = styled(DDIconButton)`
 const ListPageFooter = styled(PageFooter)`
   margin-left: 20px;
   margin-bottom: 25px;
-  position: fixed;
-  left: 0;
-  bottom: 0;
   width: 90%;
 `;
 
