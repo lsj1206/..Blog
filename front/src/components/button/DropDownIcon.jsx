@@ -1,4 +1,4 @@
-// DropDown IconButton
+// DropDown Icon Button Component
 import React, { useState, useRef, useEffect } from "react";
 import { styled } from "../../styles/Theme";
 // Components

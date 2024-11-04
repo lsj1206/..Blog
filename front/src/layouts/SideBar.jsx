@@ -1,12 +1,10 @@
+// Main Sidebar
 import React, { useState, useEffect, useRef } from "react";
 import { styled } from "../styles/Theme";
-//Components
+// Assets
+import { BarIcon, LightArrowIcon, GithubIcon, CodeIcon } from "../assets/assets";
+// Components
 import IconButton from "../components/button/IconButton";
-//Icons
-import { ReactComponent as BarIcon } from "../assets/icons/bars-solid.svg";
-import { ReactComponent as LightArrowIcon } from "../assets/icons/arrow-right-solid.svg";
-import { ReactComponent as GithubIcon } from "../assets/icons/github-brands-solid.svg";
-import { ReactComponent as CodeIcon } from "../assets/icons/code-solid.svg";
 
 const Sidebar = ({ className }) => {
   const [$isOpen, set$IsOpen] = useState(false);

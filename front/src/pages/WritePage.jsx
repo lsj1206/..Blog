@@ -1,7 +1,8 @@
+// Write Page
 import React, { useState } from "react";
-import { styled } from "../styles/Theme";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { styled } from "../styles/Theme";
 // Components
 import PageHeader from "../layouts/PageHeader";
 import PageFooter from "../layouts/PageFooter";
@@ -9,9 +10,10 @@ import TextButton from "../components/button/TextButton";
 import DropdownMenu from "../components/button/DropDownMenu";
 // Toast UI Editor
 import MyEditor from "../components/post/MyEditor";
+// API
+const writeURL = "http://127.0.0.1:8000/api/posts/create";
 
 const categories = ["List entry #1", "List entry #2", "List entry #3"];
-const writeURL = "http://127.0.0.1:8000/api/posts/create";
 
 const WritePage = () => {
   const navigate = useNavigate();

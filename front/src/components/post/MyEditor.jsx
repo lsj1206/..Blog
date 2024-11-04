@@ -1,17 +1,18 @@
 // Custom Toast UI Editor
 import React, { useContext, useRef, useEffect } from "react";
-import { styled } from "../../styles/Theme";
 import { ThemeContext } from "../../context/ThemeProvider";
+import { styled } from "../../styles/Theme";
 // TOAST UI Editor
 import { Editor } from "@toast-ui/react-editor";
-import "@toast-ui/editor/dist/i18n/ko-kr"; // language
-import "@toast-ui/editor/dist/toastui-editor.css"; // default css
-import "@toast-ui/editor/dist/theme/toastui-editor-dark.css"; // dark mode css
 import CodeSyntaxHighlight from "@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin-code-syntax-highlight-all"; // 'code syntax highlight' plugin
 import Prism from "prismjs"; // prismjs , dependency'code syntax highlight'
+import ColorSyntax from "@toast-ui/editor-plugin-color-syntax"; // 'color syntax' plugin
+import "@toast-ui/editor/dist/i18n/ko-kr"; // language
+// TOAST UI Editor CSS
+import "@toast-ui/editor/dist/toastui-editor.css"; // default css
+import "@toast-ui/editor/dist/theme/toastui-editor-dark.css"; // dark mode css
 import "@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin-code-syntax-highlight.css"; // 'code syntax highlight' css
 import "prismjs/themes/prism.css"; // prism CSS, dependency'code syntax highlight'
-import ColorSyntax from "@toast-ui/editor-plugin-color-syntax"; // 'color syntax' plugin
 import "tui-color-picker/dist/tui-color-picker.css"; // 'color syntax' css
 
 const MyEditor = ({ size = [0, 400], setContent, addImage }) => {

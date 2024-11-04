@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { styled } from "../styles/Theme";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import { styled } from "../styles/Theme";
 // Components
 import PageHeader from "../layouts/PageHeader";
 import PageFooter from "../layouts/PageFooter";
 import Comment from "../components/Comment";
+import TextButton from "../components/button/TextButton";
 // Toast UI Viewer
 import MyViewer from "../components/post/MyViewer";
-
-import TextButton from "../components/button/TextButton";
-
+// API
 const postURL = "http://127.0.0.1:8000/api/posts/";
 
 const Category = "Category";

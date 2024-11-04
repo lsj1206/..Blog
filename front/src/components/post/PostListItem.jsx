@@ -1,9 +1,9 @@
 // Post List Item Component
 import React from "react";
-import { styled } from "../../styles/Theme";
 import { useNavigate } from "react-router-dom";
-//Img
-import ThumbnailImg from "../../assets/thumbnail.jpg";
+import { styled } from "../../styles/Theme";
+// Assets
+import { ThumbnailImg } from "../../assets/assets";
 
 const PostListItem = ({ className, post, thumbnail }) => {
   const navigate = useNavigate();

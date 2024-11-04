@@ -1,9 +1,10 @@
+// Search Bar Component
 import React, { useState } from "react";
 import { styled } from "../styles/Theme";
-
+// Assets
+import { SearchIcon, XIcon } from "../assets/assets";
+// Components
 import IconButton from "../components/button/IconButton";
-import { ReactComponent as SearchIcon } from "../assets/icons/magnifying-glass-solid.svg";
-import { ReactComponent as XIcon } from "../assets/icons/xmark-solid.svg";
 
 const SearchButton = ({ className }) => {
   const [isSearchBarOpen, setSearchBarOpen] = useState(false);

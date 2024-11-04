@@ -1,7 +1,8 @@
+// Layout
 import React, { useRef } from "react";
 import { Outlet } from "react-router-dom"; // React Router의 Outlet 사용
 import { styled } from "../styles/Theme";
-
+// Components
 import Header from "./Header";
 import Sidebar from "./SideBar";
 import Footer from "./Footer";

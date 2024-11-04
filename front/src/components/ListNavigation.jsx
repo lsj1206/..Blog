@@ -1,13 +1,11 @@
+// List Navigation Component
 import React, { useState } from "react";
 import { styled } from "../styles/Theme";
+// Assets
+import { LeftIcon, DbLeftIcon, RightIcon, DbRightIcon } from "../assets/assets";
 // Components
 import IconButton from "./button/IconButton";
 import TextButton from "./button/TextButton";
-// Icons
-import { ReactComponent as LeftIcon } from "../assets/icons/angle-left-solid.svg";
-import { ReactComponent as DbLeftIcon } from "../assets/icons/angles-left-solid.svg";
-import { ReactComponent as RightIcon } from "../assets/icons/angle-right-solid.svg";
-import { ReactComponent as DbRightIcon } from "../assets/icons/angles-right-solid.svg";
 
 const ListNavigation = ({ totalPageSize, onClick }) => {
   const [nowPage, setNowPage] = useState(1);

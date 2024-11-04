@@ -1,18 +1,15 @@
+// Main Header
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-//Style, Theme
-import { styled } from "../styles/Theme";
 import { ThemeContext } from "../context/ThemeProvider";
-//Components
+import { styled } from "../styles/Theme";
+// Assets
+import { LightIcon, DarkIcon, ProfileImg } from "../assets/assets";
+// Components
 import SearchButton from "../components/SearchBar";
 import TextButton from "../components/button/TextButton";
 import ImgButton from "../components/button/ImgButton";
 import IconButton from "../components/button/IconButton";
-//Icons
-import { ReactComponent as DarkIcon } from "../assets/icons/moon-regular.svg";
-import { ReactComponent as LightIcon } from "../assets/icons/sun-regular.svg";
-// Imgs
-import ProfileImg from "../assets/profile.png";
 
 const Header = ({ className }) => {
   const { theme, onChangeTheme } = useContext(ThemeContext);

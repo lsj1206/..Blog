@@ -1,15 +1,15 @@
-// Page - Post List
+// Post List Page
 import React, { useState, useEffect } from "react";
 import { styled } from "../styles/Theme";
 import axios from "axios";
+// Assets
+import { SortIcon } from "../assets/assets";
 // Components
 import PageHeader from "../layouts/PageHeader";
 import PageFooter from "../layouts/PageFooter";
 import PostList from "../components/post/PostList";
 import ListNavigation from "../components/ListNavigation";
 import DDIconButton from "../components/button/DropDownIcon";
-// Icons
-import { ReactComponent as SortIcon } from "../assets/icons/filter-solid.svg";
 // API
 const listURL = "http://localhost:8000/api/posts/list";
 
