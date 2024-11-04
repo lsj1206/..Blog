@@ -1,5 +1,4 @@
-//Login 하는 페이지
-
+//Login Page
 import React from "react";
 import { styled } from "../styles/Theme";
 

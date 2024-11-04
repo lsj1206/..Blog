@@ -1,9 +1,10 @@
+// Comment List Item Component
 import React from "react";
 import { styled } from "../../styles/Theme";
-
+// Assets
+import { EllipsisIcon } from "../../assets/assets";
+// Components
 import DropDownIcon from "../button/DropDownIcon";
-
-import { ReactComponent as EllipsisIcon } from "../../assets/icons/ellipsis-vertical-solid.svg";
 
 const Options = ["수정하기", "삭제하기"];
 

@@ -1,4 +1,4 @@
-// DropdownMenu
+// Dropdown Menu Component
 import React, { useState } from "react";
 import { styled } from "../../styles/Theme";
 

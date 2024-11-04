@@ -1,9 +1,10 @@
+// Main Footer
 import React from "react";
 import { styled } from "../styles/Theme";
-//Components
+// Assets
+import { PageUpIcon } from "../assets/assets";
+// Components
 import IconButton from "../components/button/IconButton";
-// Icons
-import { ReactComponent as PageUpIcon } from "../assets/icons/caret-up-solid.svg";
 
 const Footer = ({ className, scrollUp }) => {
   return (

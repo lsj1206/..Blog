@@ -1,15 +1,16 @@
 // Custom Toast UI Viewer
 import React, { useContext } from "react";
-import { styled } from "../../styles/Theme";
 import { ThemeContext } from "../../context/ThemeProvider";
+import { styled } from "../../styles/Theme";
 // TOAST UI Editor
 import { Viewer } from "@toast-ui/react-editor";
-import "@toast-ui/editor/dist/toastui-editor-viewer.css"; // default CSS
-import "@toast-ui/editor/dist/theme/toastui-editor-dark.css"; // 다크 모드 테마
 import CodeSyntaxHighlight from "@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin-code-syntax-highlight-all"; // 'code syntax highlight' plugin
 import Prism from "prismjs"; // prismjs , dependency'code syntax highlight'
+// TOAST UI Editor CSS
+import "@toast-ui/editor/dist/toastui-editor-viewer.css"; // default css
+import "@toast-ui/editor/dist/theme/toastui-editor-dark.css"; // dark mode css
 import "@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin-code-syntax-highlight.css"; // 'code syntax highlight' css
-import "prismjs/themes/prism.css"; // prism CSS, dependency'code syntax highlight'
+import "prismjs/themes/prism.css"; // prism css, dependency'code syntax highlight'
 
 const MyViewer = ({ Content }) => {
   const { theme } = useContext(ThemeContext);
