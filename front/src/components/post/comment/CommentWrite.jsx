@@ -1,8 +1,8 @@
 // Comment Write Component
 import React, { useState } from "react";
-import { styled } from "../../styles/Theme";
+import { styled } from "../../../styles/Theme";
 // Components
-import TextButton from "../button/TextButton";
+import TextButton from "../../button/TextButton";
 
 const CommentWrite = ({ className }) => {
   const [name, setName] = useState("");

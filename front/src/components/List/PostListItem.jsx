@@ -57,6 +57,11 @@ const PostListItemContainer = styled.div`
   background-color: transparent;
   cursor: pointer;
 
+  &:hover {
+    background-color: ${({ theme }) => theme.bgLayout};
+    border-radius: 15px;
+    transform: scale(0.99);
+  }
   &:active {
     transform: scale(0.99);
   }

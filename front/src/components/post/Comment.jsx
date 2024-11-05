@@ -1,6 +1,6 @@
 // Comment Component
 import React from "react";
-import { styled } from "../styles/Theme";
+import { styled } from "../../styles/Theme";
 // Components
 import CommentList from "./comment/CommentList";
 import CommentWrite from "./comment/CommentWrite";

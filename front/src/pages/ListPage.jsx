@@ -7,7 +7,9 @@ import { SortIcon } from "../assets/assets";
 // Components
 import PageHeader from "../layouts/PageHeader";
 import PageFooter from "../layouts/PageFooter";
-import PostList from "../components/post/PostList";
+import PostList from "../components/List/PostList";
+import CategoryList from "../components/List/CategoryList";
+import TagList from "../components/List/TagList";
 import ListNavigation from "../components/ListNavigation";
 import DDIconButton from "../components/button/DropDownIcon";
 // API
@@ -37,25 +39,37 @@ const ListPage = () => {
 
   return (
     <ListPageContainer>
-      <PageHeader>
-        <Title>{"게시글 목록"}</Title>
-        <SortButton size={[25, 25]} svgIcon={SortIcon} list={sortOptions} onClick={() => {}} />
-      </PageHeader>
-      <PostList posts={nowPosts} />
-      <ListPageFooter>
-        <ListNavigation totalPageSize={totalPageSize} onClick={setNowPage} />
-      </ListPageFooter>
+      <PostContainer>
+        <PageHeader>
+          <Title>{"게시글 목록"}</Title>
+          <SortButton size={[25, 25]} svgIcon={SortIcon} list={sortOptions} onClick={() => {}} />
+        </PageHeader>
+        <PostList posts={nowPosts} />
+        <PageFooter>
+          <ListNavigation totalPageSize={totalPageSize} onClick={setNowPage} />
+        </PageFooter>
+      </PostContainer>
+      <SideContainer>
+        <CategoryList />
+        <TagList />
+      </SideContainer>
     </ListPageContainer>
   );
 };
 
 const ListPageContainer = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   margin-left: 20px;
   position: relative;
-  width: 1600px;
+  width: 1800px;
   background-color: transparent;
+`;
+
+const PostContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 1400px;
 `;
 
 const Title = styled.h2`
@@ -67,10 +81,14 @@ const SortButton = styled(DDIconButton)`
   margin-bottom: -10px;
 `;
 
-const ListPageFooter = styled(PageFooter)`
-  margin-left: 20px;
-  margin-bottom: 25px;
-  width: 90%;
+const SideContainer = styled.div`
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 60px 50px 50px 50px;
+  width: 300px;
+  box-sizing: border-box;
+  background-color: transparent;
 `;
 
 export default ListPage;

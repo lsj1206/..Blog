@@ -1,6 +1,6 @@
 // Comment List Component
 import React from "react";
-import { styled } from "../../styles/Theme";
+import { styled } from "../../../styles/Theme";
 // Components
 import CommentListItem from "./CommentListItem";
 

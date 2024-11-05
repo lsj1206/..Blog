@@ -12,6 +12,7 @@ const PageHeader = ({ className, children }) => {
 };
 
 const PageHeaderContainer = styled.div`
+  width: 100%;
   background-color: transparent;
 `;
 

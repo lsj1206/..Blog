@@ -16,7 +16,7 @@ const Footer = ({ className }) => {
 const FooterContainer = styled.footer`
   display: flex;
   justify-content: flex-end;
-  margin-top: 100px;
+  margin-top: 50px;
   position: relative;
   bottom: 0;
   width: 100%;

@@ -62,7 +62,7 @@ const Background = styled.div`
 
 const PageContainer = styled.div`
   margin-left: 100px;
-  width: 1600px;
+  width: 100vw;
 `;
 
 export default Layout;

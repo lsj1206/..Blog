@@ -15,10 +15,6 @@ const Header = ({ className }) => {
   const { theme, onChangeTheme } = useContext(ThemeContext);
   const navigate = useNavigate();
 
-  const goInfomationPage = () => {
-    navigate("/info");
-  };
-
   const goWritePage = () => {
     navigate("/write");
   };
@@ -34,7 +30,6 @@ const Header = ({ className }) => {
       <ButtonContainer>
         <SearchButton />
         <IconButton size={[30, 30]} svgIcon={theme === "light" ? LightIcon : DarkIcon} onClick={onChangeTheme} />
-        <ImgButton size={[30, 30]} img={ProfileImg} onClick={goInfomationPage} />
         <TextButton size={[110, 30]} text={"글 작성하기"} onClick={goWritePage} />
       </ButtonContainer>
     </HeaderContainer>

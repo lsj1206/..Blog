@@ -5,7 +5,7 @@ import { styled } from "../styles/Theme";
 // Components
 import PageHeader from "../layouts/PageHeader";
 import PageFooter from "../layouts/PageFooter";
-import Comment from "../components/Comment";
+import Comment from "../components/post/Comment";
 import TextButton from "../components/button/TextButton";
 // Toast UI Viewer
 import MyViewer from "../components/post/MyViewer";

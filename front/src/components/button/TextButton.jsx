@@ -25,7 +25,6 @@ const ButtonContainer = styled.button`
   font-weight: bold;
   border: none;
   border-radius: 4px;
-  transition: background-color 0.2s, transform 0.2s;
   cursor: pointer;
 
   &:hover {
