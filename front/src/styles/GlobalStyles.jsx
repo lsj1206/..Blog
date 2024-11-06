@@ -13,7 +13,6 @@ const GlobalStyle = createGlobalStyle`
     background: ${({ theme }) => theme.background};
     font-family: 'D2Coding-Ver1.3.2', sans-serif;
     line-height: 1.5;
-    transition: all 0.3s ease-in-out;
   }
 
   ul, ol {

@@ -1,19 +1,15 @@
 // Comment List Item Component
 import React from "react";
-import { styled } from "../../styles/Theme";
+import { styled } from "../../../styles/Theme";
 // Assets
-import { EllipsisIcon } from "../../assets/assets";
+import { EllipsisIcon } from "../../../assets/assets";
 // Components
-import DropDownIcon from "../button/DropDownIcon";
+import DropDownIcon from "../../button/DropDownIcon";
 
 const Options = ["수정하기", "삭제하기"];
 
-const dummytext = `[댓글 내용 더미 데이터 입니다..][댓글 내용 더미 데이터 입니다..][댓글 내용 더미 데이터 입니다..]`;
-
-const CommentListItem = ({ className }) => {
-  const TempDate = new Date();
-
-  const updateDate = formatDate(TempDate);
+const CommentListItem = ({ className, comment }) => {
+  const updateDate = formatDate(comment.created_at);
 
   return (
     <CommentListItemContainer className={className}>
@@ -21,15 +17,9 @@ const CommentListItem = ({ className }) => {
         <NameText>{"댓글 작성자 이름 테스트"}</NameText>
         <DateText>{`${updateDate}`}</DateText>
       </InfoBox>
-      <VerticalLine></VerticalLine>
+      <VerticalLine />
       <ContentBox>
-        <ContentText>
-          {dummytext}
-          {dummytext}
-          {dummytext}
-          {dummytext}
-          {dummytext}
-        </ContentText>
+        <ContentText>{comment.content}</ContentText>
       </ContentBox>
       <ControlBox>
         <DropDownIcon size={[25, 25]} svgIcon={EllipsisIcon} list={Options} onClick={() => {}} />

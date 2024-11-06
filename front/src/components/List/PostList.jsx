@@ -17,8 +17,7 @@ const PostList = ({ className, posts }) => {
 const PostListContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 90vw;
-  height: 70vh;
+  width: 100%;
   color: ${({ theme }) => theme.text};
   overflow: hidden;
 `;

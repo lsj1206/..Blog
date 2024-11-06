@@ -2,14 +2,13 @@
 import React from "react";
 import { styled } from "../styles/Theme";
 // Assets
-import { PageUpIcon } from "../assets/assets";
+import {} from "../assets/assets";
 // Components
-import IconButton from "../components/button/IconButton";
 
-const Footer = ({ className, scrollUp }) => {
+const Footer = ({ className }) => {
   return (
     <FooterContainer className={className}>
-      <IconButton onClick={scrollUp} size={[32, 32]} svgIcon={PageUpIcon} />
+      <></>
     </FooterContainer>
   );
 };
@@ -17,13 +16,13 @@ const Footer = ({ className, scrollUp }) => {
 const FooterContainer = styled.footer`
   display: flex;
   justify-content: flex-end;
-  margin-bottom: -5px;
-  margin-right: -5px;
-  padding: 0;
-  position: fixed;
+  margin-top: 50px;
+  position: relative;
   bottom: 0;
-  right: 0;
-  background-color: transparent;
+  width: 100%;
+  height: 50px;
+  box-sizing: border-box;
+  background-color: ${({ theme }) => theme.bgLayout};
 `;
 
 export default Footer;

@@ -15,10 +15,6 @@ const Header = ({ className }) => {
   const { theme, onChangeTheme } = useContext(ThemeContext);
   const navigate = useNavigate();
 
-  const goInfomationPage = () => {
-    navigate("/info");
-  };
-
   const goWritePage = () => {
     navigate("/write");
   };
@@ -30,11 +26,10 @@ const Header = ({ className }) => {
 
   return (
     <HeaderContainer className={className}>
-      <HeaderTitle onClick={handleLogoClick}>{"...Logs"}</HeaderTitle>
+      <HeaderTitle onClick={handleLogoClick}>{"[...Logs]"}</HeaderTitle>
       <ButtonContainer>
         <SearchButton />
-        <IconButton onClick={onChangeTheme} size={[30, 30]} svgIcon={theme === "light" ? LightIcon : DarkIcon} />
-        <ImgButton size={[30, 30]} img={ProfileImg} onClick={goInfomationPage} />
+        <IconButton size={[30, 30]} svgIcon={theme === "light" ? LightIcon : DarkIcon} onClick={onChangeTheme} />
         <TextButton size={[110, 30]} text={"글 작성하기"} onClick={goWritePage} />
       </ButtonContainer>
     </HeaderContainer>
@@ -46,7 +41,10 @@ const HeaderContainer = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 20px;
+  padding: 5px 20px;
+  width: 100%;
+  height: 60px;
+  box-sizing: border-box;
   background-color: ${({ theme }) => theme.bgLayout};
 `;
 

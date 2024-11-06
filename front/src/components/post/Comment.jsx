@@ -1,21 +1,22 @@
 // Comment Component
 import React from "react";
-import { styled } from "../styles/Theme";
+import { styled } from "../../styles/Theme";
 // Components
 import CommentList from "./comment/CommentList";
 import CommentWrite from "./comment/CommentWrite";
 
-const Comment = ({ className }) => {
+const Comment = ({ className, postId, comments }) => {
   const total = 1;
+
   return (
     <CommentContainer className={className}>
       <CommentHeader>
         <Title>{`${total}개의 댓글`}</Title>
       </CommentHeader>
       <BorderLine />
-      <CommentList></CommentList>
+      <CommentList comments={comments} />
       <BorderLine />
-      <CommentWrite></CommentWrite>
+      <CommentWrite postId={postId} />
     </CommentContainer>
   );
 };

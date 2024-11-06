@@ -5,7 +5,7 @@ import { styled } from "../styles/Theme";
 // Components
 import PageHeader from "../layouts/PageHeader";
 import PageFooter from "../layouts/PageFooter";
-import Comment from "../components/Comment";
+import Comment from "../components/post/Comment";
 import TextButton from "../components/button/TextButton";
 // Toast UI Viewer
 import MyViewer from "../components/post/MyViewer";
@@ -57,19 +57,24 @@ const ReadPage = () => {
 
   return (
     <ReadPageContainer>
-      <PageHeader children={<Title>{post?.title || "게시글 제목"}</Title>} />
-      <InfoContainer>
-        <PostCategory>{Category}</PostCategory>
-        <PostDate>{`${createDate}(${updateDate})`}</PostDate>
-      </InfoContainer>
-      <ViewerContainer>
-        <MyViewer Content={post.content} />
-      </ViewerContainer>
-      <Comment></Comment>
-      <PageFooter>
-        {/* 댓글 영역 */}
+      <ViewContainer>
+        <PageHeader children={<Title>{post?.title || "게시글 제목"}</Title>} />
+        <InfoTextContainer>
+          <PostCategory>{`Category: ${Category}`}</PostCategory>
+          <InfoText>{`Tag: Tag1 | Tag2 | Tag3`}</InfoText>
+          <InfoText>{`Author: Writer`}</InfoText>
+          <InfoText>{`Views: 1432`}</InfoText>
+          <InfoText>{`Date: ${createDate}(${updateDate})`}</InfoText>
+        </InfoTextContainer>
+        <ViewerContainer>
+          <MyViewer Content={post.content} />
+        </ViewerContainer>
+        <Comment postId={post.id} comments={post.comments} />
+        <PageFooter>{/* 댓글 영역 */}</PageFooter>
+      </ViewContainer>
+      <SideContainer>
         <DeleteButton size={[120, 30]} text={"게시글 삭제"} onClick={deletePost} />
-      </PageFooter>
+      </SideContainer>
     </ReadPageContainer>
   );
 };
@@ -81,31 +86,37 @@ const formatDate = (date) => {
 
 const ReadPageContainer = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   margin-left: 20px;
-  width: 90%;
+  position: relative;
+  width: 1800px;
   background-color: transparent;
 `;
 
-const Title = styled.h2`
+const ViewContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 1400px;
+`;
+
+const Title = styled.h1`
   padding-top: 25px;
 `;
 
-const InfoContainer = styled.div`
+const InfoTextContainer = styled.div`
   display: flex;
   justify-content: flex-start;
   margin-bottom: 10px;
 `;
 
-const PostCategory = styled.h5`
-  margin-left: 10px;
+const InfoText = styled.p`
   margin-right: 20px;
   color: ${({ theme }) => theme.bgText};
+  font-weight: bolder;
 `;
 
-const PostDate = styled.h5`
-  margin-right: 20px;
-  color: ${({ theme }) => theme.bgText};
+const PostCategory = styled(InfoText)`
+  margin-left: 10px;
 `;
 
 const ViewerContainer = styled.div`
@@ -113,6 +124,16 @@ const ViewerContainer = styled.div`
   width: 90%;
   background-color: ${({ theme }) => theme.bgMain};
   border-radius: 4px;
+`;
+
+const SideContainer = styled.div`
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 60px 50px 50px 50px;
+  width: 300px;
+  box-sizing: border-box;
+  background-color: transparent;
 `;
 
 const DeleteButton = styled(TextButton)`

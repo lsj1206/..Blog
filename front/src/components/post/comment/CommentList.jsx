@@ -1,13 +1,15 @@
 // Comment List Component
 import React from "react";
-import { styled } from "../../styles/Theme";
+import { styled } from "../../../styles/Theme";
 // Components
 import CommentListItem from "./CommentListItem";
 
-const CommentList = ({ className }) => {
+const CommentList = ({ className, comments }) => {
   return (
     <CommentListContainer className={className}>
-      <CommentListItem />
+      {comments.map((comment) => (
+        <CommentListItem key={comment.id} comment={comment} />
+      ))}
     </CommentListContainer>
   );
 };
