@@ -1,36 +1,37 @@
 // Comment Write Component
 import React, { useState } from "react";
+import axios from "axios";
 import { styled } from "../../../styles/Theme";
 // Components
 import TextButton from "../../button/TextButton";
+// API
+const commentURL = "http://127.0.0.1:8000/api/comment/create/";
 
-const CommentWrite = ({ className }) => {
-  const [name, setName] = useState("");
-  const [password, setPassword] = useState("");
+const CommentWrite = ({ className, postId }) => {
   const [content, setContent] = useState("");
+
+  const submitComment = async () => {
+    if (!content) {
+      alert("내용은 필수입니다.");
+      return;
+    }
+
+    try {
+      // 게시글 데이터 전송
+      const CommentData = { content };
+      await axios.post(`${commentURL}${postId}`, CommentData, {
+        headers: { "Content-Type": "application/json" },
+      });
+
+      alert("댓글이 성공적으로 저장되었습니다.");
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Error status: " + error.response.status);
+    }
+  };
 
   return (
     <CommentFormContainer className={className}>
-      <InfoBox>
-        <InputBox>
-          <NameInput
-            type="text"
-            value={name}
-            placeholder="이름"
-            maxLength={16}
-            onChange={(e) => setName(e.target.value)}
-          />
-          <PasswordInput
-            type="text"
-            value={password}
-            placeholder="비밀번호"
-            maxLength={16}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <InputInfo>{"*16자 제한"}</InputInfo>
-        </InputBox>
-        <TextButton size={[110, 30]} text={"댓글 작성"} onClick={() => {}} />
-      </InfoBox>
       <ContentBox
         type="text"
         value={content}
@@ -38,6 +39,9 @@ const CommentWrite = ({ className }) => {
         maxLength={250}
         onChange={(e) => setContent(e.target.value)}
       ></ContentBox>
+      <InfoBox>
+        <TextButton size={[110, 30]} text={"댓글 작성"} onClick={submitComment} />
+      </InfoBox>
     </CommentFormContainer>
   );
 };
@@ -55,45 +59,11 @@ const InfoBox = styled.div`
   display: flex;
   flex-direction: row;
   align-items: baseline;
-  justify-content: space-between;
-`;
-
-const InputBox = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
-
-const Input = styled.input`
-  margin: 5px;
-  padding: 10px;
-  width: 180px;
-  background-color: ${({ theme }) => theme.bgLayout};
-  color: ${({ theme }) => theme.text};
-  font-size: 14px;
-  border: 0;
-  border-radius: 4px;
-  &:focus {
-    outline: none;
-    border: 1px solid ${({ theme }) => theme.brLine};
-    box-shadow: 0 0 5px rgba(125, 125, 125, 0.5);
-  }
-`;
-
-const NameInput = styled(Input)`
-  margin-right: 10px;
-`;
-
-const PasswordInput = styled(Input)``;
-
-const InputInfo = styled.p`
-  display: flex;
-  align-items: end;
-  margin-bottom: 0.25rem;
-  color: ${({ theme }) => theme.bgText};
+  justify-content: flex-end;
 `;
 
 const ContentBox = styled.textarea`
-  margin: 0 5px 5px 5px;
+  margin: 5px;
   padding: 10px;
   resize: none;
   width: 99%;

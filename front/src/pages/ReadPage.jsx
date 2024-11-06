@@ -69,7 +69,7 @@ const ReadPage = () => {
         <ViewerContainer>
           <MyViewer Content={post.content} />
         </ViewerContainer>
-        <Comment></Comment>
+        <Comment postId={post.id} comments={post.comments} />
         <PageFooter>{/* 댓글 영역 */}</PageFooter>
       </ViewContainer>
       <SideContainer>
