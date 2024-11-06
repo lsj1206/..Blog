@@ -10,13 +10,13 @@ const TagList = ({ className }) => {
       <TitleText>{"Tag List"}</TitleText>
       <BorderLine />
       <ItemBox>
-        <TagListItem>{"Tag-1"}</TagListItem>
-        <TagListItem>{"Tag-2"}</TagListItem>
-        <TagListItem>{"Tag-3"}</TagListItem>
-        <TagListItem>{"Tag-4"}</TagListItem>
-        <TagListItem>{"Tag-5"}</TagListItem>
-        <TagListItem>{"Tag-6"}</TagListItem>
-        <TagListItem>{"Tag-7"}</TagListItem>
+        <TagListItem>{"Tag"}</TagListItem>
+        <TagListItem>{"BUG"}</TagListItem>
+        <TagListItem>{"ISSUE"}</TagListItem>
+        <TagListItem>{"react-router-dom"}</TagListItem>
+        <TagListItem>{"REST API"}</TagListItem>
+        <TagListItem>{"Hello"}</TagListItem>
+        <TagListItem>{"styled-component"}</TagListItem>
       </ItemBox>
     </TagListContainer>
   );

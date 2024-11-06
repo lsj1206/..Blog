@@ -6,7 +6,7 @@ const TagListItem = ({ className, children }) => {
   return (
     <TagListItemContainer className={className} onClick={() => {}}>
       {children}
-      <BorderLine />
+      {/* <BorderLine /> */}
     </TagListItemContainer>
   );
 };
@@ -14,22 +14,20 @@ const TagListItem = ({ className, children }) => {
 const TagListItemContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 0 5px;
+  margin: 0.1rem 0.3rem;
+  padding: 0.1rem 0.75rem;
   cursor: pointer;
 
+  background-color: ${({ theme }) => theme.bgLayout};
+  border-radius: 15px;
+
   &:hover {
+    background-color: ${({ theme }) => theme.bgSub};
     transform: scale(1.075);
   }
   &:active {
-    transform: scale(0.99);
+    transform: scale(0.975);
   }
-`;
-
-const BorderLine = styled.div`
-  margin: 5px 0;
-  width: 100%;
-  height: 1px;
-  background-color: ${({ theme }) => theme.brLine};
 `;
 
 export default TagListItem;
