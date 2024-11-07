@@ -10,7 +10,7 @@ import TextButton from "../../button/TextButton";
 const Options = ["수정하기", "삭제하기"];
 
 const CommentListItem = ({ className, comment }) => {
-  const updateDate = formatDate(comment.created_at);
+  const updateDate = formatDate(comment?.created_at);
 
   return (
     <CommentListItemContainer className={className}>
@@ -20,7 +20,7 @@ const CommentListItem = ({ className, comment }) => {
       </InfoBox>
       <VerticalLine />
       <ContentBox>
-        <ContentText>{comment.content}</ContentText>
+        <ContentText>{comment?.content}</ContentText>
       </ContentBox>
       <ControlBox>
         <DropDownIcon size={[25, 25]} svgIcon={EllipsisIcon} list={Options} onClick={() => {}} />

@@ -9,7 +9,7 @@ const Comment = ({ className, postId, comments }) => {
   return (
     <CommentContainer className={className}>
       <CommentHeader>
-        <Title>{`${comments.length}개의 댓글`}</Title>
+        <Title>{`${comments?.length}개의 댓글`}</Title>
       </CommentHeader>
       <BorderLine />
       <CommentList comments={comments} />

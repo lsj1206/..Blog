@@ -18,6 +18,7 @@ const listURL = "http://localhost:8000/api/posts/list";
 const sortOptions = ["최신순", "오래된 순"];
 
 const ListPage = () => {
+  const [error, setError] = useState(null);
   const [posts, setPosts] = useState([]);
   const [nowPage, setNowPage] = useState(1);
   // PageNavigation 계산
@@ -26,15 +27,16 @@ const ListPage = () => {
   const nowPosts = posts.slice((nowPage - 1) * pageSize, nowPage * pageSize);
 
   useEffect(() => {
-    const getPostList = async () => {
+    const getPosts = async () => {
       try {
-        const response = await axios.get(listURL);
-        setPosts(response.data);
-      } catch (error) {
-        console.error("게시글 목록을 가져오는데 문제가 발생했습니다.", error);
+        const res = await axios.get(listURL);
+        setPosts(res.data);
+        setError(null);
+      } catch (err) {
+        setError("게시물 목록을 가져오는데 실패했습니다.");
       }
     };
-    getPostList();
+    getPosts();
   }, []);
 
   return (
@@ -44,6 +46,7 @@ const ListPage = () => {
           <Title>{"게시글 목록"}</Title>
           <SortButton size={[25, 25]} svgIcon={SortIcon} list={sortOptions} onClick={() => {}} />
         </PageHeader>
+        {error && <ErrorText>{error}</ErrorText>}
         <PostList posts={nowPosts} />
         <PageFooter>
           <ListNavigation totalPageSize={totalPageSize} onClick={setNowPage} />
@@ -89,6 +92,11 @@ const SideContainer = styled.div`
   width: 300px;
   box-sizing: border-box;
   background-color: transparent;
+`;
+
+const ErrorText = styled.h3`
+  margin: 10px;
+  color: red;
 `;
 
 export default ListPage;

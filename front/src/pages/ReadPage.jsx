@@ -1,3 +1,4 @@
+// Post Read Page
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
@@ -15,48 +16,39 @@ const postURL = "http://127.0.0.1:8000/api/posts/";
 const ReadPage = () => {
   const navigate = useNavigate();
   const { postId } = useParams(); // URL에서 postID 가져오기
-  const [post, setPost] = useState(null);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [post, setPost] = useState(null);
 
   const deletePost = async () => {
     try {
-      const response = await axios.delete(`${postURL}delete/${postId}`);
-      // setPost(response.data);
-      setLoading(false);
+      await axios.delete(`${postURL}delete/${postId}`);
+      setError(null);
     } catch (error) {
-      setError("Failed Delete Post");
-      setLoading(false);
+      setError("게시물 삭제에 실패했습니다.");
     }
     navigate(-1);
   };
 
   useEffect(() => {
-    // API 호출하여 포스트 데이터 가져오기
     const getPost = async () => {
       try {
-        const response = await axios.get(`${postURL}detail/${postId}`);
-        setPost(response.data);
-        setLoading(false);
+        const res = await axios.get(`${postURL}detail/${postId}`);
+        setPost(res.data);
+        setError(null);
       } catch (error) {
-        setError("Failed to Load the Post");
-        setLoading(false);
+        setError("글을 불러오는데 실패했습니다.");
       }
     };
-
     getPost();
   }, [postId]);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>{error}</p>;
-
-  const createDate = formatDate(post.created_at);
-  const updateDate = formatDate(post.created_at);
+  const createDate = formatDate(post?.created_at);
+  const updateDate = formatDate(post?.updated_at);
 
   return (
     <ReadPageContainer>
       <ViewContainer>
-        <PageHeader children={<Title>{post?.title || "게시글 제목"}</Title>} />
+        <PageHeader children={<Title>{post?.title || "제목"}</Title>} />
         <InfoTextContainer>
           <LeftBox>
             <CategoryText>{`카테고리: React`}</CategoryText>
@@ -69,9 +61,10 @@ const ReadPage = () => {
           </RightBox>
         </InfoTextContainer>
         <ViewerContainer>
-          <MyViewer Content={post.content} />
+          {error && <ErrorText>{error}</ErrorText>}
+          <MyViewer Content={post?.content} />
         </ViewerContainer>
-        <Comment postId={post.id} comments={post.comments} />
+        <Comment postId={post?.id} comments={post?.comments} />
         <PageFooter>{/* 댓글 영역 */}</PageFooter>
       </ViewContainer>
       <SideContainer>
@@ -167,6 +160,11 @@ const SideBox = styled.div`
 
 const DeleteButton = styled(TextButton)`
   color: ${({ theme }) => theme.warningText};
+`;
+
+const ErrorText = styled.h3`
+  margin: 10px;
+  color: red;
 `;
 
 export default ReadPage;

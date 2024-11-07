@@ -7,8 +7,8 @@ import CommentListItem from "./CommentListItem";
 const CommentList = ({ className, comments }) => {
   return (
     <CommentListContainer className={className}>
-      {comments.map((comment) => (
-        <CommentListItem key={comment.id} comment={comment} />
+      {comments?.map((comment) => (
+        <CommentListItem key={comment?.id} comment={comment} />
       ))}
     </CommentListContainer>
   );
