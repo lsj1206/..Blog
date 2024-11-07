@@ -45,6 +45,7 @@ const DropdownLabel = styled.span`
 `;
 
 const DropdownList = styled.ul`
+  z-index: 100;
   display: ${({ $isOpen }) => ($isOpen ? "block" : "none")};
   position: absolute;
   top: 42px;

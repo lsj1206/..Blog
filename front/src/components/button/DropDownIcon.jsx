@@ -52,6 +52,7 @@ const DropDownContainer = styled.div`
 `;
 
 const DropdownList = styled.div`
+  z-index: 100;
   display: flex;
   flex-direction: column;
   padding: 8px 0;
