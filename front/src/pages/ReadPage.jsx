@@ -12,8 +12,6 @@ import MyViewer from "../components/post/MyViewer";
 // API
 const postURL = "http://127.0.0.1:8000/api/posts/";
 
-const Category = "Category";
-
 const ReadPage = () => {
   const navigate = useNavigate();
   const { postId } = useParams(); // URL에서 postID 가져오기
@@ -24,7 +22,7 @@ const ReadPage = () => {
   const deletePost = async () => {
     try {
       const response = await axios.delete(`${postURL}delete/${postId}`);
-      setPost(response.data);
+      // setPost(response.data);
       setLoading(false);
     } catch (error) {
       setError("Failed Delete Post");
@@ -60,11 +58,15 @@ const ReadPage = () => {
       <ViewContainer>
         <PageHeader children={<Title>{post?.title || "게시글 제목"}</Title>} />
         <InfoTextContainer>
-          <PostCategory>{`Category: ${Category}`}</PostCategory>
-          <InfoText>{`Tag: Tag1 | Tag2 | Tag3`}</InfoText>
-          <InfoText>{`Author: Writer`}</InfoText>
-          <InfoText>{`Views: 1432`}</InfoText>
-          <InfoText>{`Date: ${createDate}(${updateDate})`}</InfoText>
+          <LeftBox>
+            <CategoryText>{`카테고리: React`}</CategoryText>
+            <TagText>{`태그: Front | styled-component | FastAPI`}</TagText>
+          </LeftBox>
+          <RightBox>
+            <InfoText>{`조회수: 777`}</InfoText>
+            <InfoText>{`작성자: Faker`}</InfoText>
+            <InfoText>{`작성일: ${createDate}(${updateDate})`}</InfoText>
+          </RightBox>
         </InfoTextContainer>
         <ViewerContainer>
           <MyViewer Content={post.content} />
@@ -73,7 +75,9 @@ const ReadPage = () => {
         <PageFooter>{/* 댓글 영역 */}</PageFooter>
       </ViewContainer>
       <SideContainer>
-        <DeleteButton size={[120, 30]} text={"게시글 삭제"} onClick={deletePost} />
+        <SideBox>
+          <DeleteButton size={[120, 30]} text={"게시글 삭제"} onClick={deletePost} />
+        </SideBox>
       </SideContainer>
     </ReadPageContainer>
   );
@@ -105,8 +109,18 @@ const Title = styled.h1`
 
 const InfoTextContainer = styled.div`
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   margin-bottom: 10px;
+`;
+
+const LeftBox = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+const RightBox = styled.div`
+  display: flex;
+  flex-direction: row;
 `;
 
 const InfoText = styled.p`
@@ -115,7 +129,11 @@ const InfoText = styled.p`
   font-weight: bolder;
 `;
 
-const PostCategory = styled(InfoText)`
+const CategoryText = styled(InfoText)`
+  margin-left: 10px;
+`;
+
+const TagText = styled(InfoText)`
   margin-left: 10px;
 `;
 
@@ -134,6 +152,17 @@ const SideContainer = styled.div`
   width: 300px;
   box-sizing: border-box;
   background-color: transparent;
+`;
+
+const SideBox = styled.div`
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  margin: 10px;
+  padding: 20px;
+  width: 100%;
+  border: 1px solid ${({ theme }) => theme.brLine};
+  border-radius: 15px;
 `;
 
 const DeleteButton = styled(TextButton)`

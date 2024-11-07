@@ -6,16 +6,13 @@ import CommentList from "./comment/CommentList";
 import CommentWrite from "./comment/CommentWrite";
 
 const Comment = ({ className, postId, comments }) => {
-  const total = 1;
-
   return (
     <CommentContainer className={className}>
       <CommentHeader>
-        <Title>{`${total}개의 댓글`}</Title>
+        <Title>{`${comments.length}개의 댓글`}</Title>
       </CommentHeader>
       <BorderLine />
       <CommentList comments={comments} />
-      <BorderLine />
       <CommentWrite postId={postId} />
     </CommentContainer>
   );
@@ -24,8 +21,8 @@ const Comment = ({ className, postId, comments }) => {
 const CommentContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  width: 1200px;
+  align-items: flex-start;
+  width: 100%;
 `;
 
 const CommentHeader = styled.div`
@@ -33,7 +30,7 @@ const CommentHeader = styled.div`
   align-items: flex-start;
   flex-direction: row;
   justify-content: space-between;
-  width: 1200px;
+  width: 100%;
 `;
 
 const Title = styled.h3`

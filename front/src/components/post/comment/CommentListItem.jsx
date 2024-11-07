@@ -5,6 +5,7 @@ import { styled } from "../../../styles/Theme";
 import { EllipsisIcon } from "../../../assets/assets";
 // Components
 import DropDownIcon from "../../button/DropDownIcon";
+import TextButton from "../../button/TextButton";
 
 const Options = ["수정하기", "삭제하기"];
 
@@ -23,6 +24,7 @@ const CommentListItem = ({ className, comment }) => {
       </ContentBox>
       <ControlBox>
         <DropDownIcon size={[25, 25]} svgIcon={EllipsisIcon} list={Options} onClick={() => {}} />
+        <TextButton size={[50, 30]} text={`답글`} onClick={() => {}} />
       </ControlBox>
     </CommentListItemContainer>
   );
@@ -43,10 +45,12 @@ const formatDate = (date) => {
 const CommentListItemContainer = styled.div`
   display: flex;
   flex-direction: row;
-  box-sizing: border-box;
-  width: 1150px;
+  justify-content: space-between;
+  margin: 10px;
+  width: 1200px;
   min-height: 140px;
   max-height: 240px;
+  box-sizing: border-box;
   background-color: ${({ theme }) => theme.bgLayout};
   border-radius: 5px;
 `;
@@ -78,12 +82,15 @@ const ContentBox = styled.div`
 
 const ControlBox = styled.div`
   display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
   padding-top: 10px;
   width: 50px;
 `;
 
 const VerticalLine = styled.div`
-  margin: 5px 0;
+  margin: 10px 0;
   border: 0;
   border-left: 0.1rem solid ${({ theme }) => theme.brLine};
 `;
