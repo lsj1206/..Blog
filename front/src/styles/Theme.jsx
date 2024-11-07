@@ -9,6 +9,7 @@ const color = {
 export const light = {
   text: "black",
   bgMain: "white",
+  bgMainSub: "#FCFCFC",
   bgLayout: "#E8E8E8",
   bgSub: "#C3C3C3",
   bgText: "#AAAAAA",
@@ -24,6 +25,7 @@ export const light = {
 export const dark = {
   text: "white",
   bgMain: "#282828",
+  bgMainSub: "#252525",
   bgLayout: "#383838",
   bgSub: "#606060",
   bgText: "#808080",
