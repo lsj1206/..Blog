@@ -22,6 +22,32 @@ const MyViewer = ({ Content }) => {
   );
 };
 
-const ViewerContainer = styled.div``;
+const ViewerContainer = styled.div`
+  width: 1200px;
+  .toastui-editor-contents h1 {
+    font-size: 2rem;
+  }
+  .toastui-editor-contents h2 {
+    font-size: 1.5rem;
+  }
+  .toastui-editor-contents h3 {
+    font-size: 1.25rem;
+  }
+  .toastui-editor-contents h4 {
+    font-size: 1rem;
+  }
+  .toastui-editor-contents h5 {
+    font-size: 0.8125rem;
+  }
+  .toastui-editor-contents h6 {
+    font-size: 0.625rem;
+  }
+  .toastui-editor-contents p {
+    font-size: 1rem;
+  }
+  .toastui-editor-contents pre {
+    font-size: 1rem;
+  }
+`;
 
 export default MyViewer;
