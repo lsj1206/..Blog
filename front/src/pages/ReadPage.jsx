@@ -10,6 +10,8 @@ import Comment from "../components/post/Comment";
 import TextButton from "../components/button/TextButton";
 // Toast UI Viewer
 import MyViewer from "../components/post/MyViewer";
+// Temp Data
+import { tempPost } from "../TempData";
 // API
 const postURL = "http://127.0.0.1:8000/api/posts/";
 
@@ -37,6 +39,7 @@ const ReadPage = () => {
         setError(null);
       } catch (error) {
         setError("글을 불러오는데 실패했습니다.");
+        setPost(tempPost);
       }
     };
     getPost();
@@ -48,24 +51,26 @@ const ReadPage = () => {
   return (
     <ReadPageContainer>
       <ViewContainer>
-        <PageHeader children={<Title>{post?.title || "제목"}</Title>} />
+        <PageHeader children={<Title>{post?.title}</Title>} />
         <InfoTextContainer>
           <LeftBox>
-            <CategoryText>{`카테고리: React`}</CategoryText>
-            <TagText>{`태그: Front | styled-component | FastAPI`}</TagText>
+            <CategoryText>{`분류: ${post?.category}`}</CategoryText>
+            <TagText>{`태그: ${post?.tag}`}</TagText>
           </LeftBox>
           <RightBox>
-            <InfoText>{`조회수: 777`}</InfoText>
-            <InfoText>{`작성자: Faker`}</InfoText>
-            <InfoText>{`작성일: ${createDate}(${updateDate})`}</InfoText>
+            <InfoText>{`조회수: ${post?.views}`}</InfoText>
+            <InfoText>{`작성자: ${post?.author}`}</InfoText>
+            <InfoText>{`작성일: ${createDate}`}</InfoText>
+            <InfoText>{`최종 수정일: ${updateDate}`}</InfoText>
           </RightBox>
         </InfoTextContainer>
         <ViewerContainer>
+          {post && <MyViewer Content={post.content} />} {/* API 호출 후에 Viewer 생성*/}
           {error && <ErrorText>{error}</ErrorText>}
-          <MyViewer Content={post?.content} />
         </ViewerContainer>
-        <Comment postId={post?.id} comments={post?.comments} />
-        <PageFooter>{/* 댓글 영역 */}</PageFooter>
+        <PageFooter>
+          <Comment postId={post?.id} comments={post?.comments} />
+        </PageFooter>
       </ViewContainer>
       <SideContainer>
         <SideBox>
@@ -77,6 +82,9 @@ const ReadPage = () => {
 };
 
 const formatDate = (date) => {
+  if (!date) {
+    return "----년 --월 --일";
+  }
   const options = { year: "numeric", month: "long", day: "2-digit" };
   return new Date(date).toLocaleDateString("ko-KR", options);
 };
@@ -87,7 +95,6 @@ const ReadPageContainer = styled.div`
   margin-left: 20px;
   position: relative;
   width: 1800px;
-  background-color: transparent;
 `;
 
 const ViewContainer = styled.div`
@@ -132,9 +139,6 @@ const TagText = styled(InfoText)`
 
 const ViewerContainer = styled.div`
   padding: 10px;
-  width: 90%;
-  background-color: ${({ theme }) => theme.bgMain};
-  border-radius: 4px;
 `;
 
 const SideContainer = styled.div`
@@ -144,7 +148,6 @@ const SideContainer = styled.div`
   padding: 60px 50px 50px 50px;
   width: 300px;
   box-sizing: border-box;
-  background-color: transparent;
 `;
 
 const SideBox = styled.div`
@@ -164,7 +167,7 @@ const DeleteButton = styled(TextButton)`
 
 const ErrorText = styled.h3`
   margin: 10px;
-  color: red;
+  color: ${({ theme }) => theme.warningText};
 `;
 
 export default ReadPage;

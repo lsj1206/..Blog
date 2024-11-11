@@ -17,7 +17,7 @@ const MyViewer = ({ Content }) => {
 
   return (
     <ViewerContainer className={`editor-panel-editor${theme === "dark" ? " toastui-editor-dark" : ""}`}>
-      <Viewer initialValue={Content || ""} plugins={[[CodeSyntaxHighlight, { highlighter: Prism }]]} />
+      <Viewer initialValue={Content} plugins={[[CodeSyntaxHighlight, { highlighter: Prism }]]} />
     </ViewerContainer>
   );
 };

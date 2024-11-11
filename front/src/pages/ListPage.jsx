@@ -96,7 +96,7 @@ const SideContainer = styled.div`
 
 const ErrorText = styled.h3`
   margin: 10px;
-  color: red;
+  color: ${({ theme }) => theme.warningText};
 `;
 
 export default ListPage;

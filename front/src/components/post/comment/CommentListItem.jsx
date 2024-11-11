@@ -10,13 +10,14 @@ import TextButton from "../../button/TextButton";
 const Options = ["수정하기", "삭제하기"];
 
 const CommentListItem = ({ className, comment }) => {
-  const updateDate = formatDate(comment?.created_at);
+  const createDate = formatDate(comment?.created_at);
+  const updateDate = formatDate(comment?.updated_at);
 
   return (
     <CommentListItemContainer className={className}>
       <InfoBox>
-        <NameText>{"댓글 작성자 이름 테스트"}</NameText>
-        <DateText>{`${updateDate}`}</DateText>
+        <NameText>{comment?.author}</NameText>
+        <DateText>{`${createDate}\n(${updateDate})`}</DateText>
       </InfoBox>
       <VerticalLine />
       <ContentBox>
@@ -31,6 +32,9 @@ const CommentListItem = ({ className, comment }) => {
 };
 
 const formatDate = (date) => {
+  if (!date) {
+    return "----. --. --. --:--";
+  }
   const options = {
     year: "numeric",
     month: "2-digit",
@@ -61,7 +65,7 @@ const InfoBox = styled.div`
   justify-content: space-between;
   margin: 10px 5px;
   padding: 10px;
-  width: 150px;
+  width: 155px;
   box-sizing: border-box;
   background-color: ${({ theme }) => theme.bgLayout};
   border: 0;
@@ -70,7 +74,7 @@ const InfoBox = styled.div`
 const ContentBox = styled.div`
   margin: 15px 10px;
   padding: 0 10px;
-  width: 950px;
+  width: 945px;
   box-sizing: border-box;
   background-color: ${({ theme }) => theme.bgLayout};
   color: ${({ theme }) => theme.text};
