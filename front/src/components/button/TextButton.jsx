@@ -21,7 +21,7 @@ const ButtonContainer = styled.button`
   height: ${({ height }) => height}px;
   color: ${({ theme }) => theme.btnText};
   background-color: ${({ theme }) => theme.btn};
-  font-size: 14px;
+  font-size: 0.9rem;
   font-weight: bold;
   border: none;
   border-radius: 4px;

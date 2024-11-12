@@ -7,6 +7,7 @@ import { styled } from "../styles/Theme";
 import PageHeader from "../layouts/PageHeader";
 import PageFooter from "../layouts/PageFooter";
 import TagCreate from "../components/TagCreate";
+import Modal from "../components/Modal";
 import TextButton from "../components/button/TextButton";
 import DropdownMenu from "../components/button/DropDownMenu";
 // Toast UI Editor
@@ -21,24 +22,25 @@ const WritePage = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [toolTip, setToolTip] = useState(false);
+  const [modal, setModalOpen] = useState(false);
 
-  const submitPost = async () => {
+  const openModal = () => {
     if (!title) {
       alert("제목과 분류는 필수입니다.");
       return;
     }
+    setModalOpen(true);
+  };
+  const closeModal = () => setModalOpen(false);
 
+  const submitPost = async () => {
     try {
-      // 게시글 데이터 전송
       const postData = { title, content };
       await axios.post(writeURL, postData, {
         headers: { "Content-Type": "application/json" },
       });
-
-      alert("게시물이 성공적으로 저장되었습니다.");
       navigate(-1);
     } catch (error) {
-      console.error("Error:", error);
       alert("Error status: " + error.response.status);
     }
   };
@@ -57,7 +59,11 @@ const WritePage = () => {
           />
           {toolTip && <Tooltip>{`최대 80자 제한입니다.`}</Tooltip>}
         </InputBox>
-        <SubmitButton size={[100, 30]} text={"게시하기"} onClick={submitPost} />
+        <SubmitButton size={[100, 30]} text={"등록하기"} onClick={openModal} />
+        <Modal isOpen={modal} onClose={closeModal}>
+          <SubmitText>글을 게시하겠습니까?</SubmitText>
+          <ModalButton size={[80, 30]} text={"등록"} onClick={submitPost} />
+        </Modal>
       </PageHeader>
       <PostInfoContainer>
         <DropdownMenu menulist={categories} placeholder="Select Category" />
@@ -114,6 +120,15 @@ const Tooltip = styled.div`
 
 const SubmitButton = styled(TextButton)`
   margin-bottom: 0;
+`;
+
+const SubmitText = styled.p`
+  font-size: 1.25rem;
+  font-weight: bold;
+`;
+
+const ModalButton = styled(TextButton)`
+  font-size: 1rem;
 `;
 
 const PostInfoContainer = styled.div`

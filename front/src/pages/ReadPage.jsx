@@ -7,9 +7,8 @@ import { styled } from "../styles/Theme";
 import PageHeader from "../layouts/PageHeader";
 import Comment from "../components/post/Comment";
 import IndexNav from "../components/post/IndexNavigation";
-import TextButton from "../components/button/TextButton";
-
 import Modal from "../components/Modal";
+import TextButton from "../components/button/TextButton";
 // Toast UI Viewer
 import MyViewer from "../components/post/MyViewer";
 // Temp Data
@@ -30,9 +29,8 @@ const ReadPage = () => {
   const deletePost = async () => {
     try {
       await axios.delete(`${postURL}delete/${postId}`);
-      setError(null);
     } catch (error) {
-      setError("게시물 삭제에 실패했습니다.");
+      alert("게시물 삭제에 실패했습니다.");
     }
     navigate(-1);
   };
@@ -177,11 +175,13 @@ const SideBox = styled.div`
 
 const DeleteButton = styled(TextButton)`
   color: ${({ theme }) => theme.warningText};
+  font-size: 1rem;
 `;
 
 const ErrorText = styled.h3`
   margin: 10px;
   color: ${({ theme }) => theme.warningText};
+  font-size: 1.25rem;
 `;
 
 export default ReadPage;
