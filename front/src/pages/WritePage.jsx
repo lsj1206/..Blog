@@ -6,6 +6,7 @@ import { styled } from "../styles/Theme";
 // Components
 import PageHeader from "../layouts/PageHeader";
 import PageFooter from "../layouts/PageFooter";
+import TagCreate from "../components/TagCreate";
 import TextButton from "../components/button/TextButton";
 import DropdownMenu from "../components/button/DropDownMenu";
 // Toast UI Editor
@@ -19,6 +20,7 @@ const WritePage = () => {
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [toolTip, setToolTip] = useState(false);
 
   const submitPost = async () => {
     if (!title) {
@@ -43,21 +45,25 @@ const WritePage = () => {
 
   return (
     <WritePageContainer>
-      <PageHeader children={<PageName>{"게시글 작성"}</PageName>} />
+      <PageHeader>
+        <InputBox onMouseLeave={() => setToolTip(false)}>
+          <TitleInput
+            type="text"
+            value={title}
+            placeholder="제목을 입력하세요"
+            maxLength={80}
+            onChange={(e) => setTitle(e.target.value)}
+            onFocus={() => setToolTip(true)}
+          />
+          {toolTip && <Tooltip>{`최대 80자 제한입니다.`}</Tooltip>}
+        </InputBox>
+        <SubmitButton size={[100, 30]} text={"게시하기"} onClick={submitPost} />
+      </PageHeader>
       <PostInfoContainer>
-        <TitleInput
-          type="text"
-          value={title}
-          placeholder="제목을 입력하세요 (80자 제한)"
-          maxLength={80}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <InfoBox>
-          <DropdownMenu menulist={categories} placeholder="Select Category" />
-          <TextButton size={[100, 30]} text={"작성 완료"} onClick={submitPost} />
-        </InfoBox>
+        <DropdownMenu menulist={categories} placeholder="Select Category" />
+        <TagCreate />
       </PostInfoContainer>
-      <MyEditor size={[0, 460]} setContent={setContent} />
+      <MyEditor size={[0, 600]} setContent={setContent} />
       <PageFooter />
     </WritePageContainer>
   );
@@ -67,29 +73,22 @@ const WritePageContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 20px;
-  width: 90%;
-  background-color: transparent;
+  position: relative;
+  width: 1800px;
 `;
 
-const PageName = styled.h2`
-  padding-top: 25px;
-`;
-
-const PostInfoContainer = styled.div`
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  margin-bottom: 5px;
-  width: 100%;
-  height: 50px;
+const InputBox = styled.div`
+  position: relative;
+  width: 900px;
 `;
 
 const TitleInput = styled.input`
+  margin-top: 25px;
   padding: 10px;
-  width: 50%;
+  width: 100%;
   background-color: ${({ theme }) => theme.bgLayout};
   color: ${({ theme }) => theme.text};
-  font-size: 18px;
+  font-size: 1.5rem;
   border: 0;
   border-radius: 4px;
   &:focus {
@@ -99,9 +98,30 @@ const TitleInput = styled.input`
   }
 `;
 
-const InfoBox = styled.div`
+const Tooltip = styled.div`
+  z-index: 999;
+  padding: 6px 12px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: ${({ theme }) => theme.shared.tooltip};
+  color: ${({ theme }) => theme.shared.tooltipText};
+  font-size: 1rem;
+  white-space: pre-line;
+  border-radius: 4px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+`;
+
+const SubmitButton = styled(TextButton)`
+  margin-bottom: 0;
+`;
+
+const PostInfoContainer = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-bottom: 5px;
+  height: 50px;
 `;
 
 export default WritePage;
