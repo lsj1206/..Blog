@@ -74,12 +74,12 @@ const WritePageContainer = styled.div`
   flex-direction: column;
   margin-left: 20px;
   position: relative;
-  width: 1800px;
+  width: 1700px;
 `;
 
 const InputBox = styled.div`
   position: relative;
-  width: 900px;
+  width: 800px;
 `;
 
 const TitleInput = styled.input`
