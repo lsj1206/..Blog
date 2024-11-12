@@ -10,26 +10,23 @@ const PostListItem = ({ className, post }) => {
     navigate(`/posts/detail/${post.id}`);
   };
 
-  const Category = "Category";
-  const Views = "1234";
-  const Author = "작성자";
   const Date = formatDate(post.created_at);
 
   return (
     <PostListItemContainer className={className} onClick={goReadPage}>
       <VerticalBorderLine />
       <TextBox>
-        <TitleText>{post.title}</TitleText>
-        <InfoText>{`${Author}`}</InfoText>
-        <InfoText>{`${Views}`}</InfoText>
+        <TitleText>{post?.title}</TitleText>
+        <InfoText>{post?.views}</InfoText>
+        <InfoText>{post?.author}</InfoText>
         <DateText>{`${Date}`}</DateText>
       </TextBox>
       <InfoBox>
         <CategoryBox>
-          <p>{`${Category}`}</p>
+          <p>{post?.category}</p>
         </CategoryBox>
         <TagBox>
-          <p>{`${"Tag"}`}</p>
+          <p>{post?.tag}</p>
         </TagBox>
       </InfoBox>
     </PostListItemContainer>

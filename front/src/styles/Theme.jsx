@@ -1,39 +1,42 @@
 import * as styledComponents from "styled-components";
 
-const color = {
-  correct: "#5babab",
-  present: "#fdb800",
-  absent: "#908790",
+const shared = {
+  tooltip: "#5F5F5F",
+  tooltipText: "#F0F8FF",
 };
 
 export const light = {
-  text: "black",
+  brLine: "#585858",
   bgMain: "white",
+  bgMainSub: "#FCFCFC",
   bgLayout: "#E8E8E8",
   bgSub: "#C3C3C3",
-  bgText: "#AAAAAA",
   btn: "#A9A9A9",
-  btnText: "#696969",
   btnActive: "#585858",
+  text: "black",
+  bgText: "#AAAAAA",
+  btnText: "#696969",
   btnActiveText: "#C0C0C0",
-  brLine: "#585858",
+  highlightText: "#4682B4",
   warningText: "#8B0000",
-  color: { ...color },
+  shared: { ...shared },
 };
 
 export const dark = {
-  text: "white",
+  brLine: "#585858",
   bgMain: "#282828",
+  bgMainSub: "#252525",
   bgLayout: "#383838",
   bgSub: "#606060",
-  bgText: "#808080",
   btn: "#505050",
-  btnText: "#808080",
   btnActive: "#909090",
+  text: "white",
+  bgText: "#808080",
+  btnText: "#808080",
   btnActiveText: "#505050",
-  brLine: "#585858",
+  highlightText: "#87CEEB",
   warningText: "	#F08080",
-  color: { ...color },
+  shared: { ...shared },
 };
 
 // styled-components를 기본으로 내보냄

@@ -1,21 +1,30 @@
 // Comment Component
 import React from "react";
 import { styled } from "../../styles/Theme";
+// Assets
+import { ShareIcon, LinkCopyIcon, XtwitterIcon, KakaoIcon } from "../../assets/assets";
 // Components
 import CommentList from "./comment/CommentList";
 import CommentWrite from "./comment/CommentWrite";
+import IconButton from "../button/IconButton";
 
 const Comment = ({ className, postId, comments }) => {
-  const total = 1;
-
+  const copyUrl = () => {
+    navigator.clipboard.writeText(window.location.href);
+  };
   return (
     <CommentContainer className={className}>
       <CommentHeader>
-        <Title>{`${total}개의 댓글`}</Title>
+        <Title>{`${comments?.length}개의 댓글`}</Title>
+        <ShareBox>
+          <NoneClickIcon size={[25, 25]} svgIcon={ShareIcon} />
+          <IconButton size={[25, 25]} svgIcon={LinkCopyIcon} onClick={copyUrl} />
+          <IconButton size={[25, 25]} svgIcon={XtwitterIcon} onClick={() => {}} />
+          <IconButton size={[25, 25]} svgIcon={KakaoIcon} onClick={() => {}} />
+        </ShareBox>
       </CommentHeader>
       <BorderLine />
       <CommentList comments={comments} />
-      <BorderLine />
       <CommentWrite postId={postId} />
     </CommentContainer>
   );
@@ -24,20 +33,30 @@ const Comment = ({ className, postId, comments }) => {
 const CommentContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  width: 1200px;
+  width: 100%;
 `;
 
 const CommentHeader = styled.div`
   display: flex;
-  align-items: flex-start;
+  align-items: flex-end;
   flex-direction: row;
   justify-content: space-between;
-  width: 1200px;
+  margin-top: 50px;
+  width: 100%;
 `;
 
 const Title = styled.h3`
   padding-top: 25px;
+`;
+
+const ShareBox = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-right: 25px;
+`;
+
+const NoneClickIcon = styled(IconButton)`
+  pointer-events: none;
 `;
 
 const BorderLine = styled.div`

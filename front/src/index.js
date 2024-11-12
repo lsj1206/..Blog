@@ -8,10 +8,8 @@ import ThemeProvider from "./context/ThemeProvider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <ThemeProvider>
-      <GlobalStyle />
-      <App />
-    </ThemeProvider>
-  </React.StrictMode>
+  <ThemeProvider>
+    <GlobalStyle />
+    <App />
+  </ThemeProvider>
 );

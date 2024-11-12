@@ -1,85 +1,101 @@
+// Post Read Page
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { styled } from "../styles/Theme";
 // Components
 import PageHeader from "../layouts/PageHeader";
-import PageFooter from "../layouts/PageFooter";
 import Comment from "../components/post/Comment";
+import IndexNav from "../components/post/IndexNavigation";
 import TextButton from "../components/button/TextButton";
+
+import Modal from "../components/Modal";
 // Toast UI Viewer
 import MyViewer from "../components/post/MyViewer";
+// Temp Data
+import { tempPost } from "../TempData";
 // API
 const postURL = "http://127.0.0.1:8000/api/posts/";
-
-const Category = "Category";
 
 const ReadPage = () => {
   const navigate = useNavigate();
   const { postId } = useParams(); // URL에서 postID 가져오기
-  const [post, setPost] = useState(null);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [post, setPost] = useState(null);
+  const [modal, setModalOpen] = useState(false);
+
+  const openModal = () => setModalOpen(true);
+  const closeModal = () => setModalOpen(false);
 
   const deletePost = async () => {
     try {
-      const response = await axios.delete(`${postURL}delete/${postId}`);
-      setPost(response.data);
-      setLoading(false);
+      await axios.delete(`${postURL}delete/${postId}`);
+      setError(null);
     } catch (error) {
-      setError("Failed Delete Post");
-      setLoading(false);
+      setError("게시물 삭제에 실패했습니다.");
     }
     navigate(-1);
   };
 
   useEffect(() => {
-    // API 호출하여 포스트 데이터 가져오기
     const getPost = async () => {
       try {
-        const response = await axios.get(`${postURL}detail/${postId}`);
-        setPost(response.data);
-        setLoading(false);
+        const res = await axios.get(`${postURL}detail/${postId}`);
+        setPost(res.data);
+        setError(null);
       } catch (error) {
-        setError("Failed to Load the Post");
-        setLoading(false);
+        setError("글을 불러오는데 실패했습니다.");
+        setPost(tempPost);
       }
     };
-
     getPost();
   }, [postId]);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>{error}</p>;
-
-  const createDate = formatDate(post.created_at);
-  const updateDate = formatDate(post.created_at);
+  const createDate = formatDate(post?.created_at);
+  const updateDate = formatDate(post?.updated_at);
 
   return (
     <ReadPageContainer>
       <ViewContainer>
-        <PageHeader children={<Title>{post?.title || "게시글 제목"}</Title>} />
+        <PageHeader>
+          <Title>{post?.title}</Title>
+          <InfoText>{`작성자: ${post?.author}`}</InfoText>
+        </PageHeader>
         <InfoTextContainer>
-          <PostCategory>{`Category: ${Category}`}</PostCategory>
-          <InfoText>{`Tag: Tag1 | Tag2 | Tag3`}</InfoText>
-          <InfoText>{`Author: Writer`}</InfoText>
-          <InfoText>{`Views: 1432`}</InfoText>
-          <InfoText>{`Date: ${createDate}(${updateDate})`}</InfoText>
+          <LeftBox>
+            <CategoryText>{`분류: ${post?.category}`}</CategoryText>
+            <TagText>{`태그: ${post?.tag}`}</TagText>
+          </LeftBox>
+          <RightBox>
+            <InfoText>{`조회수: ${post?.views}`}</InfoText>
+            <InfoText>{`작성일: ${createDate}`}</InfoText>
+            <InfoText>{`최종 수정일: ${updateDate}`}</InfoText>
+          </RightBox>
         </InfoTextContainer>
         <ViewerContainer>
-          <MyViewer Content={post.content} />
+          {error && <ErrorText>{error}</ErrorText>}
+          {post && <MyViewer Content={post?.content} />} {/* API 호출 후에 Viewer 생성*/}
         </ViewerContainer>
-        <Comment postId={post.id} comments={post.comments} />
-        <PageFooter>{/* 댓글 영역 */}</PageFooter>
+        <Comment postId={post?.id} comments={post?.comments} />
       </ViewContainer>
       <SideContainer>
-        <DeleteButton size={[120, 30]} text={"게시글 삭제"} onClick={deletePost} />
+        <SideBox>
+          <DeleteButton size={[120, 30]} text={"게시글 삭제"} onClick={openModal} />
+          <Modal isOpen={modal} onClose={closeModal}>
+            <ErrorText> 게시글을 삭제하시겠습니까?</ErrorText>
+            <DeleteButton size={[80, 30]} text={"삭제"} onClick={deletePost} />
+          </Modal>
+        </SideBox>
+        <IndexNav content={post?.content} />
       </SideContainer>
     </ReadPageContainer>
   );
 };
 
 const formatDate = (date) => {
+  if (!date) {
+    return "----년 --월 --일";
+  }
   const options = { year: "numeric", month: "long", day: "2-digit" };
   return new Date(date).toLocaleDateString("ko-KR", options);
 };
@@ -90,7 +106,6 @@ const ReadPageContainer = styled.div`
   margin-left: 20px;
   position: relative;
   width: 1800px;
-  background-color: transparent;
 `;
 
 const ViewContainer = styled.div`
@@ -105,8 +120,18 @@ const Title = styled.h1`
 
 const InfoTextContainer = styled.div`
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   margin-bottom: 10px;
+`;
+
+const LeftBox = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+const RightBox = styled.div`
+  display: flex;
+  flex-direction: row;
 `;
 
 const InfoText = styled.p`
@@ -115,15 +140,19 @@ const InfoText = styled.p`
   font-weight: bolder;
 `;
 
-const PostCategory = styled(InfoText)`
+const CategoryText = styled(InfoText)`
+  margin-left: 10px;
+`;
+
+const TagText = styled(InfoText)`
   margin-left: 10px;
 `;
 
 const ViewerContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: 10px;
-  width: 90%;
-  background-color: ${({ theme }) => theme.bgMain};
-  border-radius: 4px;
 `;
 
 const SideContainer = styled.div`
@@ -133,10 +162,25 @@ const SideContainer = styled.div`
   padding: 60px 50px 50px 50px;
   width: 300px;
   box-sizing: border-box;
-  background-color: transparent;
+`;
+
+const SideBox = styled.div`
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  margin: 10px;
+  padding: 20px;
+  width: 100%;
+  border: 1px solid ${({ theme }) => theme.brLine};
+  border-radius: 15px;
 `;
 
 const DeleteButton = styled(TextButton)`
+  color: ${({ theme }) => theme.warningText};
+`;
+
+const ErrorText = styled.h3`
+  margin: 10px;
   color: ${({ theme }) => theme.warningText};
 `;
 

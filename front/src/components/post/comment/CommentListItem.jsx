@@ -5,30 +5,36 @@ import { styled } from "../../../styles/Theme";
 import { EllipsisIcon } from "../../../assets/assets";
 // Components
 import DropDownIcon from "../../button/DropDownIcon";
+import TextButton from "../../button/TextButton";
 
 const Options = ["수정하기", "삭제하기"];
 
 const CommentListItem = ({ className, comment }) => {
-  const updateDate = formatDate(comment.created_at);
+  const createDate = formatDate(comment?.created_at);
+  const updateDate = formatDate(comment?.updated_at);
 
   return (
     <CommentListItemContainer className={className}>
       <InfoBox>
-        <NameText>{"댓글 작성자 이름 테스트"}</NameText>
-        <DateText>{`${updateDate}`}</DateText>
+        <NameText>{comment?.author}</NameText>
+        <DateText>{`${createDate}\n(${updateDate})`}</DateText>
       </InfoBox>
       <VerticalLine />
       <ContentBox>
-        <ContentText>{comment.content}</ContentText>
+        <ContentText>{comment?.content}</ContentText>
       </ContentBox>
       <ControlBox>
         <DropDownIcon size={[25, 25]} svgIcon={EllipsisIcon} list={Options} onClick={() => {}} />
+        <TextButton size={[50, 30]} text={`답글`} onClick={() => {}} />
       </ControlBox>
     </CommentListItemContainer>
   );
 };
 
 const formatDate = (date) => {
+  if (!date) {
+    return "----. --. --. --:--";
+  }
   const options = {
     year: "numeric",
     month: "2-digit",
@@ -43,10 +49,12 @@ const formatDate = (date) => {
 const CommentListItemContainer = styled.div`
   display: flex;
   flex-direction: row;
-  box-sizing: border-box;
-  width: 1150px;
+  justify-content: space-between;
+  margin: 10px;
+  width: 1200px;
   min-height: 140px;
   max-height: 240px;
+  box-sizing: border-box;
   background-color: ${({ theme }) => theme.bgLayout};
   border-radius: 5px;
 `;
@@ -57,7 +65,7 @@ const InfoBox = styled.div`
   justify-content: space-between;
   margin: 10px 5px;
   padding: 10px;
-  width: 150px;
+  width: 155px;
   box-sizing: border-box;
   background-color: ${({ theme }) => theme.bgLayout};
   border: 0;
@@ -66,7 +74,7 @@ const InfoBox = styled.div`
 const ContentBox = styled.div`
   margin: 15px 10px;
   padding: 0 10px;
-  width: 950px;
+  width: 945px;
   box-sizing: border-box;
   background-color: ${({ theme }) => theme.bgLayout};
   color: ${({ theme }) => theme.text};
@@ -78,12 +86,15 @@ const ContentBox = styled.div`
 
 const ControlBox = styled.div`
   display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
   padding-top: 10px;
   width: 50px;
 `;
 
 const VerticalLine = styled.div`
-  margin: 5px 0;
+  margin: 10px 0;
   border: 0;
   border-left: 0.1rem solid ${({ theme }) => theme.brLine};
 `;

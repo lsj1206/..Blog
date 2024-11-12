@@ -40,11 +40,11 @@ const DropdownLabel = styled.span`
   outline: none;
   border: 1px solid ${({ theme }) => theme.brLine};
   border-radius: 6px;
-  transition: all 0.3s ease;
   cursor: pointer;
 `;
 
 const DropdownList = styled.ul`
+  z-index: 100;
   display: ${({ $isOpen }) => ($isOpen ? "block" : "none")};
   position: absolute;
   top: 42px;
