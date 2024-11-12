@@ -57,14 +57,10 @@ const ReadPage = () => {
   return (
     <ReadPageContainer>
       <ViewContainer>
-        <PageHeader
-          children={
-            <>
-              <Title>{post?.title}</Title>
-              <InfoText>{`작성자: ${post?.author}`}</InfoText>
-            </>
-          }
-        />
+        <PageHeader>
+          <Title>{post?.title}</Title>
+          <InfoText>{`작성자: ${post?.author}`}</InfoText>
+        </PageHeader>
         <InfoTextContainer>
           <LeftBox>
             <CategoryText>{`분류: ${post?.category}`}</CategoryText>

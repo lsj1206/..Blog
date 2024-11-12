@@ -43,7 +43,7 @@ const ListPage = () => {
     <ListPageContainer>
       <PostContainer>
         <PageHeader>
-          <Title>{"게시글 목록"}</Title>
+          <PageName>{"게시글 목록"}</PageName>
           <SortButton size={[25, 25]} svgIcon={SortIcon} list={sortOptions} onClick={() => {}} />
         </PageHeader>
         {error && <ErrorText>{error}</ErrorText>}
@@ -66,7 +66,6 @@ const ListPageContainer = styled.div`
   margin-left: 20px;
   position: relative;
   width: 1800px;
-  background-color: transparent;
 `;
 
 const PostContainer = styled.div`
@@ -75,7 +74,7 @@ const PostContainer = styled.div`
   width: 1400px;
 `;
 
-const Title = styled.h2`
+const PageName = styled.h2`
   padding-top: 25px;
 `;
 
