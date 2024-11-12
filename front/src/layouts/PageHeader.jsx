@@ -18,7 +18,7 @@ const PageHeaderContainer = styled.div`
 
 const ChildrenContainer = styled.div`
   display: flex;
-  align-items: end;
+  align-items: flex-end;
   flex-direction: row;
   justify-content: space-between;
 `;
