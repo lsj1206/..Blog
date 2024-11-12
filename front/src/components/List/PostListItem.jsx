@@ -16,17 +16,17 @@ const PostListItem = ({ className, post }) => {
     <PostListItemContainer className={className} onClick={goReadPage}>
       <VerticalBorderLine />
       <TextBox>
-        <TitleText>{post.title}</TitleText>
-        <InfoText>{`조회수`}</InfoText>
-        <InfoText>{`작성자`}</InfoText>
+        <TitleText>{post?.title}</TitleText>
+        <InfoText>{post?.views}</InfoText>
+        <InfoText>{post?.author}</InfoText>
         <DateText>{`${Date}`}</DateText>
       </TextBox>
       <InfoBox>
         <CategoryBox>
-          <p>{`Category`}</p>
+          <p>{post?.category}</p>
         </CategoryBox>
         <TagBox>
-          <p>{`Tag`}</p>
+          <p>{post?.tag}</p>
         </TagBox>
       </InfoBox>
     </PostListItemContainer>
