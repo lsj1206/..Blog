@@ -8,6 +8,8 @@ import PageHeader from "../layouts/PageHeader";
 import Comment from "../components/post/Comment";
 import IndexNav from "../components/post/IndexNavigation";
 import TextButton from "../components/button/TextButton";
+
+import Modal from "../components/Modal";
 // Toast UI Viewer
 import MyViewer from "../components/post/MyViewer";
 // Temp Data
@@ -20,6 +22,10 @@ const ReadPage = () => {
   const { postId } = useParams(); // URL에서 postID 가져오기
   const [error, setError] = useState(null);
   const [post, setPost] = useState(null);
+  const [modal, setModalOpen] = useState(false);
+
+  const openModal = () => setModalOpen(true);
+  const closeModal = () => setModalOpen(false);
 
   const deletePost = async () => {
     try {
@@ -78,7 +84,11 @@ const ReadPage = () => {
       </ViewContainer>
       <SideContainer>
         <SideBox>
-          <DeleteButton size={[120, 30]} text={"게시글 삭제"} onClick={deletePost} />
+          <DeleteButton size={[120, 30]} text={"게시글 삭제"} onClick={openModal} />
+          <Modal isOpen={modal} onClose={closeModal}>
+            <ErrorText> 게시글을 삭제하시겠습니까?</ErrorText>
+            <DeleteButton size={[80, 30]} text={"삭제"} onClick={deletePost} />
+          </Modal>
         </SideBox>
         <IndexNav content={post?.content} />
       </SideContainer>
