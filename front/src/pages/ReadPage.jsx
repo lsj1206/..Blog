@@ -5,8 +5,8 @@ import axios from "axios";
 import { styled } from "../styles/Theme";
 // Components
 import PageHeader from "../layouts/PageHeader";
-import PageFooter from "../layouts/PageFooter";
 import Comment from "../components/post/Comment";
+import IndexNav from "../components/post/IndexNavigation";
 import TextButton from "../components/button/TextButton";
 // Toast UI Viewer
 import MyViewer from "../components/post/MyViewer";
@@ -71,17 +71,16 @@ const ReadPage = () => {
           </RightBox>
         </InfoTextContainer>
         <ViewerContainer>
-          {post && <MyViewer Content={post.content} />} {/* API 호출 후에 Viewer 생성*/}
           {error && <ErrorText>{error}</ErrorText>}
+          {post && <MyViewer Content={post?.content} />} {/* API 호출 후에 Viewer 생성*/}
         </ViewerContainer>
-        <PageFooter>
-          <Comment postId={post?.id} comments={post?.comments} />
-        </PageFooter>
+        <Comment postId={post?.id} comments={post?.comments} />
       </ViewContainer>
       <SideContainer>
         <SideBox>
           <DeleteButton size={[120, 30]} text={"게시글 삭제"} onClick={deletePost} />
         </SideBox>
+        <IndexNav content={post?.content} />
       </SideContainer>
     </ReadPageContainer>
   );
@@ -144,6 +143,9 @@ const TagText = styled(InfoText)`
 `;
 
 const ViewerContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: 10px;
 `;
 
