@@ -10,8 +10,7 @@ import IconButton from "../button/IconButton";
 
 const Comment = ({ className, postId, comments }) => {
   const copyUrl = () => {
-    const url = window.location.href; // 현재 페이지의 URL
-    navigator.clipboard.writeText(url);
+    navigator.clipboard.writeText(window.location.href);
   };
   return (
     <CommentContainer className={className}>
