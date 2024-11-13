@@ -23,6 +23,10 @@ import { ReactComponent as NextShiftIcon } from "./icons/angles-right.svg";
 import { ReactComponent as GithubIcon } from "./icons/github-brands.svg";
 import { ReactComponent as XtwitterIcon } from "./icons/x-twitter-brands.svg";
 import { ReactComponent as KakaoIcon } from "./icons/comment.svg";
+// svg - post
+import { ReactComponent as CategoryIcon } from "./icons/bookmark.svg";
+import { ReactComponent as TagIcon } from "./icons/tag.svg";
+import { ReactComponent as PostEditIcon } from "./icons/pen-to-square.svg";
 // image
 import ProfileImg from "./images/profile.png";
 import ThumbnailImg from "./images/thumbnail.jpg";
@@ -32,5 +36,6 @@ export { HambergerIcon, KebabIcon, XIcon };
 export { CodeIcon, LinkCopyIcon, SortIcon, SearchIcon, LightArrowIcon, PageUpIcon, PageDownIcon };
 export { PrevIcon, PrevShiftIcon, NextIcon, NextShiftIcon };
 export { GithubIcon, XtwitterIcon, KakaoIcon };
+export { CategoryIcon, TagIcon, PostEditIcon };
 // image
 export { ProfileImg, ThumbnailImg };
