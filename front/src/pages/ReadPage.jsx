@@ -4,8 +4,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { styled } from "../styles/Theme";
 // Components
-import PageHeader from "../layouts/PageHeader";
-import Comment from "../components/post/Comment";
+import PostHeader from "../components/post/PostHeader";
+import Comment from "../components/post/comment/Comment";
 import IndexNav from "../components/post/IndexNavigation";
 import Modal from "../components/Modal";
 import TextButton from "../components/button/TextButton";
@@ -29,10 +29,10 @@ const ReadPage = () => {
   const deletePost = async () => {
     try {
       await axios.delete(`${postURL}delete/${postId}`);
+      navigate(-1);
     } catch (error) {
       alert("게시물 삭제에 실패했습니다.");
     }
-    navigate(-1);
   };
 
   useEffect(() => {
@@ -49,38 +49,21 @@ const ReadPage = () => {
     getPost();
   }, [postId]);
 
-  const createDate = formatDate(post?.created_at);
-  const updateDate = formatDate(post?.updated_at);
-
   return (
     <ReadPageContainer>
-      <ViewContainer>
-        <PageHeader>
-          <Title>{post?.title}</Title>
-          <InfoText>{`작성자: ${post?.author}`}</InfoText>
-        </PageHeader>
-        <InfoTextContainer>
-          <LeftBox>
-            <CategoryText>{`분류: ${post?.category}`}</CategoryText>
-            <TagText>{`태그: ${post?.tag}`}</TagText>
-          </LeftBox>
-          <RightBox>
-            <InfoText>{`조회수: ${post?.views}`}</InfoText>
-            <InfoText>{`작성일: ${createDate}`}</InfoText>
-            <InfoText>{`최종 수정일: ${updateDate}`}</InfoText>
-          </RightBox>
-        </InfoTextContainer>
+      <PostContainer>
+        <PostHeader post={post} />
         <ViewerContainer>
           {error && <ErrorText>{error}</ErrorText>}
           {post && <MyViewer Content={post?.content} />} {/* API 호출 후에 Viewer 생성*/}
         </ViewerContainer>
         <Comment postId={post?.id} comments={post?.comments} />
-      </ViewContainer>
+      </PostContainer>
       <SideContainer>
         <SideBox>
           <DeleteButton size={[120, 30]} text={"게시글 삭제"} onClick={openModal} />
           <Modal isOpen={modal} onClose={closeModal}>
-            <ErrorText> 게시글을 삭제하시겠습니까?</ErrorText>
+            <ErrorText>{`게시글을 삭제하시겠습니까?`}</ErrorText>
             <DeleteButton size={[80, 30]} text={"삭제"} onClick={deletePost} />
           </Modal>
         </SideBox>
@@ -88,14 +71,6 @@ const ReadPage = () => {
       </SideContainer>
     </ReadPageContainer>
   );
-};
-
-const formatDate = (date) => {
-  if (!date) {
-    return "----년 --월 --일";
-  }
-  const options = { year: "numeric", month: "long", day: "2-digit" };
-  return new Date(date).toLocaleDateString("ko-KR", options);
 };
 
 const ReadPageContainer = styled.div`
@@ -106,44 +81,10 @@ const ReadPageContainer = styled.div`
   width: 1800px;
 `;
 
-const ViewContainer = styled.div`
+const PostContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 1400px;
-`;
-
-const Title = styled.h1`
-  padding-top: 25px;
-`;
-
-const InfoTextContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
-`;
-
-const LeftBox = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
-
-const RightBox = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
-
-const InfoText = styled.p`
-  margin-right: 20px;
-  color: ${({ theme }) => theme.bgText};
-  font-weight: bolder;
-`;
-
-const CategoryText = styled(InfoText)`
-  margin-left: 10px;
-`;
-
-const TagText = styled(InfoText)`
-  margin-left: 10px;
 `;
 
 const ViewerContainer = styled.div`
