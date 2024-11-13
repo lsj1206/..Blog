@@ -24,8 +24,14 @@ import { ReactComponent as GithubIcon } from "./icons/github-brands.svg";
 import { ReactComponent as XtwitterIcon } from "./icons/x-twitter-brands.svg";
 import { ReactComponent as KakaoIcon } from "./icons/comment.svg";
 // svg - post
-import { ReactComponent as CategoryIcon } from "./icons/bookmark.svg";
+import { ReactComponent as CategoryListIcon } from "./icons/folder-tree.svg";
+import { ReactComponent as CategoryIcon } from "./icons/folder-open.svg";
+import { ReactComponent as TagsIcon } from "./icons/tags.svg";
 import { ReactComponent as TagIcon } from "./icons/tag.svg";
+import { ReactComponent as DateIcon } from "./icons/calendar.svg";
+import { ReactComponent as LastDateIcon } from "./icons/calendar-check.svg";
+import { ReactComponent as ViewIcon } from "./icons/eye.svg";
+import { ReactComponent as AuthorIcon } from "./icons/user-pen.svg";
 import { ReactComponent as PostEditIcon } from "./icons/pen-to-square.svg";
 // image
 import ProfileImg from "./images/profile.png";
@@ -36,6 +42,16 @@ export { HambergerIcon, KebabIcon, XIcon };
 export { CodeIcon, LinkCopyIcon, SortIcon, SearchIcon, LightArrowIcon, PageUpIcon, PageDownIcon };
 export { PrevIcon, PrevShiftIcon, NextIcon, NextShiftIcon };
 export { GithubIcon, XtwitterIcon, KakaoIcon };
-export { CategoryIcon, TagIcon, PostEditIcon };
+export {
+  CategoryListIcon,
+  CategoryIcon,
+  TagsIcon,
+  TagIcon,
+  DateIcon,
+  LastDateIcon,
+  ViewIcon,
+  AuthorIcon,
+  PostEditIcon,
+};
 // image
 export { ProfileImg, ThumbnailImg };
