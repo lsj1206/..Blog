@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { styled } from "../styles/Theme";
 // Assets
-import { LeftIcon, DbLeftIcon, RightIcon, DbRightIcon } from "../assets/assets";
+import { PrevIcon, PrevShiftIcon, NextIcon, NextShiftIcon } from "../assets/assets";
 // Components
 import IconButton from "./button/IconButton";
 import TextButton from "./button/TextButton";
@@ -33,8 +33,8 @@ const ListNavigation = ({ totalPageSize, onClick }) => {
 
   return (
     <ListNavigationContainer>
-      <MoveButton onClick={() => setPage(1)} size={[20, 20]} svgIcon={DbLeftIcon} />
-      <MoveButton onClick={() => setPage(Math.max(1, nowPage - 1))} size={[20, 20]} svgIcon={LeftIcon} />
+      <MoveButton onClick={() => setPage(1)} size={[20, 20]} svgIcon={PrevShiftIcon} />
+      <MoveButton onClick={() => setPage(Math.max(1, nowPage - 1))} size={[20, 20]} svgIcon={PrevIcon} />
       <PageNumbers>
         {pageNumbers.map((page) => (
           <NumberButton
@@ -46,8 +46,8 @@ const ListNavigation = ({ totalPageSize, onClick }) => {
           />
         ))}
       </PageNumbers>
-      <MoveButton onClick={() => setPage(Math.min(totalPageSize, nowPage + 1))} size={[20, 20]} svgIcon={RightIcon} />
-      <MoveButton onClick={() => setPage(totalPageSize)} size={[20, 20]} svgIcon={DbRightIcon} />
+      <MoveButton onClick={() => setPage(Math.min(totalPageSize, nowPage + 1))} size={[20, 20]} svgIcon={NextIcon} />
+      <MoveButton onClick={() => setPage(totalPageSize)} size={[20, 20]} svgIcon={NextShiftIcon} />
     </ListNavigationContainer>
   );
 };

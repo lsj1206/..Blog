@@ -4,11 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { ThemeContext } from "../context/ThemeProvider";
 import { styled } from "../styles/Theme";
 // Assets
-import { LightIcon, DarkIcon, ProfileImg } from "../assets/assets";
+import { LightIcon, DarkIcon } from "../assets/assets";
 // Components
 import SearchButton from "../components/SearchBar";
 import TextButton from "../components/button/TextButton";
-import ImgButton from "../components/button/ImgButton";
 import IconButton from "../components/button/IconButton";
 
 const Header = ({ className }) => {

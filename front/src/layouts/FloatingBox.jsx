@@ -2,14 +2,14 @@
 import React from "react";
 import { styled } from "../styles/Theme";
 // Assets
-import { PageUpIcon } from "../assets/assets";
+import { PageUpIcon, PageDownIcon } from "../assets/assets";
 // Components
 import IconButton from "../components/button/IconButton";
 
 const FloatingBox = ({ className, scrollUp, scrollDown }) => {
   return (
     <FloatingContainer className={className}>
-      <FloatingButton onClick={scrollDown} size={[30, 30]} svgIcon={PageUpIcon} />
+      <FloatingButton onClick={scrollDown} size={[30, 30]} svgIcon={PageDownIcon} />
       <FloatingButton onClick={scrollUp} size={[30, 30]} svgIcon={PageUpIcon} />
     </FloatingContainer>
   );

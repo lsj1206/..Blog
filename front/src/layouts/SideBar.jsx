@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { styled } from "../styles/Theme";
 // Assets
-import { BarIcon, LightArrowIcon } from "../assets/assets";
+import { HambergerIcon, LightArrowIcon } from "../assets/assets";
 import { ProfileImg } from "../assets/assets";
 // Components
 import IconButton from "../components/button/IconButton";
@@ -31,7 +31,11 @@ const Sidebar = ({ className }) => {
 
   return (
     <SidebarContainer className={className} ref={sideBarRef} $isOpen={$isOpen}>
-      <IconButton size={[30, 30]} svgIcon={$isOpen === false ? BarIcon : LightArrowIcon} onClick={toggleSidebar} />
+      <IconButton
+        size={[30, 30]}
+        svgIcon={$isOpen === false ? HambergerIcon : LightArrowIcon}
+        onClick={toggleSidebar}
+      />
       <ProfileBox $isOpen={$isOpen}>
         <ImgButton size={[50, 50]} img={ProfileImg} />
         <InfoBox>
